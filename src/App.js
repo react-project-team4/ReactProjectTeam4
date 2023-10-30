@@ -1,9 +1,20 @@
-function App() {
+import React, { useState } from 'react';
+import Header from "./components/Header";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+const App = () => {
+  const [login, setlogin] = useState('false');
   return (
-    <div className="App">
-      main
-    </div>
-  );
+    <Router>
+      <Header login={login} />
+      <Routes>
+        <Route path='/' element="" />
+      </Routes>
+    </Router>
+
+  )
 }
+
 
 export default App;
