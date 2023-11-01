@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Header from "./components/Header";
+import Main from "./components/Main";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -9,7 +10,7 @@ const App = () => {
     <Router>
       <Header login={login} />
       <Routes>
-        <Route path='/' element="" />
+        <Route path='/' element={<Main />} />
       </Routes>
     </Router>
   )
