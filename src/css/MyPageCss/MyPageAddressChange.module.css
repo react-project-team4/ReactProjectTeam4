@@ -1,0 +1,15 @@
+.addressBox{
+    border:1px solid;
+    width:600px;
+    height:200px;
+    margin-bottom:10px;
+}
+.createAddressBox{
+    border:1px solid;
+    width:600px;
+    height:70px;
+    text-align:center;
+    line-height:70px;
+    cursor: pointer;
+}
+
