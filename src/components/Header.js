@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Row, Col, Navbar, Container, Nav } from 'react-bootstrap';
+import '../css/header.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUtensils, faPlane, faAddressCard, faSignInAlt, faUserPlus, faUserCircle, faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 
@@ -9,7 +10,7 @@ const Header = (props) => {
     <Container>
       <Row>
         <Col>
-          <Navbar className="h-8" style={{ height: "70px", backgroundColor: "#60e6cd" }} data-bs-theme="light">
+          <Navbar className="h-8" data-bs-theme="light">
             <Container>
               <Navbar.Brand className='navbar-brand' href="/">
                 <img
@@ -48,7 +49,7 @@ const Header = (props) => {
             </Container>
           </Navbar>
         </Col>
-      </ Row>
+      </Row>
     </Container>
   )
 }
