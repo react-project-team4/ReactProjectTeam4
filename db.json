@@ -39,7 +39,9 @@
       "price": "가격",
       "content": "제품설명",
       "image": "https://cdn.pixabay.com/photo/2020/08/09/11/31/business-5475283_1280.jpg",
-      "category": "Food"
+      "category": "Food",
+      "salesCount ": "0",
+      "sellerId": "1234"
     }
   ],
   "comment": [
