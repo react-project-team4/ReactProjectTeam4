@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import { Stack } from 'react-bootstrap';
+import { Container, Stack } from 'react-bootstrap';
+import '../css/main.css';
 const Main = () => {
   return (
-    <>
-      <Stack gap={2}>
-        <div className='p-2' style={{ backgroundColor: "red" }}>First item</div>
-        <div className='p-2' style={{ backgroundColor: "blue" }}>Second item</div>
-      </Stack>
-    </>
+    <div id="main">
+      <div id='forRecommend'>추천 상품</div>
+      <div id='forSale'>할인 중인 상품</div>
+    </div>
   )
 }
 
