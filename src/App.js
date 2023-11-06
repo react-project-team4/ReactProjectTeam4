@@ -14,7 +14,6 @@ import ShowProduct from "./components/ShowProduct";
 
 const Layout = () => {
   const [login, setlogin] = useState("false");
-  const [user, setUser] = useState("Guest");
   return (
     <Container>
       <Header login={login} />
@@ -25,13 +24,13 @@ const Layout = () => {
 };
 
 const App = () => {
+  const [user, setUser] = useState("Guest");
   return (
     <Router>
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Main />} />
           <Route path="/showProduct" element={<ShowProduct user={user} />} />
-          <Route path="/login" element="로그인페이지"></Route>
         </Route>
       </Routes>
     </Router>
