@@ -1,25 +1,48 @@
+import React, { useEffect, useState } from "react";
 import styles from "../../css/MyPageCss/MyPageAddressChange.module.css";
+import CreateAddressModal from "./CreateAddressModal";
 
 const MyPageAddressChange = () => {
-    return(
+  const [users, setUsers] = useState(null);
+
+  useEffect(() => {
+    fetch("http://localhost:3100/users")
+      .then((response) => response.json())
+      .then((data) => {
+        setUsers(data);
+      });
+  }, []);
+
+  if (users === null) {
+    return <div>Loading...</div>;
+  }
+
+  if (!users.addressList || users.addressList.length === 0) {
+    return (
         <>
-            <div className={styles.addressBox}>
-                <div style={{width:'100%', height:'30%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                    <div style={{ width: '90%', height: '90%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                        <h3 style={{textAlign:'left'}}>배송지 이름</h3>
-                    </div>
-                </div>
-
-                <div style={{ width: '100%', height: '70%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <div style={{ width: '90%', height: '90%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        경상북도 칠곡군 지천면 금송로 60, 영진전문대학교 글로벌캠퍼스 기숙사
-                    </div>
-                </div>
+            <div id="box" className={styles.addressBox}>
+                <div>기본 배송지가 없습니다</div>
             </div>
-
-            <div className={styles.createAddressBox} onClick={()=>alert("배송지 추가")}>+ 배송지 추가</div>
+            <CreateAddressModal/>
         </>
-    )
-}
+    );
+  }
 
-export default MyPageAddressChange
+  const addressDiv = users.addressList.map((address, index) => (
+    <div key={index} className={styles.defaultAddressBox}>
+      <div className={styles.addressBoxText}><h2>{address.addressName}</h2></div> 
+      <br/>
+      <div className={styles.addressBoxText}>{address.address}</div>
+    </div>
+  ));
+
+  return (
+    <div id="box">  
+      {addressDiv}
+      <CreateAddressModal/>
+    </div>
+    
+  );
+};
+
+export default MyPageAddressChange;
