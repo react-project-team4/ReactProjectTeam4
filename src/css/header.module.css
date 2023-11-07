@@ -1,0 +1,8 @@
+.row {
+  height: 70px;
+  border: 1px solid gray;
+}
+
+.link:hover {
+  color: white !important;
+}

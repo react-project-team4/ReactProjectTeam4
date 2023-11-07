@@ -1,19 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import Header from "./components/Header";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Footer from "./components/Footer";
+import Main from "./components/Main";
+import "bootstrap/dist/css/bootstrap.min.css";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Outlet,
+} from "react-router-dom";
+import { Container } from "react-bootstrap";
+import ShowProduct from "./components/ShowProduct";
+
+const Layout = () => {
+  const [login, setlogin] = useState("false");
+  return (
+    <Container>
+      <Header login={login} />
+      <Outlet />
+      <Footer />
+    </Container>
+  );
+};
 
 const App = () => {
-  const [login, setlogin] = useState('false');
+  const [user, setUser] = useState("Guest");
   return (
     <Router>
-      <Header login={login} />
       <Routes>
-        <Route path='/' element="" />
+        <Route element={<Layout />}>
+          <Route path="/" element={<Main />} />
+          <Route path="/showProduct" element={<ShowProduct user={user} />} />
+        </Route>
       </Routes>
     </Router>
-  )
-}
-
+  );
+};
 
 export default App;
