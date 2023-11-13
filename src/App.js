@@ -3,6 +3,7 @@ import Header from "./front-end/components/Header";
 import Footer from "./front-end/components/Footer";
 import Main from "./front-end/components/Main";
 import ProductList from "./front-end/components/ProductList";
+import CreateProduct from "./front-end/components/CreateProduct";
 import {
   BrowserRouter as Router,
   Routes,
@@ -32,6 +33,7 @@ const App = () => {
           <Route path="/" element={<Main />} />
           <Route path="/showProduct" element={<ShowProduct user={user} />} />
           <Route path="/productList" element={<ProductList />} />
+          <Route path="/CreateProduct" element={<CreateProduct />} />
         </Route>
       </Routes>
     </Router>
