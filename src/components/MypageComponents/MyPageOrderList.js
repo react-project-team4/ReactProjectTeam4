@@ -6,7 +6,7 @@ const MyPageOrderList = () => {
     const [orders, setOrders] = useState(null); // 초기값을 빈 배열로 설정
 
     useEffect(() => {
-        fetch("http://localhost:3100/orders")
+        fetch("http://localhost:3300/orders")
             .then((response) => response.json())
             .then((data) => {
                 setOrders(data);

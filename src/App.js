@@ -11,6 +11,7 @@ import {
 } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import ShowProduct from "./front-end/components/ShowProduct";
+import MyPage from "./components/MypageComponents/MyPage";
 
 const Layout = () => {
   const [login, setlogin] = useState("false");
@@ -32,6 +33,7 @@ const App = () => {
           <Route path="/" element={<Main />} />
           <Route path="/showProduct" element={<ShowProduct user={user} />} />
           <Route path="/productList" element={<ProductList />} />
+          <Route path="/myPage" element={<MyPage/>} />
         </Route>
       </Routes>
     </Router>

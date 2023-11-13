@@ -10,6 +10,30 @@
           "addressId": "1",
           "addressName": "기본 배송지",
           "address": "대구광역시 달성군 다사읍 서재로 11길 11"
+        },
+        {
+          "addressId": "2",
+          "addressName": "김건우 집",
+          "address": "포항시 북구 양덕로 60"
+        },
+        {
+          "addressId": "3",
+          "addressName": "효빈이 집",
+          "address": "대구광역시 서구 중리동 115-5 다산하트빌"
+        }
+      ],
+      "cartList": [1, 2, 3, 4]
+    },
+    {
+      "userId": "5678",
+      "nickName": "testUser2",
+      "password": "5678",
+      "phone": "01067831332",
+      "addressList": [
+        {
+          "addressId": "1",
+          "addressName": "기본 배송지",
+          "address": "대구광역시 달성군 다사읍 서재로 11길 11"
         }
       ],
       "cartList": [1, 2, 3, 4]
