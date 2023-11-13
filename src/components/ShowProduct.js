@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import {} from "../css/ShowProduct.module.css";
 import { Button, Col, Row, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -16,7 +15,8 @@ export default function ShowProduct(props) {
     // image: "",
     // category: "",
     productId: "1",
-    name: "상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명",
+    name: "상품명",
+    sellerId: "1234",
     price: "10,000",
     content:
       "제품설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명",
@@ -29,13 +29,13 @@ export default function ShowProduct(props) {
     setUser("guest");
 
     getProductData();
-    if (user === "user" || user === "seller") getCartList();
+    if (user === "user") getCartList();
 
-    if (user === "admin") getProductList();
+    if (user === "admin" || user === "seller") getProductList();
   }, []);
 
   // 상품 정보 가져오기
-  const getProductData = async () => {
+  const getProductData = () => {
     fetch("http://localhost:3100/products")
       .then((response) => response.json())
       .then((jsonData) =>
@@ -49,13 +49,6 @@ export default function ShowProduct(props) {
 
   // 장바구니 리스트 가져오기
   const getCartList = () => {
-    //   const response = await fetch(`http://localhost:3100/${user}s/`);
-    //   const jsonData = await response.json();
-
-    //   // localStorage.getItem(key) // localStorage.getItem(userId)
-    //   const findList = jsonData.find((item) => item.userId === "1234");
-    //   setCartList(findList.cartList);
-
     fetch(`http://localhost:3100/users/`)
       .then((response) => response.json())
       .then((jsonData) => {
@@ -66,14 +59,7 @@ export default function ShowProduct(props) {
     console.log(cartList);
   };
 
-  const getProductList = async () => {
-    // const response = await fetch(`http://localhost:3100/sellers/`);
-    // const jsonData = await response.json();
-
-    // // localStorage.getItem(key) // localStorage.getItem(userId)
-    // const findList = jsonData.find((item) => item.userId === product.sellerId);
-    // setCartList(findList.productList);
-
+  const getProductList = () => {
     fetch(`http://localhost:3100/sellers/`)
       .then((response) => response.json())
       .then((jsonData) => {
@@ -87,13 +73,31 @@ export default function ShowProduct(props) {
   // 장바구니 담기
   const addCart = () => {
     if (user === "guest") {
-      return alert(" 장바구니는 로그인 후 사용하실 수 있습니다.");
+      const guestCartList =
+        JSON.parse(sessionStorage.getItem("guestCartList")) || [];
+      if (guestCartList.includes(product.productId)) {
+        return alert("이미 장바구니에 있는 상품입니다");
+      }
+      sessionStorage.setItem(
+        "guestCartList",
+        JSON.stringify([...guestCartList, product.productId])
+      );
+      return;
     }
     if (cartList.includes(product.productId)) {
       return alert("이미 장바구니에 있는 상품입니다");
     }
     setCartList([...cartList, product.productId]);
     alert("장바구니에 추가되었습니다.");
+  };
+  const buy = () => {
+    if (user === "guest") {
+      return alert("로그인 후 이용가능합니다.");
+    }
+    if (cartList.includes(product.productId)) {
+      return;
+    }
+    setCartList([...cartList, product.productId]);
   };
 
   return (
@@ -106,21 +110,15 @@ export default function ShowProduct(props) {
           lg="auto"
           className="justify-content-center mt-5 mb-3"
         >
-          <Col>
+          <Col xs="auto" sm="auto" md="auto" lg="auto">
             <img className="img-fluid" src={product.image} alt="" />
           </Col>
         </Row>
-        <Row className="justify-content-between">
-          <Col xs="auto" sm="auto" md="auto" lg="auto">
+        <Row className=" justify-content-between">
+          <Col xs="7" sm="8" md="9" lg="9">
             <strong style={{ fontSize: "35px" }}>{product.name}</strong>
           </Col>
-          <Col
-            xs="auto"
-            sm="auto"
-            md="auto"
-            lg="auto"
-            className="d-flex align-items-center"
-          >
+          <Col className="d-flex align-items-center  justify-content-end">
             <strong style={{ fontSize: "35px" }}>{product.price}</strong>
             <span style={{ fontSize: "25px", marginLeft: "3px" }}>원</span>
           </Col>
@@ -134,19 +132,13 @@ export default function ShowProduct(props) {
                 onClick={addCart}
                 style={{ marginRight: "5px" }}
               >
-                {/* 링크의 주소들은 임시 세팅 */}
-                {user === "guest" ? (
-                  // guest
-                  <Link to="/login" className="text-decoration-none text-reset">
-                    장바구니 담기
-                  </Link>
-                ) : (
-                  // user
-                  "장바구니"
-                )}
+                장바구니 담기
               </Button>
-              <Button variant="outline-success" onClick={addCart}>
+              <Button variant="outline-success" onClick={buy}>
                 구매하기
+                <Link to="/Login" className="text-decoration-none text-reset">
+                  구매하기
+                </Link>
               </Button>
             </Col>
           ) : (
@@ -160,13 +152,7 @@ export default function ShowProduct(props) {
           )}
         </Row>
         <Row className="justify-content-start ml-5 mt-5 mb-3">
-          <Col
-            xs="auto"
-            sm="auto"
-            md="auto"
-            lg="auto"
-            style={{ fontSize: "20px", wordWrap: "break-word" }}
-          >
+          <Col style={{ fontSize: "20px", wordWrap: "break-word" }}>
             {product.content}
           </Col>
         </Row>
