@@ -1,0 +1,16 @@
+.main {
+  width: 100%;
+  height: auto;
+  padding: 0;
+  padding-top: 50px;
+}
+
+.forRecommend {
+  border: solid 1px gray;
+  height: 400px;
+}
+
+.forSale {
+  border: solid 1px gray;
+  height: 300px;
+}

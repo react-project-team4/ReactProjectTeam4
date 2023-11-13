@@ -1,69 +1,66 @@
 {
-  "users": {
-    "userId":"1234",
-    "nickName":"testUser",
-    "password":"1234",
-    "phone":"01067831332",
-    "addressList":[
-      {
-        "addressId":"1",
-        "addressName":"기본 배송지",
-        "address":"대구광역시 달성군 다사읍 서재로 11길 11"
-      }
-    ],
-    "cartList":[
-      1,2,3,4
-    ]
-  },
+  "users": [
+    {
+      "userId": "1234",
+      "nickName": "testUser",
+      "password": "1234",
+      "phone": "01067831332",
+      "addressList": [
+        {
+          "addressId": "1",
+          "addressName": "기본 배송지",
+          "address": "대구광역시 달성군 다사읍 서재로 11길 11"
+        }
+      ],
+      "cartList": [1, 2, 3, 4]
+    }
+  ],
 
-  "sellers": {
-    "userId":"1234",
-    "nickName":"testSeller",
-    "password":"1234",
-    "productList":[
-      1,2,3,4
-    ]
-  },
-  "admin": {
-    "userId":"1234",
-    "nickName":"testAdmin",
-    "password":"1234"
-  },
+  "sellers": [
+    {
+      "userId": "1234",
+      "nickName": "testSeller",
+      "password": "1234",
+      "productList": [1, 2, 3, 4]
+    }
+  ],
+  "admin": [
+    {
+      "userId": "1234",
+      "nickName": "testAdmin",
+      "password": "1234"
+    }
+  ],
 
-  "products": {
-    "productId":"1",
-    "name":"상품명",
-    "price":"가격",
-    "content":"제품설명",
-    "image":"https://cdn.pixabay.com/photo/2020/08/09/11/31/business-5475283_1280.jpg",
-    "category":"Food"
-  },
-  "comment": {
-    "commentId":"1",
-    "userId":"1234",
-    "productId":"1",
-    "content":"댓글내용"
-  },
+  "products": [
+    {
+      "productId": "1",
+      "name": "상품명",
+      "price": "가격",
+      "content": "제품설명",
+      "image": "https://cdn.pixabay.com/photo/2020/08/09/11/31/business-5475283_1280.jpg",
+      "category": "Food",
+      "salesCount ": "0",
+      "sellerId": "1234"
+    }
+  ],
+  "comment": [
+    {
+      "commentId": "1",
+      "userId": "1234",
+      "productId": "1",
+      "content": "댓글내용"
+    }
+  ],
   "orders": [
-
     {
-      "oderId":"1",
-      "productId":"1",
-      "userId":"1234",
-      "address":"대구광역시 달성군 다사읍 서재로 11길 11",
-      "productQuantity":"3",
-      "shippingCost":"2500",
+      "oderId": "1",
+      "productId": "1",
+      "userId": "1234",
+      "address": "대구광역시 달성군 다사읍 서재로 11길 11",
+      "productQuantity": "3",
+      "shippingCost": "2500",
       "orderDate": "2023-10-30T12:00:00.000Z"
-    },
-    {
-      "oderId":"2",
-      "productId":"2",
-      "userId":"1234",
-      "address":"대구광역시 달성군 다사읍 서재로 11길 11",
-      "productQuantity":"1",
-      "shippingCost":"3000",
-      "orderDate": "2023-11-07T12:00:00.000Z"
     }
   ]
-
 }
