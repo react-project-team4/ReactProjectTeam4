@@ -1,13 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 
 
+
+
 function CreateAddressModal() {
   const [show, setShow] = useState(false);
+  const [newAddress, setNewAddress] = useState({
+    addressId:"",
+    addressName:"",
+    address:""
+});
 
-  const handleClose = () => setShow(false);
+const handleInputChange = (e) => {
+  const { name, value } = e.target;
+  setNewAddress((prevAddress) => ({
+    ...prevAddress,
+    [name]: value,
+  }));
+};
+
+
+  const handleClose = () => {
+    console.log(newAddress)
+    setShow(false);
+  }
   const handleShow = () => setShow(true);
 
   return (
@@ -26,6 +45,9 @@ function CreateAddressModal() {
               <Form.Label>배송지 이름</Form.Label>
               <Form.Control
                 type="text"
+                name='addressName'
+                value={newAddress.addressName}
+                onChange={handleInputChange}
                 autoFocus
               />
             </Form.Group>
@@ -34,7 +56,13 @@ function CreateAddressModal() {
               controlId="exampleForm.ControlTextarea1"
             >
               <Form.Label>상세 주소</Form.Label>
-              <Form.Control as="textarea" rows={3} />
+              <Form.Control 
+                as="textarea"
+                rows={3}
+                name='address'
+                value={newAddress.address}
+                onChange={handleInputChange}
+              />
             </Form.Group>
           </Form>
 
@@ -50,7 +78,7 @@ function CreateAddressModal() {
           <Button variant="secondary" onClick={handleClose}>
             취소
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick>
             저장
           </Button>
         </Modal.Footer>

@@ -44,14 +44,26 @@
     "productId":"1",
     "content":"댓글내용"
   },
-  "orders": {
-    "oderId":"1",
-    "productId":"1",
-    "userId":"1234",
-    "address":"대구광역시 달성군 다사읍 서재로 11길 11",
-    "productQuantity":"3",
-    "shippingCost":"2500",
-    "orderDate": "2023-10-30T12:00:00.000Z"
-  }
+  "orders": [
+
+    {
+      "oderId":"1",
+      "productId":"1",
+      "userId":"1234",
+      "address":"대구광역시 달성군 다사읍 서재로 11길 11",
+      "productQuantity":"3",
+      "shippingCost":"2500",
+      "orderDate": "2023-10-30T12:00:00.000Z"
+    },
+    {
+      "oderId":"2",
+      "productId":"2",
+      "userId":"1234",
+      "address":"대구광역시 달성군 다사읍 서재로 11길 11",
+      "productQuantity":"1",
+      "shippingCost":"3000",
+      "orderDate": "2023-11-07T12:00:00.000Z"
+    }
+  ]
 
 }
