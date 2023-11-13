@@ -9,27 +9,32 @@ const ProductList = (props) => {
 
   useEffect(() => {
     console.log(location.search);
-    // setProducts(category);
-  })
+    setProducts(location.search);
+  });
   return (
     <Container className="border border-left-2 border-right-2 border-dark p-4 w-full ">
       <>
         <div className="d-flex justify-content-between">
           <h4>식품</h4>
           <form className="flex">
-            <Link to="/CreateProduct"> <input type="submit" value="상품등록" /></Link>
+            <Link to="/CreateProduct">
+              {" "}
+              <input type="submit" value="상품등록" />
+            </Link>
           </form>
         </div>
         <div className="card" style={{ width: "18rem" }}>
           <img className="card-img-top" src="..." alt="Card image cap" />
           <div className="card-body">
-            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <p className="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
           </div>
         </div>
       </>
     </Container>
-
-  )
-}
+  );
+};
 
 export default ProductList;
