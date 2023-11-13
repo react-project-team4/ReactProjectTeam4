@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Row, Col, Navbar, Container, Nav } from "react-bootstrap";
 import styles from "../css/header.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 import {
   faUtensils,
   faPlane,
@@ -14,13 +15,16 @@ import {
 
 const Header = (props) => {
   const { login } = props;
+
+  const [category, setCategory] = useState("");
+
   return (
     <Container>
       <Row className={styles.row}>
         <Col>
           <Navbar className="h-8" data-bs-theme="light">
             <Container>
-              <Navbar.Brand className="navbar-brand" href="/">
+              <Navbar.Brand className="navbar-brand" as={Link} to="/">
                 <img
                   alt="main"
                   src="https://i.ibb.co/RhB1rSt/Kakao-Talk-20231030-145416381.png"
@@ -37,7 +41,7 @@ const Header = (props) => {
                 style={{ width: "600px" }}
               >
                 <Nav.Item>
-                  <Nav.Link className={styles.link} href="/productList">
+                  <Nav.Link className={styles.link} as={Link} to="/productList?category=Food">
                     <FontAwesomeIcon
                       style={{ marginRight: "6px" }}
                       icon={faUtensils}
@@ -46,7 +50,7 @@ const Header = (props) => {
                   </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link className={styles.link} href="/">
+                  <Nav.Link className={styles.link} as={Link} to="/productList?category=Travel">
                     <FontAwesomeIcon
                       style={{ marginRight: "6px" }}
                       icon={faPlane}
@@ -55,7 +59,7 @@ const Header = (props) => {
                   </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link className={styles.link} href="/">
+                  <Nav.Link className={styles.link} as={Link} to="/">
                     <FontAwesomeIcon
                       style={{ marginRight: "6px" }}
                       icon={faAddressCard}
@@ -67,14 +71,14 @@ const Header = (props) => {
               <Nav className="d-flex ">
                 {login === "false" ? (
                   <>
-                    <Nav.Link className={styles.link} href="/">
+                    <Nav.Link className={styles.link} as={Link} to="/">
                       <FontAwesomeIcon
                         style={{ marginRight: "6px" }}
                         icon={faSignInAlt}
                       />
                       로그인
                     </Nav.Link>
-                    <Nav.Link className={styles.link} href="/">
+                    <Nav.Link className={styles.link} as={Link} to="/">
                       <FontAwesomeIcon
                         style={{ marginRight: "6px" }}
                         icon={faUserPlus}
@@ -84,14 +88,14 @@ const Header = (props) => {
                   </>
                 ) : (
                   <>
-                    <Nav.Link className={styles.link} href="/">
+                    <Nav.Link className={styles.link} as={Link} to="/">
                       <FontAwesomeIcon
                         style={{ marginRight: "6px" }}
                         icon={faUserCircle}
                       />
                       프로필
                     </Nav.Link>
-                    <Nav.Link className={styles.link} href="/">
+                    <Nav.Link className={styles.link} as={Link} to="/">
                       <FontAwesomeIcon
                         style={{ marginRight: "6px" }}
                         icon={faShoppingBasket}
