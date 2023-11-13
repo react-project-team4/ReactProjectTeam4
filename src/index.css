@@ -2,8 +2,7 @@
   font-family: "DNFBitBitv2";
   font-style: normal;
   font-weight: 400;
-  src: url("//cdn.df.nexon.com/img/common/font/DNFBitBitv2.otf")
-    format("opentype");
+  src: url("./front-end/fonts/DNFBitBitv2.otf") format("opentype");
 }
 
 body {
