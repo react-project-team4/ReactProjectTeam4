@@ -26,7 +26,7 @@ export default function ShowProduct(props) {
   });
 
   useEffect(() => {
-    setUser("guest");
+    setUser("user");
 
     getProductData();
     if (user === "user") getCartList();
@@ -36,7 +36,7 @@ export default function ShowProduct(props) {
 
   // 상품 정보 가져오기
   const getProductData = () => {
-    fetch("http://localhost:3100/products")
+    fetch("http://localhost:3300/products")
       .then((response) => response.json())
       .then((jsonData) =>
         // item.productId === props.productsId
@@ -49,7 +49,7 @@ export default function ShowProduct(props) {
 
   // 장바구니 리스트 가져오기
   const getCartList = () => {
-    fetch(`http://localhost:3100/users/`)
+    fetch(`http://localhost:3300/users/`)
       .then((response) => response.json())
       .then((jsonData) => {
         // localStorage.getItem(key) // localStorage.getItem(userId)
@@ -60,7 +60,7 @@ export default function ShowProduct(props) {
   };
 
   const getProductList = () => {
-    fetch(`http://localhost:3100/sellers/`)
+    fetch(`http://localhost:3300/sellers/`)
       .then((response) => response.json())
       .then((jsonData) => {
         // localStorage.getItem(key) // localStorage.getItem(userId)
@@ -135,10 +135,18 @@ export default function ShowProduct(props) {
                 장바구니 담기
               </Button>
               <Button variant="outline-success" onClick={buy}>
-                구매하기
-                <Link to="/Login" className="text-decoration-none text-reset">
-                  구매하기
-                </Link>
+                {user === "guest" ? (
+                  <Link to="/Login" className="text-decoration-none text-reset">
+                    구매하기
+                  </Link>
+                ) : (
+                  <Link
+                    to="/MyCart"
+                    className="text-decoration-none text-reset"
+                  >
+                    구매하기
+                  </Link>
+                )}
               </Button>
             </Col>
           ) : (

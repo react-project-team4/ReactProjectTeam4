@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import Main from "./components/Main";
-import "bootstrap/dist/css/bootstrap.min.css";
+import Header from "./front-end/components/Header";
+import Footer from "./front-end/components/Footer";
+import Main from "./front-end/components/Main";
+import ProductList from "./front-end/components/ProductList";
 import {
   BrowserRouter as Router,
   Routes,
@@ -10,7 +10,7 @@ import {
   Outlet,
 } from "react-router-dom";
 import { Container } from "react-bootstrap";
-import ShowProduct from "./components/ShowProduct";
+import ShowProduct from "./front-end/components/ShowProduct";
 
 const Layout = () => {
   const [login, setlogin] = useState("false");
@@ -34,6 +34,7 @@ const App = () => {
           {/* <Route path="/login" element={<Login />}></Route> */}
           {/* <Route path="/Register" element={<Register />}></Route> */}
           <Route path="/Login" element="로그인 페이지"></Route>
+          <Route path="/ProductList" element={<ProductList />} />
         </Route>
       </Routes>
     </Router>
