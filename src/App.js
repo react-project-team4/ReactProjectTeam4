@@ -1,9 +1,3 @@
-import React, { useState } from 'react';
-import Header from "./components/Header";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import MyPage from './components/MypageComponents/MyPage';
-
 import React, { useState } from "react";
 import Header from "./front-end/components/Header";
 import Footer from "./front-end/components/Footer";
@@ -32,19 +26,16 @@ const Layout = () => {
 const App = () => {
   const [user, setUser] = useState("Guest");
   return (
-    <>
-      <Router>
-        <Routes>
+    <Router>
+      <Routes>
         <Route element={<Layout />}>
-            <Route path="/" element={<Main />} />
-            <Route path="/showProduct" element={<ShowProduct user={user} />} />
-            <Route path="/productList" element={<ProductList />} />
-          </Route>
-        </Routes>
-      </Router>
-    </>
-  )
-}
-
+          <Route path="/" element={<Main />} />
+          <Route path="/showProduct" element={<ShowProduct user={user} />} />
+          <Route path="/productList" element={<ProductList />} />
+        </Route>
+      </Routes>
+    </Router>
+  );
+};
 
 export default App;
