@@ -46,7 +46,7 @@ const Header = (props) => {
                   </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link className={styles.link} href="/">
+                  <Nav.Link className={styles.link} href="/productList">
                     <FontAwesomeIcon
                       style={{ marginRight: "6px" }}
                       icon={faPlane}

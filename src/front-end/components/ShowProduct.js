@@ -63,7 +63,6 @@ export default function ShowProduct(props) {
     fetch(`http://localhost:3300/sellers/`)
       .then((response) => response.json())
       .then((jsonData) => {
-        // localStorage.getItem(key) // localStorage.getItem(userId)
         setCartList(jsonData.find((item) => item.userId === product.sellerId));
       });
 
@@ -101,70 +100,80 @@ export default function ShowProduct(props) {
   };
 
   return (
-    <>
-      <Container>
-        <Row
-          xs="auto"
-          sm="auto"
-          md="auto"
-          lg="auto"
-          className="justify-content-center mt-5 mb-3"
-        >
+    <Container>
+      <Row>
+        <Col>
+          <Link to={{ pathname: "/productList" state : { user }}}>Back</Link>
+        </Col>
+      </Row>
+      <Row
+        xs="auto"
+        sm="auto"
+        md="auto"
+        lg="auto"
+        className="justify-content-center mt-5 mb-3"
+      >
+        <Col xs="auto" sm="auto" md="auto" lg="auto">
+          <img className="img-fluid" src={product.image} alt="" />
+        </Col>
+      </Row>
+      <Row className=" justify-content-between">
+        <Col xs="7" sm="8" md="9" lg="9">
+          <strong style={{ fontSize: "35px", fontWeight: 10 }}>
+            {product.name}
+          </strong>
+        </Col>
+        <Col className="d-flex  align-items-end justify-content-end">
+          <strong style={{ fontSize: "35px", fontWeight: 10 }}>
+            {product.price}
+          </strong>
+          <span
+            className="pb-1"
+            style={{ fontSize: "25px", marginLeft: "3px" }}
+          >
+            원
+          </span>
+        </Col>
+      </Row>
+      <Row className="justify-content-end mt-2">
+        {user === "guest" || user === "user" ? (
+          // guest, user
           <Col xs="auto" sm="auto" md="auto" lg="auto">
-            <img className="img-fluid" src={product.image} alt="" />
+            <Button
+              variant="outline-success"
+              onClick={addCart}
+              style={{ marginRight: "5px" }}
+            >
+              장바구니 담기
+            </Button>
+
+            <Button variant="outline-success" onClick={buy}>
+              {user === "guest" ? (
+                <Link to="/Login" className="text-decoration-none text-reset">
+                  구매하기
+                </Link>
+              ) : (
+                <Link to="/MyCart" className="text-decoration-none text-reset">
+                  구매하기
+                </Link>
+              )}
+            </Button>
           </Col>
-        </Row>
-        <Row className=" justify-content-between">
-          <Col xs="7" sm="8" md="9" lg="9">
-            <strong style={{ fontSize: "35px" }}>{product.name}</strong>
+        ) : (
+          // seller, admin
+          <Col xs="auto" sm="auto" md="auto" lg="auto">
+            <Button variant="outline-success" style={{ marginRight: "5px" }}>
+              수정
+            </Button>
+            <Button variant="outline-success">삭제</Button>
           </Col>
-          <Col className="d-flex align-items-center  justify-content-end">
-            <strong style={{ fontSize: "35px" }}>{product.price}</strong>
-            <span style={{ fontSize: "25px", marginLeft: "3px" }}>원</span>
-          </Col>
-        </Row>
-        <Row className="justify-content-end mt-2">
-          {user === "guest" || user === "user" ? (
-            // guest, user
-            <Col xs="auto" sm="auto" md="auto" lg="auto">
-              <Button
-                variant="outline-success"
-                onClick={addCart}
-                style={{ marginRight: "5px" }}
-              >
-                장바구니 담기
-              </Button>
-              <Button variant="outline-success" onClick={buy}>
-                {user === "guest" ? (
-                  <Link to="/Login" className="text-decoration-none text-reset">
-                    구매하기
-                  </Link>
-                ) : (
-                  <Link
-                    to="/MyCart"
-                    className="text-decoration-none text-reset"
-                  >
-                    구매하기
-                  </Link>
-                )}
-              </Button>
-            </Col>
-          ) : (
-            // seller, admin
-            <Col xs="auto" sm="auto" md="auto" lg="auto">
-              <Button variant="outline-success" style={{ marginRight: "5px" }}>
-                수정
-              </Button>
-              <Button variant="outline-success">삭제</Button>
-            </Col>
-          )}
-        </Row>
-        <Row className="justify-content-start ml-5 mt-5 mb-3">
-          <Col style={{ fontSize: "20px", wordWrap: "break-word" }}>
-            {product.content}
-          </Col>
-        </Row>
-      </Container>
-    </>
+        )}
+      </Row>
+      <Row className="justify-content-start ml-5 mt-5 mb-3">
+        <Col style={{ fontSize: "20px", wordWrap: "break-word" }}>
+          {product.content}
+        </Col>
+      </Row>
+    </Container>
   );
 }
