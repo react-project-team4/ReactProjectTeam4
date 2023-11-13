@@ -37,7 +37,7 @@ const Header = (props) => {
                 style={{ width: "600px" }}
               >
                 <Nav.Item>
-                  <Nav.Link className={styles.link} href="/">
+                  <Nav.Link className={styles.link} href="/productList">
                     <FontAwesomeIcon
                       style={{ marginRight: "6px" }}
                       icon={faUtensils}
