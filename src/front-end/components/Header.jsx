@@ -32,7 +32,7 @@ const Header = (props) => {
                   height="30"
                   className="d-inline-block align-top"
                 />{" "}
-                React Project
+                Japang
               </Navbar.Brand>
 
               <Nav
@@ -41,7 +41,11 @@ const Header = (props) => {
                 style={{ width: "600px" }}
               >
                 <Nav.Item>
-                  <Nav.Link className={styles.link} as={Link} to="/productList?category=Food">
+                  <Nav.Link
+                    className={styles.link}
+                    as={Link}
+                    to="/productList?category=Food"
+                  >
                     <FontAwesomeIcon
                       style={{ marginRight: "6px" }}
                       icon={faUtensils}
@@ -50,7 +54,11 @@ const Header = (props) => {
                   </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link className={styles.link} as={Link} to="/productList?category=Travel">
+                  <Nav.Link
+                    className={styles.link}
+                    as={Link}
+                    to="/productList?category=Travel"
+                  >
                     <FontAwesomeIcon
                       style={{ marginRight: "6px" }}
                       icon={faPlane}
