@@ -4,6 +4,8 @@ import Footer from "./front-end/components/Footer";
 import Main from "./front-end/components/Main";
 import ProductList from "./front-end/components/ProductList";
 import CreateProduct from "./front-end/components/CreateProduct";
+import Register from "./front-end/components/Register";
+import Login from "./front-end/components/Login";
 import {
   BrowserRouter as Router,
   Routes,
@@ -33,8 +35,8 @@ const App = () => {
         <Route element={<Layout />}>
           <Route path="/" element={<Main />} />
           <Route path="/ShowProduct" element={<ShowProduct />} />
-          {/* <Route path="/login" element={<Login />}></Route> */}
-          {/* <Route path="/Register" element={<Register />}></Route> */}
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/Register" element={<Register />}></Route>
           <Route path="/Login" element="로그인 페이지"></Route>
           <Route path="/ProductList" element={<ProductList />} />
         </Route>
