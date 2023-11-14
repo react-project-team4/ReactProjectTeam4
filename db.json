@@ -73,7 +73,9 @@
       "image": "https://myreactproject04.s3.ap-northeast-2.amazonaws.com/Images/KakaoTalk_20231030_145416381.png",
       "content": "ㅂㄱㅈ",
       "category": "Food",
-      "id": 2
+      "id": 2,
+      "sellerId": "1234",
+      "shippingFee": "0"
     },
     {
       "name": "asdfasdf",
@@ -81,7 +83,9 @@
       "image": "https://myreactproject04.s3.ap-northeast-2.amazonaws.com/Images/tree-736885_1280.jpg",
       "content": "asdfgasfda",
       "category": "Travel",
-      "id": 3
+      "id": 3,
+      "sellerId": "1234",
+      "shippingFee": "0"
     }
   ]
 }
