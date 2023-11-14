@@ -1,0 +1,87 @@
+{
+  "users": [
+    {
+      "id": "1234",
+      "nickName": "testUser",
+      "password": "1234",
+      "phone": "01067831332",
+      "addressList": [
+        {
+          "addressId": "1",
+          "addressName": "기본 배송지",
+          "address": "대구광역시 달성군 다사읍 서재로 11길 11"
+        }
+      ],
+      "cartList": [2, 3, 4]
+    }
+  ],
+  "sellers": [
+    {
+      "id": "1234",
+      "nickName": "testSeller",
+      "password": "1234",
+      "productList": [1, 2, 3, 4]
+    },
+    {
+      "id": "1233",
+      "nickName": "testSeller",
+      "password": "1234",
+      "productList": [1, 2, 3, 4]
+    }
+  ],
+  "admin": [
+    {
+      "id": "1234",
+      "nickName": "testAdmin",
+      "password": "1234"
+    }
+  ],
+
+  "comments": [
+    {
+      "id": 1,
+      "usersId": "1234",
+      "productId": 2,
+      "content": "댓글내용"
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "product_id": 2,
+      "usersId": "1234",
+      "address": "대구광역시 달성군 다사읍 서재로 11길 11",
+      "productQuantity": "3",
+      "shippingCost": "2500",
+      "orderDate": "2023-10-30T12:00:00.000Z"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "상품명",
+      "price": "가격",
+      "content": "제품설명",
+      "image": "https://cdn.pixabay.com/photo/2020/08/09/11/31/business-5475283_1280.jpg",
+      "category": "Food",
+      "shippingFee": "0",
+      "sellerId": "1234"
+    },
+    {
+      "name": "ㅅㅂ",
+      "price": "123",
+      "image": "https://myreactproject04.s3.ap-northeast-2.amazonaws.com/Images/KakaoTalk_20231030_145416381.png",
+      "content": "ㅂㄱㅈ",
+      "category": "Food",
+      "id": 2
+    },
+    {
+      "name": "asdfasdf",
+      "price": "1234",
+      "image": "https://myreactproject04.s3.ap-northeast-2.amazonaws.com/Images/tree-736885_1280.jpg",
+      "content": "asdfgasfda",
+      "category": "Travel",
+      "id": 3
+    }
+  ]
+}
