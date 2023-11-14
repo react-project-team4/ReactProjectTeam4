@@ -12,12 +12,7 @@
           "address": "대구광역시 달성군 다사읍 서재로 11길 11"
         }
       ],
-      "cartList": [
-        1,
-        2,
-        3,
-        4
-      ]
+      "cartList": [2, 3, 4]
     }
   ],
   "sellers": [
@@ -25,12 +20,13 @@
       "id": "1234",
       "nickName": "testSeller",
       "password": "1234",
-      "productList": [
-        1,
-        2,
-        3,
-        4
-      ]
+      "productList": [1, 2, 3, 4]
+    },
+    {
+      "id": "1233",
+      "nickName": "testSeller",
+      "password": "1234",
+      "productList": [1, 2, 3, 4]
     }
   ],
   "admin": [
@@ -40,19 +36,20 @@
       "password": "1234"
     }
   ],
-  "comment": [
+
+  "comments": [
     {
       "id": 1,
-      "userId": "1234",
-      "productId": "1",
+      "usersId": "1234",
+      "productId": 2,
       "content": "댓글내용"
     }
   ],
   "orders": [
     {
       "id": 1,
-      "productId": "1",
-      "userId": "1234",
+      "product_id": 2,
+      "usersId": "1234",
       "address": "대구광역시 달성군 다사읍 서재로 11길 11",
       "productQuantity": "3",
       "shippingCost": "2500",

@@ -16,8 +16,6 @@ import {
 const Header = (props) => {
   const { login } = props;
 
-  const [category, setCategory] = useState("");
-
   return (
     <Container>
       <Row className={styles.row}>
@@ -79,14 +77,14 @@ const Header = (props) => {
               <Nav className="d-flex ">
                 {login === "false" ? (
                   <>
-                    <Nav.Link className={styles.link} as={Link} to="/">
+                    <Nav.Link className={styles.link} as={Link} to="/Login">
                       <FontAwesomeIcon
                         style={{ marginRight: "6px" }}
                         icon={faSignInAlt}
                       />
                       로그인
                     </Nav.Link>
-                    <Nav.Link className={styles.link} as={Link} to="/">
+                    <Nav.Link className={styles.link} as={Link} to="/Register">
                       <FontAwesomeIcon
                         style={{ marginRight: "6px" }}
                         icon={faUserPlus}
@@ -103,7 +101,7 @@ const Header = (props) => {
                       />
                       프로필
                     </Nav.Link>
-                    <Nav.Link className={styles.link} as={Link} to="/">
+                    <Nav.Link className={styles.link} as={Link} to="/MyCart">
                       <FontAwesomeIcon
                         style={{ marginRight: "6px" }}
                         icon={faShoppingBasket}
