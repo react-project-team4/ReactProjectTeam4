@@ -30,7 +30,7 @@ const Header = (props) => {
                   height="30"
                   className="d-inline-block align-top"
                 />{" "}
-                React Project
+                Japang
               </Navbar.Brand>
 
               <Nav
