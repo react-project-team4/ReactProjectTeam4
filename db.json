@@ -1,4 +1,29 @@
 {
+  "userData": [
+    {
+      "nickname": "Admin",
+      "email": "Admin",
+      "password": "Admin",
+      "id": 1,
+      "userType": "Admin"
+    },
+    {
+      "nickname": "testUser",
+      "email": "test1234@gmail.com",
+      "password": "qwer1234",
+      "phoneNumber": "0123456789",
+      "userType": "Buyer",
+      "id": 2
+    },
+    {
+      "nickname": "testSeller",
+      "email": "qwer1234@gmail.com",
+      "password": "qwer1234",
+      "phoneNumber": "1234567890",
+      "userType": "Seller",
+      "id": 3
+    }
+  ],
   "users": [
     {
       "id": "1234",
@@ -12,7 +37,11 @@
           "address": "대구광역시 달성군 다사읍 서재로 11길 11"
         }
       ],
-      "cartList": [2, 3, 4]
+      "cartList": [
+        2,
+        3,
+        4
+      ]
     }
   ],
   "sellers": [
@@ -20,13 +49,23 @@
       "id": "1234",
       "nickName": "testSeller",
       "password": "1234",
-      "productList": [1, 2, 3, 4]
+      "productList": [
+        1,
+        2,
+        3,
+        4
+      ]
     },
     {
       "id": "1233",
       "nickName": "testSeller",
       "password": "1234",
-      "productList": [1, 2, 3, 4]
+      "productList": [
+        1,
+        2,
+        3,
+        4
+      ]
     }
   ],
   "admin": [
@@ -36,7 +75,6 @@
       "password": "1234"
     }
   ],
-
   "comments": [
     {
       "id": 1,
@@ -73,7 +111,9 @@
       "image": "https://myreactproject04.s3.ap-northeast-2.amazonaws.com/Images/KakaoTalk_20231030_145416381.png",
       "content": "ㅂㄱㅈ",
       "category": "Food",
-      "id": 2
+      "id": 2,
+      "sellerId": "1234",
+      "shippingFee": "0"
     },
     {
       "name": "asdfasdf",
@@ -81,7 +121,9 @@
       "image": "https://myreactproject04.s3.ap-northeast-2.amazonaws.com/Images/tree-736885_1280.jpg",
       "content": "asdfgasfda",
       "category": "Travel",
-      "id": 3
+      "id": 3,
+      "sellerId": "1234",
+      "shippingFee": "0"
     }
   ]
 }
