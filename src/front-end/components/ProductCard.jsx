@@ -21,8 +21,8 @@ const ProductCard = (props) => {
   return (
     <div className="d-flex">
       {products.map((item) => (
-        <Link to={{ pathname: "/showProduct", state: { item } }}>
-          <div key={item.id} className="card" style={{ width: "18rem" }}>
+        <Link key={item.id} to={{ pathname: "/showProduct", state: { item } }}>
+          <div className="card" style={{ width: "18rem" }}>
             <img
               className="card-img-top"
               style={{ height: "200px" }}
