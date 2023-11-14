@@ -31,9 +31,11 @@ const App = () => {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Main />} />
-          <Route path="/showProduct" element={<ShowProduct user={user} />} />
-          <Route path="/productList" element={<ProductList />} />
-          <Route path="/CreateProduct" element={<CreateProduct />} />
+          <Route path="/ShowProduct" element={<ShowProduct user={user} />} />
+          {/* <Route path="/login" element={<Login />}></Route> */}
+          {/* <Route path="/Register" element={<Register />}></Route> */}
+          <Route path="/Login" element="로그인 페이지"></Route>
+          <Route path="/ProductList" element={<ProductList />} />
         </Route>
       </Routes>
     </Router>
