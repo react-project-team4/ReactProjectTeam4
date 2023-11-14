@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import default_Img from "../imgs/xImage.png";
 import { useNavigate } from "react-router-dom";
+import InputImage from "./InputImage";
+import { uploadImageFile } from "../../back-end/services/aws";
 
 const CreateProduct = () => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [image, setImage] = useState(null);
   // 등록할 상품의 정보
   const [products, setProducts] = useState({
     name: "",
@@ -37,24 +41,11 @@ const CreateProduct = () => {
   const onErrorImg = (e) => {
     e.target.src = default_Img;
   };
-  // 이미지를 추가했을 때의 동작
-  const readURL = (input) => {
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-      reader.onload = (e) => {
-        // 이미지 미리보기 설정
-        document.getElementById("preview").src = e.target.result;
-        const base64Image = e.target.result;
-        setProducts((prevProducts) => ({
-          ...prevProducts,
-          image: base64Image,
-        }));
-        console.log(products);
-      };
-      reader.readAsDataURL(input.files[0]);
-    } else {
-      document.getElementById("preview").src = "";
-    }
+
+  // image input 값을 초기화
+  const inputImageRef = useRef(null);
+  const onClearInput = () => {
+    inputImageRef.current.value = "";
   };
 
   // 완료 버튼
@@ -67,18 +58,44 @@ const CreateProduct = () => {
       setShowValidationMessage(false);
     }
     console.log(products);
-    // fetch post
-    const response = await fetch("http://localhost:3300/products", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(products),
-    });
-    const data = await response.json();
-    console.log(data);
+    // image 업로드
+    try {
+      setLoading(true);
+      const imageUrl = await uploadImageFile(image, setImage);
 
-    navigate("/ProductList");
+      console.log(imageUrl);
+      // 이미지 업로드에 성공하면 products 상태 업데이트
+      setProducts((prevProducts) => ({
+        ...prevProducts,
+        image: imageUrl, // 이미지의 URL을 가져와서 설정
+      }));
+      console.log(imageUrl);
+
+      // 업데이트된 products를 전송
+      const response = await fetch("http://localhost:3300/products", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...products,
+          image: imageUrl,
+        }),
+      });
+
+      if (response.ok) {
+        alert("전송 성공");
+      } else {
+        alert("전송 실패");
+      }
+    } catch (e) {
+      alert("전송 실패");
+    } finally {
+      setLoading(false);
+      onClearInput();
+    }
+
+    navigate("/ProductList?category=Food");
   };
 
   // input tag set data
@@ -158,6 +175,7 @@ const CreateProduct = () => {
                   onKeyUp={(e) => autoResize(e.target)}
                   onKeyDown={(e) => autoResize(e.target)}
                   placeholder="상품 설명"
+                  rows="1"
                   required
                 ></textarea>
               </td>
@@ -167,14 +185,7 @@ const CreateProduct = () => {
               <td>
                 <div className="input-group mb-3 w-10">
                   <label className="input-group-text">Upload</label>
-                  <input
-                    type="file"
-                    className="form-control"
-                    id="inputGroupFile01"
-                    onChange={(e) => readURL(e.target)}
-                    accept="image/*"
-                    required
-                  />
+                  <InputImage setImage={setImage} inputRef={inputImageRef} />
                 </div>
               </td>
             </tr>
@@ -187,7 +198,7 @@ const CreateProduct = () => {
                   className="border border-dark rounded"
                   style={{
                     width: "auto",
-                    height: "400px",
+                    height: "200px",
                     objectFit: "cover",
                     overflow: "hidden",
                   }}
@@ -197,7 +208,7 @@ const CreateProduct = () => {
             </tr>
           </tbody>
         </table>
-        <Link to="/ProductList">
+        <Link to="/ProductList?category=Food">
           <input type="submit" value="취소" />
         </Link>
         <input type="submit" value="완료" />

@@ -33,7 +33,7 @@ export default function ShowProduct(props) {
     if (user === "admin") getProductList();
   }, []);
 
-  // 상품 정보 가져오기
+  // 상품 정보 가져오기 
   const getProductData = async () => {
     fetch("http://localhost:3100/products")
       .then((response) => response.json())

@@ -12,7 +12,12 @@
           "address": "대구광역시 달성군 다사읍 서재로 11길 11"
         }
       ],
-      "cartList": [1, 2, 3, 4]
+      "cartList": [
+        1,
+        2,
+        3,
+        4
+      ]
     }
   ],
   "sellers": [
@@ -20,7 +25,12 @@
       "id": "1234",
       "nickName": "testSeller",
       "password": "1234",
-      "productList": [1, 2, 3, 4]
+      "productList": [
+        1,
+        2,
+        3,
+        4
+      ]
     }
   ],
   "admin": [
@@ -59,6 +69,22 @@
       "category": "Food",
       "shippingFee": "0",
       "sellerId": "1234"
+    },
+    {
+      "name": "ㅅㅂ",
+      "price": "123",
+      "image": "https://myreactproject04.s3.ap-northeast-2.amazonaws.com/Images/KakaoTalk_20231030_145416381.png",
+      "content": "ㅂㄱㅈ",
+      "category": "Food",
+      "id": 2
+    },
+    {
+      "name": "asdfasdf",
+      "price": "1234",
+      "image": "https://myreactproject04.s3.ap-northeast-2.amazonaws.com/Images/tree-736885_1280.jpg",
+      "content": "asdfgasfda",
+      "category": "Travel",
+      "id": 3
     }
   ]
 }
