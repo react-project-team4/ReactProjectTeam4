@@ -10,7 +10,8 @@
   background-image: linear-gradient(120deg, #a2d2ff 0%, #8ec5fc 100%);
   font-weight: bold;
 }
-.RegisterForm h2 {
+
+.RegisterFormH2 {
   display: flex;
   font-weight: bold;
   justify-content: center;
