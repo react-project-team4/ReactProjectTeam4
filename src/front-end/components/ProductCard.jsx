@@ -6,6 +6,7 @@ const ProductCard = (props) => {
   const { category } = props;
   useEffect(() => {
     getProductsData(category);
+    console.log(products);
   }, [category]);
   const getProductsData = (productCategory) => {
     fetch("http://localhost:3300/products")
@@ -20,21 +21,26 @@ const ProductCard = (props) => {
   };
   return (
     <div className="d-flex">
-      {products.map((item) => (
-        <Link key={item.id} to={{ pathname: "/showProduct", state: { item } }}>
-          <div className="card" style={{ width: "18rem" }}>
-            <img
-              className="card-img-top"
-              style={{ height: "200px" }}
-              src={item.image}
-              alt="Card image cap"
-            />
-            <div className="card-body">
-              <p className="card-text">{item.name}</p>
-            </div>
-          </div>
-        </Link>
-      ))}
+      {products.map(
+        (item) => (
+          console.log(item),
+          (
+            <Link key={item.id} to={`/showProduct`} state={{ item }}>
+              <div className="card" style={{ width: "18rem" }}>
+                <img
+                  className="card-img-top"
+                  style={{ height: "200px" }}
+                  src={item.image}
+                  alt="Card image cap"
+                />
+                <div className="card-body">
+                  <p className="card-text">{item.name}</p>
+                </div>
+              </div>
+            </Link>
+          )
+        )
+      )}
     </div>
   );
 };

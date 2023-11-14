@@ -8,8 +8,11 @@ export default function ShowProduct(props) {
   const [cartList, setCartList] = useState([]);
 
   const navigate = useNavigate();
+
   const location = useLocation();
-  const { productData } = location.state;
+
+  const productData = location.state.item;
+
   // const productData = {
   //   id: 1,
   //   name: "상품명",
@@ -23,7 +26,7 @@ export default function ShowProduct(props) {
   // };
 
   useEffect(() => {
-    // console.log(location);
+    console.log(location);
     console.log(productData);
     if (user === "User") getCartList();
 
@@ -160,7 +163,7 @@ export default function ShowProduct(props) {
   return (
     <Container>
       <Row>
-        <Col>navigate(`/ProductList?category=${productData.category}`);</Col>
+        {/* <Col>navigate(`/ProductList?category=${productData.category}`);</Col> */}
       </Row>
       <Row className="justify-content-center mt-5 mb-3">
         <Col xs="auto" sm="auto" md="auto" lg="auto">
