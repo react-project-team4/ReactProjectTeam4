@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
+import styles from "../css/Register.module.css";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -57,10 +57,10 @@ const Login = () => {
 
   return (
     <div className="d-flex justify-content-center align-items-center w-100 vh-100 bg-white">
-      <div className="RegisterForm">
-        <Form className="w-100 ">
-          <h2>로그인</h2>
-          <h2>로고?</h2>
+      <div className={styles.RegisterForm}>
+        <Form className="w-100">
+          <h2 className={styles.RegisterFormH2}>로그인</h2>
+          <h2 className={styles.RegisterFormH2}>로고?</h2>
           <Form.Group className="inputForm mb-3" controlId="formGroupEmail">
             <Form.Label>이메일</Form.Label>
             <Form.Control
