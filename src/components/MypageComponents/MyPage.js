@@ -1,5 +1,4 @@
 import Nav from 'react-bootstrap/Nav';
-import styles from '../../css/MyPageCss/MyPage.module.css'
 import MyPageOrderList from './MyPageOrderList';
 import { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';

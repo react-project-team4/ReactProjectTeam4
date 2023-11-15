@@ -7,22 +7,30 @@
       "phone": "01067831332",
       "addressList": [
         {
+          "addressType": true,
           "addressId": "1",
-          "addressName": "기본 배송지",
+          "addressName": "성환이 집",
           "address": "대구광역시 달성군 다사읍 서재로 11길 11"
         },
         {
+          "addressType": false,
           "addressId": "2",
           "addressName": "김건우 집",
           "address": "포항시 북구 양덕로 60"
         },
         {
+          "addressType": false,
           "addressId": "3",
           "addressName": "효빈이 집",
           "address": "대구광역시 서구 중리동 115-5 다산하트빌"
         }
       ],
-      "cartList": [1, 2, 3, 4]
+      "cartList": [
+        1,
+        2,
+        3,
+        4
+      ]
     },
     {
       "userId": "5678",
@@ -36,16 +44,25 @@
           "address": "대구광역시 달성군 다사읍 서재로 11길 11"
         }
       ],
-      "cartList": [1, 2, 3, 4]
+      "cartList": [
+        1,
+        2,
+        3,
+        4
+      ]
     }
   ],
-
   "sellers": [
     {
       "userId": "1234",
       "nickName": "testSeller",
       "password": "1234",
-      "productList": [1, 2, 3, 4]
+      "productList": [
+        1,
+        2,
+        3,
+        4
+      ]
     }
   ],
   "admin": [
@@ -55,7 +72,6 @@
       "password": "1234"
     }
   ],
-
   "products": [
     {
       "productId": "1",
