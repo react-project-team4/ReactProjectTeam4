@@ -56,6 +56,9 @@ const Header = (props) => {
                     className={styles.link}
                     as={Link}
                     to="/productList?category=Travel"
+                    state={{
+                      category: "Travel",
+                    }}
                   >
                     <FontAwesomeIcon
                       style={{ marginRight: "6px" }}
