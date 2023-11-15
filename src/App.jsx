@@ -13,6 +13,7 @@ import {
 } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import ShowProduct from "./front-end/components/ShowProduct";
+import MyPage from "./components/MypageComponents/MyPage";
 
 const Layout = () => {
   const [login, setlogin] = useState("false");
@@ -37,6 +38,7 @@ const App = () => {
           <Route path="/Register" element={<Register />}></Route>
           <Route path="/Login" element="로그인 페이지"></Route>
           <Route path="/ProductList" element={<ProductList />} />
+          <Route path="/MyPage" element={<MyPage />} />
         </Route>
       </Routes>
     </Router>
