@@ -1,6 +1,7 @@
 .row {
+  border-radius: 10px;
   height: 70px;
-  border: 1px solid gray;
+  background-image: linear-gradient(120deg, #a2d2ff 0%, #8ec5fc 100%);
 }
 
 .link:hover {

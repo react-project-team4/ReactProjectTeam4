@@ -1,0 +1,24 @@
+.addressBox{
+    border:1px solid;
+    width:600px;
+    height:200px;
+    margin-bottom:10px;
+    text-align: center;
+    line-height: 200px;
+    font-size: large;
+}
+.defaultAddressBox{
+    border:1px solid;
+    width:600px;
+    height:200px;
+    margin-bottom:10px;
+}
+.mainAddressBox{
+    border:5px solid;
+    width:600px;
+    height:200px;
+    margin-bottom:10px;
+}
+.addressBoxText{
+    margin: 15px;
+}

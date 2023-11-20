@@ -3,6 +3,7 @@ import { Row, Col, Navbar, Container, Nav } from "react-bootstrap";
 import styles from "../css/header.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import projectMark from "../imgs/fukuokaMark.png";
 import {
   faUtensils,
   faPlane,
@@ -25,8 +26,8 @@ const Header = (props) => {
               <Navbar.Brand className="navbar-brand" as={Link} to="/">
                 <img
                   alt="main"
-                  src="https://i.ibb.co/RhB1rSt/Kakao-Talk-20231030-145416381.png"
-                  width="30"
+                  src={projectMark}
+                  width="50"
                   height="30"
                   className="d-inline-block align-top"
                 />{" "}

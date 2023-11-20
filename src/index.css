@@ -8,6 +8,10 @@
 body {
   margin: 0;
   font-family: "DNFBitBitv2";
+  background-image: url("./front-end/imgs/sakura.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
 
 /* code {
