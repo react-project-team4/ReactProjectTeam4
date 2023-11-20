@@ -8,11 +8,11 @@
   border-radius: 10px;
 
   background-image: linear-gradient(120deg, #a2d2ff 0%, #8ec5fc 100%);
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 .RegisterFormH2 {
   display: flex;
-  font-weight: bold;
+  /* font-weight: bold; */
   justify-content: center;
 }

@@ -5,6 +5,7 @@
       "nickName": "testUser",
       "password": "1234",
       "phone": "01067831332",
+      "userType": "Buyer",
       "addressList": [
         {
           "addressId": "1",
@@ -12,11 +13,23 @@
           "address": "대구광역시 달성군 다사읍 서재로 11길 11"
         }
       ],
-      "cartList": [
-        2,
-        3,
-        4
-      ]
+      "cartList": [2, 3, 4]
+    },
+    {
+      "nickName": "testUser",
+      "user_id": "testUser@gmail.com",
+      "password": "qwer1234",
+      "phone": "12312321313",
+      "userType": "Buyer",
+      "addressList": [
+        {
+          "addressId": "",
+          "addressName": "",
+          "address": ""
+        }
+      ],
+      "cartList": [],
+      "id": "HgTIDwa"
     }
   ],
   "sellers": [
@@ -24,30 +37,30 @@
       "id": "1234",
       "nickName": "testSeller",
       "password": "1234",
-      "productList": [
-        1,
-        2,
-        3,
-        4
-      ]
+      "productList": [1, 2, 3, 4]
     },
     {
       "id": "1233",
       "nickName": "testSeller",
       "password": "1234",
-      "productList": [
-        1,
-        2,
-        3,
-        4
-      ]
+      "productList": [1, 2, 3, 4]
+    },
+    {
+      "nickName": "testSeller",
+      "user_id": "testSeller@gmail.com",
+      "password": "qwer1234",
+      "phone": "01234567890",
+      "userType": "Seller",
+      "productList": [],
+      "id": "RAzsTZb"
     }
   ],
   "admin": [
     {
-      "id": "1234",
-      "nickName": "testAdmin",
-      "password": "1234"
+      "user_id": "Admin",
+      "nickName": "Admin",
+      "password": "Admin",
+      "userType": "Admin"
     }
   ],
   "comments": [
