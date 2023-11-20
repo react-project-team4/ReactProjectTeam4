@@ -7,12 +7,47 @@
       "phone": "01067831332",
       "addressList": [
         {
+          "addressType": false,
           "addressId": "1",
-          "addressName": "기본 배송지",
+          "addressName": "1번 집",
+          "address": "대구광역시 달성군 다사읍 서재로 11길 11"
+        },
+        {
+          "addressType": false,
+          "addressId": "2",
+          "addressName": "2번 집",
+          "address": "대구광역시 달성군 다사읍 서재로 11길 11"
+        },
+        {
+          "addressType": false,
+          "addressId": "3",
+          "addressName": "3번 집",
           "address": "대구광역시 달성군 다사읍 서재로 11길 11"
         }
       ],
-      "cartList": [2, 3, 4]
+      "cartList": [
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "id": "5678",
+      "nickName": "testUser2",
+      "password": "5678",
+      "phone": "01014263358",
+      "addressList": [
+        {
+          "addressId": "1",
+          "addressName": "기본 배송지",
+          "address": "포항시 어딘가"
+        }
+      ],
+      "cartList": [
+        2,
+        3,
+        4
+      ]
     }
   ],
   "sellers": [
@@ -20,13 +55,23 @@
       "id": "1234",
       "nickName": "testSeller",
       "password": "1234",
-      "productList": [1, 2, 3, 4]
+      "productList": [
+        1,
+        2,
+        3,
+        4
+      ]
     },
     {
       "id": "1233",
       "nickName": "testSeller",
       "password": "1234",
-      "productList": [1, 2, 3, 4]
+      "productList": [
+        1,
+        2,
+        3,
+        4
+      ]
     }
   ],
   "admin": [

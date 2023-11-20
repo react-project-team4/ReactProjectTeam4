@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "../../css/MyPageCss/MyPageAddressChange.module.css";
 import CreateAddressModal from "./CreateAddressModal";
 
+// 로컬스토리지 유저 Id 빼오기
 localStorage.setItem("userId", "1234");
 
 const MyPageAddressChange = () => {
@@ -11,9 +12,12 @@ const MyPageAddressChange = () => {
     fetch("http://localhost:3300/users")
       .then((response) => response.json())
       .then((data) => {
-        const $user = data.find((e) => e.userId === localStorage.getItem("userId"));
+        // localStorage에 있는 userId랑 같은 사람 찾아서 그 사람의 배송지 목록을
+        // users에 집어넣기
+        const $user = data.filter((e)=>e.id === localStorage.getItem("userId"))
+        // console.log($user[0].addressList) 이게 주소들가 담긴 배열임
         if ($user) {
-          setUsers($user.addressList);
+          setUsers($user[0].addressList);
         }
       });
   }, []);
@@ -33,6 +37,7 @@ const MyPageAddressChange = () => {
     );
   }
 
+  // 기본 배송지로 지정한 주소
   const addressMain = users.map((address) => {
     if (address.addressType === true) {
       return (
@@ -48,10 +53,11 @@ const MyPageAddressChange = () => {
     }
   });
 
+  // 기본 배송지가 아닌 나머지 주소들
   const addressDiv = users.map((address) => {
     if (address.addressType === false) {
       return (
-        <div key={address.addressId} className={styles.mainAddressBox}>
+        <div key={address.addressId} className={styles.defaultAddressBox}>
           <div className={styles.addressBoxText}>
             <br />
             <h2>{address.addressName}</h2>
