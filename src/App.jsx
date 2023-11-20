@@ -3,6 +3,7 @@ import Header from "./front-end/components/Header";
 import Footer from "./front-end/components/Footer";
 import Main from "./front-end/components/Main";
 import ProductList from "./front-end/components/ProductList";
+import CreateProduct from "./front-end/components/CreateProduct";
 import Register from "./front-end/components/Register";
 import Login from "./front-end/components/Login";
 import {
@@ -16,6 +17,7 @@ import ShowProduct from "./front-end/components/ShowProduct";
 
 const Layout = () => {
   const [login, setlogin] = useState("false");
+
   return (
     <Container>
       <Header login={login} />
@@ -37,6 +39,7 @@ const App = () => {
           <Route path="/Register" element={<Register />}></Route>
           <Route path="/Login" element="로그인 페이지"></Route>
           <Route path="/ProductList" element={<ProductList />} />
+          <Route path="/CreateProduct" element={<CreateProduct />} />
         </Route>
       </Routes>
     </Router>
