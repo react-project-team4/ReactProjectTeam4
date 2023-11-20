@@ -7,40 +7,9 @@
       "phone": "01067831332",
       "addressList": [
         {
-          "addressType": false,
-          "addressId": "1",
-          "addressName": "1번 집",
-          "address": "대구광역시 달성군 다사읍 서재로 11길 11"
-        },
-        {
-          "addressType": false,
-          "addressId": "2",
-          "addressName": "2번 집",
-          "address": "대구광역시 달성군 다사읍 서재로 11길 11"
-        },
-        {
-          "addressType": false,
-          "addressId": "3",
-          "addressName": "3번 집",
-          "address": "대구광역시 달성군 다사읍 서재로 11길 11"
-        }
-      ],
-      "cartList": [
-        2,
-        3,
-        4
-      ]
-    },
-    {
-      "id": "5678",
-      "nickName": "testUser2",
-      "password": "5678",
-      "phone": "01014263358",
-      "addressList": [
-        {
           "addressId": "1",
           "addressName": "기본 배송지",
-          "address": "포항시 어딘가"
+          "address": "대구광역시 달성군 다사읍 서재로 11길 11"
         }
       ],
       "cartList": [
@@ -130,6 +99,66 @@
       "id": 3,
       "sellerId": "1234",
       "shippingFee": "0"
+    },
+    {
+      "name": "햄버거",
+      "price": "3000",
+      "image": "https://myreactproject04.s3.ap-northeast-2.amazonaws.com/Images/burger-1487481_640.png",
+      "content": "맛있음",
+      "category": "Food",
+      "id": 4,
+      "sellerId": "1234",
+      "shippingFee": "0"
+    },
+    {
+      "name": "UJS",
+      "price": "8888",
+      "image": "https://myreactproject04.s3.ap-northeast-2.amazonaws.com/Images/ummjpg.jpg",
+      "content": "UMM......",
+      "category": "Food",
+      "id": 5,
+      "sellerId": "1234",
+      "shippingFee": "0"
+    },
+    {
+      "name": "프리미엄 버거",
+      "price": "14000",
+      "image": "https://myreactproject04.s3.ap-northeast-2.amazonaws.com/Images/hamburger-494706_640.jpg",
+      "content": "비싸요",
+      "category": "Food",
+      "id": 6,
+      "sellerId": "1234",
+      "shippingFee": "0"
+    },
+    {
+      "name": "채소 한바구니",
+      "price": "30000",
+      "image": "https://myreactproject04.s3.ap-northeast-2.amazonaws.com/Images/vegetables-752153_1280.jpg",
+      "content": "싱싱한 채소 한바구니",
+      "category": "Food",
+      "shippingFee": "무료",
+      "sellerId": "1234",
+      "id": 7
+    },
+    {
+      "name": "123",
+      "price": "12341",
+      "image": "https://myreactproject04.s3.ap-northeast-2.amazonaws.com/Images/ummjpg.jpg",
+      "content": "123123",
+      "category": "Food",
+      "shippingFee": "1000",
+      "sellerId": "1234",
+      "id": 8
+    },
+    {
+      "name": "ㅁㄴㄹㅇㄴㅁㅇㅁ",
+      "price": "1234",
+      "image": "https://myreactproject04.s3.ap-northeast-2.amazonaws.com/Images/왔다갔다징버거.gif",
+      "content": "ㅁㄴㅇㄹㄴㅇㅁ",
+      "category": "Food",
+      "shippingFee": "무료",
+      "sellerId": "1234",
+      "id": 9
     }
   ]
 }
