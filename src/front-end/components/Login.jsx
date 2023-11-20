@@ -31,7 +31,6 @@ const Login = () => {
     const combinedData = {
       users: [...usersData, ...sellersData, ...adminData],
     };
-    console.log(combinedData);
     return combinedData;
   };
   // 받아온 유저정보로 로그인//

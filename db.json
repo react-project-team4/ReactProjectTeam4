@@ -14,6 +14,22 @@
         }
       ],
       "cartList": [2, 3, 4]
+    },
+    {
+      "nickName": "testUser",
+      "user_id": "testUser@gmail.com",
+      "password": "qwer1234",
+      "phone": "12312321313",
+      "userType": "Buyer",
+      "addressList": [
+        {
+          "addressId": "",
+          "addressName": "",
+          "address": ""
+        }
+      ],
+      "cartList": [],
+      "id": "HgTIDwa"
     }
   ],
   "sellers": [
@@ -28,6 +44,15 @@
       "nickName": "testSeller",
       "password": "1234",
       "productList": [1, 2, 3, 4]
+    },
+    {
+      "nickName": "testSeller",
+      "user_id": "testSeller@gmail.com",
+      "password": "qwer1234",
+      "phone": "01234567890",
+      "userType": "Seller",
+      "productList": [],
+      "id": "RAzsTZb"
     }
   ],
   "admin": [
