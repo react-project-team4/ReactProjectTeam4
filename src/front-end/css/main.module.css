@@ -6,11 +6,18 @@
 }
 
 .forRecommend {
-  border: solid 1px gray;
-  height: 400px;
+  background-image: linear-gradient(120deg, #a2d2ff 0%, #8ec5fc 100%);
+  padding: 10px;
+  border-radius: 10px;
+  height: 300px;
+  margin-bottom: 30px;
 }
 
 .forSale {
-  border: solid 1px gray;
+  border-top: solid 1px #7cbdff;
+  padding: 10px;
+  border-radius: 10px;
+  background-image: linear-gradient(120deg, #a2d2ff 0%, #8ec5fc 100%);
+  margin-bottom: 30px;
   height: 300px;
 }
