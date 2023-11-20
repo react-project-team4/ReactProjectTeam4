@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
-import { styles } from "../css/Register.module.css";
+import styles from "../css/Register.module.css";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -145,9 +145,9 @@ const Register = () => {
 
   return (
     <div className="d-flex justify-content-center align-items-center w-100 vh-100 bg-white">
-      <div style={styles.RegisterForm}>
+      <div className={styles.RegisterForm}>
         <Form className="w-100">
-          <h2>회원가입</h2>
+          <h2 className={styles.RegisterFormH2}>회원가입</h2>
           <Form.Group className="inputForm mb-3">
             <Form.Label>닉네임</Form.Label>
             <Form.Control
