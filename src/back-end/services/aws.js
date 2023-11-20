@@ -1,8 +1,8 @@
 import AWS from "aws-sdk";
 /* global resolve reject */
 
-const ACCESS_KEY = 'AKIA6JJJK6QXAEEE3TZX';
-const SECRET_ACCESS_KEY = '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';
+const ACCESS_KEY = "AKIA6JJJK6QXAEEE3TZX";
+const SECRET_ACCESS_KEY = "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";
 const REGION = "ap-northeast-2";
 const S3_BUCKET = "myreactproject04";
 const FOLDER_NAME = "Images";
@@ -39,7 +39,7 @@ export const uploadImageFile = (image, setImage) => {
           reject(err); // 이미지 업로드 실패 시 reject
         } else {
           const imageUrl = `https://${S3_BUCKET}.s3.${REGION}.amazonaws.com/${FOLDER_NAME}/${image.name}`;
-          resolve(imageUrl) // 이미지 업로드 성공 시 resolve
+          resolve(imageUrl); // 이미지 업로드 성공 시 resolve
         }
       });
   });
