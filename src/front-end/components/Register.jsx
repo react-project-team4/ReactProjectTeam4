@@ -29,6 +29,8 @@ const Register = () => {
 
   const [isChecked, setIsChecked] = useState(false);
 
+  //////////////////////////회원가입 체크는 여기에////////////////////
+
   // 닉네임 체크
   const nicknameHandler = (e) => {
     setNickname(e.currentTarget.value);
@@ -89,7 +91,8 @@ const Register = () => {
 
   // 전화번호 체크
   const phoneNumberHandler = (e) => {
-    const phoneRegex = /^[0-9]{0,11}$/;
+    const phoneRegex = /^\d{0,11}$/;
+
     if (phoneRegex.test(e.currentTarget.value)) {
       setPhoneNumber(e.currentTarget.value);
       setErrorPhoneNumber("");
@@ -104,8 +107,11 @@ const Register = () => {
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
   };
+  //////////////////////////////////////////////////////////////////////////////////////
 
-  // 회원가입 버튼 클릭
+  //////////////////////////////// 전송 관련 여기에 ///////////////////////////////////////
+
+  // 회원가입 버튼 클릭, 기입한 정보가 올바르지 않으면 전송 막고 올바르면 유저정보 전송
   const submitButton = (e) => {
     if (
       !isNicknameValid ||
@@ -118,19 +124,42 @@ const Register = () => {
       alert("올바른 정보를 기입해주세요.");
     } else {
       const userData = {
-        nickname: Nickname,
-        email: Email,
+        nickName: Nickname,
+        user_id: Email,
         password: Password,
-        phoneNumber: PhoneNumber,
+        phone: PhoneNumber,
         userType: isChecked ? "Seller" : "Buyer",
+        addressList: [
+          {
+            addressId: "",
+            addressName: "",
+            address: "",
+          },
+        ],
+        cartList: [],
       };
 
-      fetch("http://localhost:3300/userData", {
+      const sellerData = {
+        nickName: Nickname,
+        user_id: Email,
+        password: Password,
+        phone: PhoneNumber,
+        userType: isChecked ? "Seller" : "Buyer",
+        productList: [],
+      };
+
+      const endpoint = isChecked
+        ? "http://localhost:3300/sellers"
+        : "http://localhost:3300/users";
+
+      const postData = isChecked ? sellerData : userData;
+
+      fetch(endpoint, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(userData),
+        body: JSON.stringify(postData),
       })
         .then((response) => response.json())
         .then((data) => {
@@ -142,6 +171,7 @@ const Register = () => {
         });
     }
   };
+  ///////////////////////////////////////////////////////////////////////////////////////
 
   return (
     <div className="d-flex justify-content-center align-items-center w-100 vh-100 bg-white">

@@ -20,31 +20,40 @@ const Login = () => {
 
   //db에서 유저정보 받아오기//
   const getUserData = async () => {
-    const response = await fetch(`http://localhost:3300/userData`);
-    const userData = await response.json();
-    return userData;
-  };
+    const usersResponse = await fetch(`http://localhost:3300/users`);
+    const sellersResponse = await fetch(`http://localhost:3300/sellers`);
+    const adminResponse = await fetch(`http://localhost:3300/admin`);
 
+    const usersData = await usersResponse.json();
+    const sellersData = await sellersResponse.json();
+    const adminData = await adminResponse.json();
+
+    const combinedData = {
+      users: [...usersData, ...sellersData, ...adminData],
+    };
+    console.log(combinedData);
+    return combinedData;
+  };
   // 받아온 유저정보로 로그인//
   const handleLogin = async () => {
     try {
-      const userData = await getUserData(Email, Password);
+      const combinedData = await getUserData();
 
-      if (userData && userData.length > 0) {
-        const isLoginSuccessful = userData.some(
-          (userData) =>
-            userData.email === Email && userData.password === Password
+      if (combinedData && combinedData.users.length > 0) {
+        const isLoginSuccessful = combinedData.users.some(
+          (user) => user.user_id === Email && user.password === Password
         );
 
         if (isLoginSuccessful) {
-          const loggedInUser = userData.find(
-            (user) => user.email === Email && user.password === Password
+          const loggedInUser = combinedData.users.find(
+            (user) => user.user_id === Email && user.password === Password
           );
 
           // 로컬 스토리지에 유저 정보 저장
-          localStorage.setItem("loggedInUserEmail", loggedInUser.email);
-          localStorage.setItem("loggedInUserNickname", loggedInUser.nickname);
-          localStorage.setItem("loggedInUserType", loggedInUser.userType);
+          localStorage.setItem("Email", loggedInUser.user_id);
+          localStorage.setItem("Nickname", loggedInUser.nickName);
+          localStorage.setItem("UserType", loggedInUser.userType);
+
           navigate("/");
         } else {
           alert("이메일 혹은 비밀번호를 다시 확인해주세요.");
@@ -94,5 +103,4 @@ const Login = () => {
     </div>
   );
 };
-
 export default Login;
