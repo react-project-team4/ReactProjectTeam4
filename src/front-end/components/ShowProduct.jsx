@@ -10,20 +10,7 @@ export default function ShowProduct(props) {
   const navigate = useNavigate();
 
   const location = useLocation();
-
   const productData = location.state.item;
-
-  // const productData = {
-  //   id: 1,
-  //   name: "상품명",
-  //   price: "가격",
-  //   content: "제품설명",
-  //   image:
-  //     "https://cdn.pixabay.com/photo/2020/08/09/11/31/business-5475283_1280.jpg",
-  //   category: "Food",
-  //   salesCount: "0",
-  //   sellerId: "1233",
-  // };
 
   useEffect(() => {
     console.log(location);
@@ -106,7 +93,7 @@ export default function ShowProduct(props) {
 
     alert("장바구니에 추가되었습니다.");
   };
-
+  // 구매하기
   const buy = () => {
     if (user === "Guest") {
       return alert("로그인 후 이용가능합니다.");
@@ -128,7 +115,7 @@ export default function ShowProduct(props) {
       return updatedCartList;
     });
   };
-
+  // 상품 삭제하기
   const deleteProduct = () => {
     /* eslint-disable */
     if (!confirm("상품을 삭제하시겠습니까?")) {
@@ -159,18 +146,22 @@ export default function ShowProduct(props) {
 
     navigate(`/ProductList?category=${productData.category}`);
   };
-
+  // 버튼 기본 className="btn btn-primary btn-lg rounded border-0 text-white"
   return (
-    <Container>
-      <Row>
-        {/* <Col>navigate(`/ProductList?category=${productData.category}`);</Col> */}
+    <Container className="border border-dark ">
+      <Row className="mt-2 mb-2">
+        <Col className="d-flex justify-content-end">
+          <Button variant="outline-dark" onClick={() => navigate(-1)}>
+            돌아가기
+          </Button>
+        </Col>
       </Row>
-      <Row className="justify-content-center mt-5 mb-3">
+      <Row className="justify-content-center mb-3">
         <Col xs="auto" sm="auto" md="auto" lg="auto">
           <img className="img-fluid" src={productData.image} alt="" />
         </Col>
       </Row>
-      <Row className=" justify-content-between">
+      <Row className="justify-content-between">
         <Col xs="7" sm="8" md="9" lg="9">
           <strong style={{ fontSize: "35px", fontWeight: 10 }}>
             {productData.name}
@@ -215,10 +206,10 @@ export default function ShowProduct(props) {
         ) : (
           // Seller, Admin
           <Col xs="auto" sm="auto" md="auto" lg="auto">
-            <Button variant="outline-success" style={{ marginRight: "5px" }}>
+            <Button variant="outline-dark" style={{ marginRight: "5px" }}>
               수정
             </Button>
-            <Button variant="outline-success" onClick={deleteProduct}>
+            <Button variant="outline-dark" onClick={deleteProduct}>
               삭제
             </Button>
           </Col>

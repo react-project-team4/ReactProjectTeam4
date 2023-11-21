@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": "1234",
+      "id": 1,
       "nickName": "testUser",
       "password": "1234",
       "phone": "01067831332",
@@ -16,10 +16,10 @@
       "cartList": [2, 3, 4]
     },
     {
-      "nickName": "testUser",
-      "user_id": "testUser@gmail.com",
-      "password": "qwer1234",
-      "phone": "12312321313",
+      "id": 2,
+      "nickName": "1234",
+      "password": "a12345",
+      "phone": "12313",
       "userType": "Buyer",
       "addressList": [
         {
@@ -28,21 +28,15 @@
           "address": ""
         }
       ],
-      "cartList": [],
-      "id": "HgTIDwa"
+      "cartList": []
     }
   ],
   "sellers": [
     {
-      "id": "1234",
+      "id": 1,
       "nickName": "testSeller",
       "password": "1234",
-      "productList": [1, 2, 3, 4]
-    },
-    {
-      "id": "1233",
-      "nickName": "testSeller",
-      "password": "1234",
+      "userType": "Seller",
       "productList": [1, 2, 3, 4]
     },
     {
@@ -52,11 +46,12 @@
       "phone": "01234567890",
       "userType": "Seller",
       "productList": [],
-      "id": "RAzsTZb"
+      "id": 3
     }
   ],
   "admin": [
     {
+      "id": 1,
       "user_id": "Admin",
       "nickName": "Admin",
       "password": "Admin",

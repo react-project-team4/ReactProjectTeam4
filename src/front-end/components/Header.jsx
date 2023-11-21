@@ -15,7 +15,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const Header = (props) => {
-  const { login } = props;
+  const { user, setUser } = props;
 
   return (
     <Container>
@@ -76,7 +76,8 @@ const Header = (props) => {
                 </Nav.Item>
               </Nav>
               <Nav className="d-flex ">
-                {login === "false" ? (
+                {user === "Guest" ? (
+                  // 게스트
                   <>
                     <Nav.Link className={styles.link} as={Link} to="/Login">
                       <FontAwesomeIcon
@@ -94,22 +95,32 @@ const Header = (props) => {
                     </Nav.Link>
                   </>
                 ) : (
-                  <>
-                    <Nav.Link className={styles.link} as={Link} to="/">
-                      <FontAwesomeIcon
-                        style={{ marginRight: "6px" }}
-                        icon={faUserCircle}
-                      />
-                      프로필
-                    </Nav.Link>
-                    <Nav.Link className={styles.link} as={Link} to="/MyCart">
-                      <FontAwesomeIcon
-                        style={{ marginRight: "6px" }}
-                        icon={faShoppingBasket}
-                      />
-                      장바구니
-                    </Nav.Link>
-                  </>
+                  (user = "Buyer" ? (
+                    // 구매자
+
+                    <>
+                      <Nav.Link className={styles.link} as={Link} to="/MyPage">
+                        <FontAwesomeIcon
+                          style={{ marginRight: "6px" }}
+                          icon={faUserCircle}
+                        />
+                        프로필
+                      </Nav.Link>
+                      <Nav.Link className={styles.link} as={Link} to="/MyCart">
+                        <FontAwesomeIcon
+                          style={{ marginRight: "6px" }}
+                          icon={faShoppingBasket}
+                        />
+                        장바구니
+                      </Nav.Link>
+                    </>
+                  ) : user === "Seller" ? (
+                    // 판매자
+                    <></>
+                  ) : (
+                    // 어드민
+                    <></>
+                  ))
                 )}
               </Nav>
             </Container>
