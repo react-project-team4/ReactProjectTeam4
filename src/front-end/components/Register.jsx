@@ -174,7 +174,7 @@ const Register = () => {
   ///////////////////////////////////////////////////////////////////////////////////////
 
   return (
-    <div className="d-flex justify-content-center align-items-center w-100 vh-100 bg-white">
+    <div className="d-flex justify-content-center align-items-center w-100 vh-100 ">
       <div className={styles.RegisterForm}>
         <Form className="w-100">
           <h2 className={styles.RegisterFormH2}>회원가입</h2>
