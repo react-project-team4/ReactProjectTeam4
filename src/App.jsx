@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Header from "./front-end/components/Header";
 import Footer from "./front-end/components/Footer";
-import Main from "./front-end/components/Main";
-import ProductList from "./front-end/components/ProductList";
+import Main from "./front-end/components/mainComponents/Main";
+import ProductList from "./front-end/components/productListComponents/ProductList";
 import Register from "./front-end/components/Register";
 import Login from "./front-end/components/Login";
 import {
@@ -13,7 +13,7 @@ import {
 } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import ShowProduct from "./front-end/components/ShowProduct";
-import MyPage from "./components/MypageComponents/MyPage";
+import MyPage from "./front-end/components/mypageComponents/MyPage";
 import styles from "./front-end/css/app.module.css";
 
 const Layout = (props) => {
