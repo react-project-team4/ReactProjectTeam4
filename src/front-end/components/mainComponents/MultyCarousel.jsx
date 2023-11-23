@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-import styles from "../css/multyCarousel.module.css";
+import styles from "../../css/mainCss/multyCarousel.module.css";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";

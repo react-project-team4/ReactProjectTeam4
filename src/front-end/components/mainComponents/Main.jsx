@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import styles from "../css/main.module.css";
-import MultyCarousel from "../MultyCarousel";
+import styles from "../../css/mainCss/main.module.css";
+import MultyCarousel from "./MultyCarousel";
 const Main = () => {
   const [foodItems, setFoodItems] = useState([]);
   const [travelItems, setTravelItems] = useState([]);
