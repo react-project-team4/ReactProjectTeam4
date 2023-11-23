@@ -1,11 +1,61 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+import styles from "../css/multyCarousel.module.css";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import { Link } from "react-router-dom";
+// import required modules
+import { Pagination } from "swiper/modules";
 
 const MultyCarousel = (props) => {
-  const { category } = props;
+  const { data, category } = props;
+
   return (
-    <div>
-      <h4>{category}</h4>
-      {/* 3장 or 4장의 상품 사진 캐러셀 구현*/}
+    <div className="p-4">
+      <h3>{category}</h3>
+      <Swiper
+        slidesPerView={3}
+        spaceBetween={30}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[Pagination]}
+        className={styles.swiper}
+      >
+        {data.map((item, index) => (
+          <SwiperSlide key={index} className={styles.swiperSlide}>
+            <div>
+              <Link
+                key={item.id}
+                to={`/showProduct`}
+                state={{ item }}
+                style={{ textDecoration: "none" }}
+              >
+                <div className="card mx-2 my-2 " style={{ width: "18rem" }}>
+                  <img
+                    className="card-img-top"
+                    style={{ height: "200px" }}
+                    src={item.image}
+                    alt="Card image cap"
+                  />
+                  <div
+                    className="card-body text-white bg-primary rounded-lg"
+                    style={{ opacity: "0.7" }}
+                  >
+                    <p className="card-text text-decoration-none">
+                      {item.name}
+                    </p>
+                    <h6 className="text-black">가격: {item.price}</h6>
+                    <h6 className="text-black">배송비: {item.shippingFee}</h6>
+                  </div>
+                </div>
+              </Link>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   );
 };

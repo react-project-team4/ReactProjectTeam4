@@ -25,7 +25,7 @@ const CreateProduct = () => {
   const [showValidationMessage, setShowValidationMessage] = useState(false);
   const [
     showShippingFeeValidationMessage,
-    setshowShippingFeeValidationMessage,
+    setShowShippingFeeValidationMessage,
   ] = useState(false);
 
   const handleSelectChange = (e) => {
@@ -70,10 +70,10 @@ const CreateProduct = () => {
     }
 
     if (products.shippingFee === "0") {
-      setshowShippingFeeValidationMessage(true);
+      setShowShippingFeeValidationMessage(true);
       return;
     } else {
-      setshowShippingFeeValidationMessage(false);
+      setShowShippingFeeValidationMessage(false);
     }
     console.log(products);
     // image 업로드

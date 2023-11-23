@@ -3,7 +3,6 @@ import Header from "./front-end/components/Header";
 import Footer from "./front-end/components/Footer";
 import Main from "./front-end/components/Main";
 import ProductList from "./front-end/components/ProductList";
-import CreateProduct from "./front-end/components/CreateProduct";
 import Register from "./front-end/components/Register";
 import Login from "./front-end/components/Login";
 import {
@@ -15,16 +14,19 @@ import {
 import { Container } from "react-bootstrap";
 import ShowProduct from "./front-end/components/ShowProduct";
 import MyPage from "./components/MypageComponents/MyPage";
+import styles from "./front-end/css/app.module.css";
 
 const Layout = () => {
   const [login, setlogin] = useState("false");
 
   return (
-    <Container>
+    <>
       <Header login={login} />
-      <Outlet />
+      <Container className={styles.background}>
+        <Outlet />
+      </Container>
       <Footer />
-    </Container>
+    </>
   );
 };
 
