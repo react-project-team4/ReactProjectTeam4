@@ -4,7 +4,8 @@ import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 import styles from "../css/Register.module.css";
 
-const Login = () => {
+const Login = (props) => {
+  const setUser = props.setUser;
   const navigate = useNavigate();
 
   const [Email, setEmail] = useState("");
@@ -52,6 +53,7 @@ const Login = () => {
           localStorage.setItem("Email", loggedInUser.user_id);
           localStorage.setItem("Nickname", loggedInUser.nickName);
           localStorage.setItem("UserType", loggedInUser.userType);
+          setUser(loggedInUser.userType);
 
           navigate("/");
         } else {

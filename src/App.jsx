@@ -16,12 +16,11 @@ import ShowProduct from "./front-end/components/ShowProduct";
 import MyPage from "./components/MypageComponents/MyPage";
 import styles from "./front-end/css/app.module.css";
 
-const Layout = () => {
-  const [login, setlogin] = useState("false");
-
+const Layout = (props) => {
+  const { user, setUser } = props;
   return (
     <>
-      <Header login={login} />
+      <Header user={user} setUser={setUser} />
       <Container className={styles.background}>
         <Outlet />
       </Container>
@@ -32,15 +31,15 @@ const Layout = () => {
 
 const App = () => {
   const [user, setUser] = useState("Guest");
+
   return (
     <Router>
       <Routes>
-        <Route element={<Layout />}>
+        <Route element={<Layout user={user} setUser={setUser} />}>
           <Route path="/" element={<Main />} />
           <Route path="/ShowProduct" element={<ShowProduct />} />
-          <Route path="/login" element={<Login />}></Route>
+          <Route path="/login" element={<Login setUser={setUser} />}></Route>
           <Route path="/Register" element={<Register />}></Route>
-          <Route path="/Login" element="로그인 페이지"></Route>
           <Route path="/ProductList" element={<ProductList />} />
           <Route path="/MyPage" element={<MyPage />} />
         </Route>
