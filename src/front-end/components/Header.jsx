@@ -97,7 +97,6 @@ const Header = (props) => {
                 ) : (
                   (user = "Buyer" ? (
                     // 구매자
-
                     <>
                       <Nav.Link className={styles.link} as={Link} to="/MyPage">
                         <FontAwesomeIcon

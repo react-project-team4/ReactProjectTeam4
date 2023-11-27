@@ -180,7 +180,7 @@ export default function ShowProduct(props) {
         </Col>
       </Row>
       <Row className="justify-content-end mt-2">
-        {user === "Guest" || user === "User" ? (
+        {user === "Guest" || user === "Buyer" ? (
           // Guest, User
           <Col xs="auto" sm="auto" md="auto" lg="auto">
             <Button
