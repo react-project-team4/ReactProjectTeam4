@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Button, Col, Row, Container } from "react-bootstrap";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import styles from "../css/productCss/showProduct.module.css";
 
 export default function ShowProduct(props) {
-  // const { user } = props;
-  const [user, setUser] = useState("Seller");
+  const user = props.user;
+  // const [user, setUser] = useState("Seller"); // testCode
   const [cartList, setCartList] = useState([]);
 
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ export default function ShowProduct(props) {
   useEffect(() => {
     console.log(location);
     console.log(productData);
-    if (user === "User") getCartList();
+    if (user === "Buyer") getCartList();
 
     if (user === "Admin" || user === "Seller") getProductList();
   }, []);
@@ -36,8 +37,10 @@ export default function ShowProduct(props) {
     fetch("http://localhost:3300/users")
       .then((response) => response.json())
       .then((jsonData) => {
-        // localStorage.getItem(key) // localStorage.getItem("userId")
-        const cartList = jsonData.find((item) => item.id === "1234").cartList;
+        // localStorage.getItem(key) // localStorage.getItem("user_id")
+        const cartList = jsonData.find(
+          (item) => item.id === localStorage.getItem("user_id")
+        ).cartList;
         console.log(cartList);
         setCartList(cartList);
       });
@@ -49,7 +52,7 @@ export default function ShowProduct(props) {
       .then((response) => response.json())
       .then((jsonData) => {
         const cartList = jsonData.find(
-          (item) => item.id === productData.sellerId
+          (item) => item.user_id === productData.sellerId
         ).productList;
         setCartList(cartList);
         console.log(cartList);
@@ -80,7 +83,7 @@ export default function ShowProduct(props) {
       const updatedCartList = [...prevCartList, productData.id];
 
       // ${localStorage.getItem("userId")}
-      fetch(`http://localhost:3300/users/1234`, {
+      fetch(`http://localhost:3300/users/${localStorage.getItem("user_id")}`, {
         method: "PATCH",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({ cartList: updatedCartList }),
@@ -105,7 +108,7 @@ export default function ShowProduct(props) {
       const updatedCartList = [...prevCartList, productData.id];
 
       // ${localStorage.getItem("userId")}
-      fetch(`http://localhost:3300/users/1234`, {
+      fetch(`http://localhost:3300/users/${localStorage.getItem("user_id")}`, {
         method: "PATCH",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({ cartList: updatedCartList }),
@@ -125,12 +128,15 @@ export default function ShowProduct(props) {
       const updatedProductList = prevProductList.filter(
         (item) => item !== productData.id
       );
-      // ${localStorage.getItem("userId")}
-      fetch("http://localhost:3300/sellers/1233", {
-        method: "PATCH",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify({ productListList: updatedProductList }),
-      }).then((response) => {
+      // ${localStorage.getItem("user_id")}
+      fetch(
+        `http://localhost:3300/sellers/${localStorage.getItem("user_id")}`,
+        {
+          method: "PATCH",
+          headers: { "Content-type": "application/json" },
+          body: JSON.stringify({ productListList: updatedProductList }),
+        }
+      ).then((response) => {
         console.log(response);
       });
       return updatedProductList;
@@ -148,7 +154,7 @@ export default function ShowProduct(props) {
   };
   // 버튼 기본 className="btn btn-primary btn-lg rounded border-0 text-white"
   return (
-    <Container className="border border-dark ">
+    <Container className={styles.background}>
       <Row className="mt-2 mb-2">
         <Col className="d-flex justify-content-end">
           <Button variant="outline-dark" onClick={() => navigate(-1)}>
@@ -180,18 +186,18 @@ export default function ShowProduct(props) {
         </Col>
       </Row>
       <Row className="justify-content-end mt-2">
-        {user === "Guest" || user === "User" ? (
+        {user === "Guest" || user === "Buyer" ? (
           // Guest, User
           <Col xs="auto" sm="auto" md="auto" lg="auto">
             <Button
-              variant="outline-success"
+              variant="outline-dark"
               onClick={addCart}
               style={{ marginRight: "5px" }}
             >
               장바구니 담기
             </Button>
 
-            <Button variant="outline-success" onClick={buy}>
+            <Button variant="outline-dark" onClick={buy}>
               {user === "Guest" ? (
                 <Link to="/Login" className="text-decoration-none text-reset">
                   구매하기
