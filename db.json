@@ -289,6 +289,22 @@
       ],
       "cartList": [],
       "id": 18
+    },
+    {
+      "nickName": "1234",
+      "user_id": "a12345@naver.com",
+      "password": "123456q",
+      "phone": "12313",
+      "userType": "Buyer",
+      "addressList": [
+        {
+          "addressId": "",
+          "addressName": "",
+          "address": ""
+        }
+      ],
+      "cartList": [],
+      "id": 19
     }
   ],
   "sellers": [
