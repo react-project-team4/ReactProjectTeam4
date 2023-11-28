@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styles from "../../css/productCss/productList.module.css";
 import Pagination from "react-js-pagination";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const ProductCard = (props) => {
   const { products } = props;
@@ -16,6 +18,10 @@ const ProductCard = (props) => {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = products.slice(indexOfFirstItem, indexOfLastItem);
 
+  const handleDelete = (id) => {
+    console.log(id);
+  };
+
   return (
     <div>
       <div
@@ -23,14 +29,30 @@ const ProductCard = (props) => {
         style={{ marginTop: "50px" }}
       >
         {currentItems.map((item) => (
-          <Link
-            className={styles.boxShadow}
-            key={item.id}
-            to={`/showProduct`}
-            state={{ item }}
-            style={{ textDecoration: "none" }}
-          >
-            <div className="card mx-2 my-2 " style={{ width: "18rem" }}>
+          <div className="card mx-2 my-2 " style={{ width: "18rem" }}>
+            <div>
+              <FontAwesomeIcon
+                icon={faXmark}
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  right: 0,
+                  backgroundColor: "red",
+                  color: "white",
+                  padding: "5px",
+                  zIndex: 5,
+                  cursor: "pointer",
+                }}
+                onClick={() => handleDelete(item.id)}
+              />
+            </div>
+            <Link
+              className={styles.boxShadow}
+              key={item.id}
+              to={`/showProduct`}
+              state={{ item }}
+              style={{ textDecoration: "none" }}
+            >
               <img
                 className="card-img-top"
                 style={{ height: "200px" }}
@@ -43,8 +65,8 @@ const ProductCard = (props) => {
               >
                 <p className="card-text text-decoration-none">{item.name}</p>
               </div>
-            </div>
-          </Link>
+            </Link>
+          </div>
         ))}
       </div>
       <div className="d-flex justify-content-center mt-4 p-3">

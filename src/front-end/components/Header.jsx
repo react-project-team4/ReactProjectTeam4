@@ -17,7 +17,7 @@ import {
   faSignOutAlt,
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
-import axios from "axios";
+// import axios from "axios";
 
 const Header = (props) => {
   const { user, setUser } = props;
@@ -29,15 +29,15 @@ const Header = (props) => {
     setUser("Guest");
   };
 
-  const handleLogin = async (username, password) => {
-    try {
-      const response = await axios.post("/api/login", { username, password });
-      localStorage.setItem("user", JSON.stringify(response.data));
-      setUser(response.data);
-    } catch (error) {
-      console.error("로그인 실패:", error);
-    }
-  };
+  // const handleLogin = async (username, password) => {
+  //   try {
+  //     const response = await axios.post("/api/login", { username, password });
+  //     localStorage.setItem("user", JSON.stringify(response.data));
+  //     setUser(response.data);
+  //   } catch (error) {
+  //     console.error("로그인 실패:", error);
+  //   }
+  // };
 
   return (
     <Container>
