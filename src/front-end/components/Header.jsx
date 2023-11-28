@@ -94,33 +94,30 @@ const Header = (props) => {
                       회원가입
                     </Nav.Link>
                   </>
+                ) : user === "Buyer" ? (
+                  // 구매자
+                  <>
+                    <Nav.Link className={styles.link} as={Link} to="/MyPage">
+                      <FontAwesomeIcon
+                        style={{ marginRight: "6px" }}
+                        icon={faUserCircle}
+                      />
+                      프로필
+                    </Nav.Link>
+                    <Nav.Link className={styles.link} as={Link} to="/MyCart">
+                      <FontAwesomeIcon
+                        style={{ marginRight: "6px" }}
+                        icon={faShoppingBasket}
+                      />
+                      장바구니
+                    </Nav.Link>
+                  </>
+                ) : user === "Seller" ? (
+                  // 판매자
+                  <></>
                 ) : (
-                  (user = "Buyer" ? (
-                    // 구매자
-
-                    <>
-                      <Nav.Link className={styles.link} as={Link} to="/MyPage">
-                        <FontAwesomeIcon
-                          style={{ marginRight: "6px" }}
-                          icon={faUserCircle}
-                        />
-                        프로필
-                      </Nav.Link>
-                      <Nav.Link className={styles.link} as={Link} to="/MyCart">
-                        <FontAwesomeIcon
-                          style={{ marginRight: "6px" }}
-                          icon={faShoppingBasket}
-                        />
-                        장바구니
-                      </Nav.Link>
-                    </>
-                  ) : user === "Seller" ? (
-                    // 판매자
-                    <></>
-                  ) : (
-                    // 어드민
-                    <></>
-                  ))
+                  // 어드민
+                  <></>
                 )}
               </Nav>
             </Container>

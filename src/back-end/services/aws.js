@@ -1,4 +1,4 @@
-import AWS from "aws-sdk";
+import AWS, { S3 } from "aws-sdk";
 /* global resolve reject */
 
 const ACCESS_KEY = "AKIA6JJJK6QXAEEE3TZX";
@@ -44,3 +44,26 @@ export const uploadImageFile = (image, setImage) => {
       });
   });
 };
+
+export const deleteImageFromS3 = (imageUrl) => {
+  const key = imageUrl.split(`https://${S3_BUCKET}.s3.${REGION}.amazonaws.com/`)[1];
+
+  const params = {
+    Bucket: S3_BUCKET,
+    key: key,
+  };
+
+  return new Promise((resolve, reject) => {
+    myBucket.deleteObject(params, (err, data) => {
+      if (err) {
+        console.log("Error deleting image from S3", err);
+        reject(err);
+      } else {
+        console.log("Image delete from S3", data);
+        resolve(data);
+      }
+    })
+  })
+
+
+}

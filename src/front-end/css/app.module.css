@@ -2,8 +2,9 @@
   content: "";
   background-image: url("https://myreactproject04.s3.ap-northeast-2.amazonaws.com/Images/%EB%B0%94%EB%8B%A4%ED%92%8D%EA%B2%BD.jpg");
   background-repeat: no-repeat;
-  background-size: 100%; /* 배경 이미지 크기 조정 */
-  background-position: center top; /* 배경 이미지 위치 조정 */
+  background-size: cover;
+
+  background-position: center top;
   position: absolute;
   opacity: 70%;
   top: 0;
