@@ -68,8 +68,25 @@
       "userType": "Admin"
     }
   ],
-  "comments": [],
-  "orders": [],
+  "comments": [
+    {
+      "id": 1,
+      "usersId": "1234",
+      "productId": 2,
+      "content": "댓글내용"
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "product_id": 2,
+      "usersId": "1234",
+      "address": "대구광역시 달성군 다사읍 서재로 11길 11",
+      "productQuantity": "3",
+      "shippingCost": "2500",
+      "orderDate": "2023-10-30T12:00:00.000Z"
+    }
+  ],
   "products": [
     {
       "id": 1,
