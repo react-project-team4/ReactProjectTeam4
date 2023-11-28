@@ -1,11 +1,11 @@
 import React, { useState, useRef } from "react";
 import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import default_Img from "../imgs/xImage.png";
+import default_Img from "../../imgs/xImage.png";
 import { useNavigate } from "react-router-dom";
 import InputImage from "./InputImage";
 import { uploadImageFile } from "../../../back-end/services/aws";
-import styles from "../css/createProduct.module.css";
+import styles from "../../css/productCss/createProduct.module.css";
 
 const CreateProduct = () => {
   const navigate = useNavigate();
@@ -114,7 +114,7 @@ const CreateProduct = () => {
       onClearInput();
     }
 
-    navigate("/ProductList?category=Food");
+    navigate(`/ProductList?category=${products.category}`);
   };
 
   // input tag set data

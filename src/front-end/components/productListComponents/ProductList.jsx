@@ -7,6 +7,7 @@ import styles from "../../css/productCss/productList.module.css";
 const ProductList = (props) => {
   const [category, setCategory] = useState(""); // 무슨 카테고리인지 판단
   const [products, setProducts] = useState([]); // 식품 카테고리의 데이터를 들고와야함
+  const { user } = props;
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const categoryValue = searchParams.get("category");
@@ -44,7 +45,7 @@ const ProductList = (props) => {
             </Link>
           </form>
         </div>
-        <ProductCard products={products} />
+        <ProductCard products={products} user={user} />
       </>
     </Container>
   );

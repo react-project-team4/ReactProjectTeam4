@@ -125,7 +125,7 @@
       "image": "https://cdn.pixabay.com/photo/2020/08/09/11/31/business-5475283_1280.jpg",
       "category": "Food",
       "shippingFee": "0",
-      "sellerId": "1234"
+      "seller_id": "1234"
     },
     {
       "name": "ㅅㅂ",
@@ -134,7 +134,7 @@
       "content": "ㅂㄱㅈ",
       "category": "Food",
       "id": 2,
-      "sellerId": "1234",
+      "seller_id": "1234",
       "shippingFee": "0"
     },
     {
@@ -144,7 +144,7 @@
       "content": "asdfgasfda",
       "category": "Travel",
       "id": 3,
-      "sellerId": "1234",
+      "seller_id": "1234",
       "shippingFee": "0"
     },
     {
@@ -154,7 +154,7 @@
       "content": "맛있음",
       "category": "Food",
       "id": 4,
-      "sellerId": "1234",
+      "seller_id": "1234",
       "shippingFee": "0"
     },
     {
@@ -164,7 +164,7 @@
       "content": "UMM......",
       "category": "Food",
       "id": 5,
-      "sellerId": "1234",
+      "seller_id": "1234",
       "shippingFee": "0"
     },
     {
@@ -174,7 +174,7 @@
       "content": "비싸요",
       "category": "Food",
       "id": 6,
-      "sellerId": "1234",
+      "seller_id": "1234",
       "shippingFee": "0"
     },
     {
@@ -184,7 +184,7 @@
       "content": "싱싱한 채소 한바구니",
       "category": "Food",
       "shippingFee": "무료",
-      "sellerId": "1234",
+      "seller_id": "1234",
       "id": 7
     },
     {
@@ -194,7 +194,7 @@
       "content": "123123",
       "category": "Food",
       "shippingFee": "1000",
-      "sellerId": "1234",
+      "seller_id": "1234",
       "id": 8
     },
     {
@@ -204,7 +204,7 @@
       "content": "ㅁㄴㅇㄹㄴㅇㅁ",
       "category": "Food",
       "shippingFee": "무료",
-      "sellerId": "1234",
+      "seller_id": "1234",
       "id": 9
     }
   ]
