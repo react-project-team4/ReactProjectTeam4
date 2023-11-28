@@ -5,6 +5,7 @@ import Main from "./front-end/components/mainComponents/Main";
 import ProductList from "./front-end/components/productListComponents/ProductList";
 import Register from "./front-end/components/Register";
 import Login from "./front-end/components/Login";
+import CreateProduct from "./front-end/components/productListComponents/CreateProduct";
 import {
   BrowserRouter as Router,
   Routes,
@@ -43,9 +44,10 @@ const App = () => {
         <Route element={<Layout user={user} setUser={setUser} />}>
           <Route path="/" element={<Main />} />
           <Route path="/ShowProduct" element={<ShowProduct user={user} />} />
-          <Route path="/login" element={<Login setUser={setUser} />}></Route>
-          <Route path="/Register" element={<Register />}></Route>
+          <Route path="/login" element={<Login setUser={setUser} />} />
+          <Route path="/Register" element={<Register />} />
           <Route path="/ProductList" element={<ProductList user={user} />} />
+          <Route path="/CreateProduct" element={<CreateProduct />} />
           <Route path="/MyPage" element={<MyPage />} />
         </Route>
       </Routes>
