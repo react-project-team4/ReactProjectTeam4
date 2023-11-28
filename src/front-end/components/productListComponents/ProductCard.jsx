@@ -7,7 +7,7 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { deleteImageFromS3 } from "../../../back-end/services/aws";
 
 const ProductCard = (props) => {
-  const { products } = props;
+  const { products, user } = props;
   const itemsPerPage = 8;
   const [activePage, setActivePage] = useState(1);
 
@@ -19,6 +19,8 @@ const ProductCard = (props) => {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = products.slice(indexOfFirstItem, indexOfLastItem);
 
+  const loginUserType = localStorage.getItem("UserType");
+  const loginUser = localStorage.getItem("userId");
   const handleDelete = (id, image) => {
     console.log(id);
   };
@@ -30,23 +32,29 @@ const ProductCard = (props) => {
         style={{ marginTop: "50px" }}
       >
         {currentItems.map((item) => (
-          <div className="card mx-2 my-2 " style={{ width: "18rem" }}>
-            <div>
-              <FontAwesomeIcon
-                icon={faXmark}
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  right: 0,
-                  backgroundColor: "red",
-                  color: "white",
-                  padding: "5px",
-                  zIndex: 5,
-                  cursor: "pointer",
-                }}
-                onClick={() => handleDelete(item.id, item.image)}
-              />
-            </div>
+          <div
+            className="card mx-2 my-2 "
+            style={{ width: "18rem" }}
+            key={item.id}
+          >
+            {(loginUserType === "Admin" || loginUser === item.sellerId) && (
+              <div key={item.id}>
+                <FontAwesomeIcon
+                  icon={faXmark}
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    right: 0,
+                    backgroundColor: "red",
+                    color: "white",
+                    padding: "5px",
+                    zIndex: 5,
+                    cursor: "pointer",
+                  }}
+                  onClick={() => handleDelete(item.id, item.image)}
+                />
+              </div>
+            )}
             <Link
               className={styles.boxShadow}
               key={item.id}

@@ -48,7 +48,6 @@ const Header = (props) => {
       setUser(data);
     } catch (error) {
       console.error("로그인 실패:", error);
-      console.error("로그인 실패:", error);
     }
   };
 
@@ -163,40 +162,6 @@ const Header = (props) => {
                       as={Link}
                       to="/MyProducts"
                     >
-                ) : user === "Buyer" ? (
-                  // 구매자
-                  <>
-                    <Nav.Link className={styles.link} as={Link} to="/MyPage">
-                      <FontAwesomeIcon
-                        style={{ marginRight: "6px" }}
-                        icon={faUserCircle}
-                      />
-                      프로필
-                    </Nav.Link>
-                    <Nav.Link className={styles.link} as={Link} to="/MyCart">
-                      <FontAwesomeIcon
-                        style={{ marginRight: "6px" }}
-                        icon={faShoppingBasket}
-                      />
-                      장바구니
-                    </Nav.Link>
-
-                    <Nav.Link className={styles.link} onClick={handleLogout}>
-                      <FontAwesomeIcon
-                        style={{ marginRight: "6px" }}
-                        icon={faSignOutAlt}
-                      />
-                      로그아웃
-                    </Nav.Link>
-                  </>
-                ) : user === "Seller" ? (
-                  // 판매자
-                  <>
-                    <Nav.Link
-                      className={styles.link}
-                      as={Link}
-                      to="/MyProducts"
-                    >
                       <FontAwesomeIcon
                         style={{ marginRight: "6px" }}
                         icon={faListAlt}
@@ -207,8 +172,6 @@ const Header = (props) => {
                       <FontAwesomeIcon
                         style={{ marginRight: "6px" }}
                         icon={faUserCircle}
-                        style={{ marginRight: "6px" }}
-                        icon={faUserCircle}
                       />
                       프로필
                     </Nav.Link>
@@ -218,46 +181,7 @@ const Header = (props) => {
                         icon={faSignOutAlt}
                       />
                       로그아웃
-                      <FontAwesomeIcon
-                        style={{ marginRight: "6px" }}
-                        icon={faSignOutAlt}
-                      />
-                      로그아웃
                     </Nav.Link>
-                  </>
-                ) : (
-                  // 어드민
-                  <>
-                    <Nav.Link
-                      className={styles.link}
-                      as={Link}
-                      to="/ManageBuyers"
-                    >
-                      <FontAwesomeIcon
-                        style={{ marginRight: "6px" }}
-                        icon={faUsers}
-                      />
-                      구매자 관리
-                    </Nav.Link>
-                    <Nav.Link
-                      className={styles.link}
-                      as={Link}
-                      to="/ManageSellers"
-                    >
-                      <FontAwesomeIcon
-                        style={{ marginRight: "6px" }}
-                        icon={faUsers}
-                      />
-                      판매자 관리
-                    </Nav.Link>
-                    <Nav.Link className={styles.link} onClick={handleLogout}>
-                      <FontAwesomeIcon
-                        style={{ marginRight: "6px" }}
-                        icon={faSignOutAlt}
-                      />
-                      로그아웃
-                    </Nav.Link>
-                  </>
                   </>
                 ) : (
                   // 어드민
