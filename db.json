@@ -13,7 +13,11 @@
           "address": "대구광역시 달성군 다사읍 서재로 11길 11"
         }
       ],
-      "cartList": [2, 3, 4]
+      "cartList": [
+        2,
+        3,
+        4
+      ]
     },
     {
       "id": 2,
@@ -28,7 +32,25 @@
           "address": ""
         }
       ],
-      "cartList": [0]
+      "cartList": [
+        0
+      ]
+    },
+    {
+      "nickName": "dsjfklsadkf",
+      "user_id": "dlgyqls88@naver.com",
+      "password": "fhf92639465!",
+      "phone": "01092639465",
+      "userType": "Buyer",
+      "addressList": [
+        {
+          "addressId": "",
+          "addressName": "",
+          "address": ""
+        }
+      ],
+      "cartList": [],
+      "id": 3
     }
   ],
   "sellers": [
@@ -38,7 +60,12 @@
       "user_id": "1234",
       "password": "1234",
       "userType": "Seller",
-      "productList": [1, 2, 3, 4]
+      "productList": [
+        1,
+        2,
+        3,
+        4
+      ]
     },
     {
       "nickName": "testSeller",
@@ -46,7 +73,9 @@
       "password": "qwer1234",
       "phone": "01234567890",
       "userType": "Seller",
-      "productList": [0],
+      "productList": [
+        0
+      ],
       "id": 3
     },
     {
