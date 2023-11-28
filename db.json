@@ -9,6 +9,7 @@
       "addressList": [
         {
           "addressId": "1",
+          "addressType": true,
           "addressName": "기본 배송지",
           "address": "대구광역시 달성군 다사읍 서재로 11길 11"
         }

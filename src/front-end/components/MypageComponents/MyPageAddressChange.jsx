@@ -3,7 +3,7 @@ import styles from "../../css/MyPageCss/MyPageAddressChange.module.css";
 import CreateAddressModal from "./CreateAddressModal";
 
 // 로컬스토리지 유저 Id 빼오기
-localStorage.setItem("userId", "1234");
+localStorage.setItem("id", "1");
 
 const MyPageAddressChange = () => {
   const [users, setUsers] = useState(null);
@@ -14,10 +14,13 @@ const MyPageAddressChange = () => {
       .then((data) => {
         // localStorage에 있는 userId랑 같은 사람 찾아서 그 사람의 배송지 목록을
         // users에 집어넣기
-        const $user = data.filter((e)=>e.id === localStorage.getItem("userId"))
+        console.log(localStorage.getItem("id"))
+        const $user = data.filter((e)=>e.id === localStorage.getItem("id"))
         // console.log($user[0].addressList) 이게 주소들가 담긴 배열임
+      
+        console.log($user)
         if ($user) {
-          setUsers($user[0].addressList);
+          setUsers($user[0]);
         }
       });
   }, []);

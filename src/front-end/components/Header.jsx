@@ -95,7 +95,7 @@ const Header = (props) => {
                     </Nav.Link>
                   </>
                 ) : (
-                  (user = "Buyer" ? (
+                  (user === "Buyer" ? (
                     // 구매자
 
                     <>
