@@ -17,23 +17,37 @@ import {
   faSignOutAlt,
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
-import axios from "axios";
 
+// fetch로 다시 바꿨습니다 문송합니다...ㅠㅠ
 const Header = (props) => {
   const { user, setUser } = props;
 
   // 로그아웃 함수
   const handleLogout = () => {
+  const handleLogout = () =>{
     localStorage.removeItem("user");
-    localStorage.clear(); // 로컬 스토리지에 있는 로그인정보 날려짐
+    localStorage.clear();
     setUser("Guest");
   };
 
+  // 로그 아웃 함수
   const handleLogin = async (username, password) => {
     try {
-      const response = await axios.post("/api/login", { username, password });
-      localStorage.setItem("user", JSON.stringify(response.data));
-      setUser(response.data);
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      if (!response.ok) {
+        throw new Error('로그인 실패');
+      }
+
+      const data = await response.json();
+      localStorage.setItem('user', JSON.stringify(data));
+      setUser(data);
     } catch (error) {
       console.error("로그인 실패:", error);
     }
