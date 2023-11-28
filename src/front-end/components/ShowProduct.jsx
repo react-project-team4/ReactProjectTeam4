@@ -4,8 +4,8 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import styles from "../css/productCss/showProduct.module.css";
 
 export default function ShowProduct(props) {
-  // const { user } = props;
-  const [user, setUser] = useState("Seller");
+  const user = props.user;
+  // const [user, setUser] = useState("Seller"); // testCode
   const [cartList, setCartList] = useState([]);
 
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ export default function ShowProduct(props) {
   useEffect(() => {
     console.log(location);
     console.log(productData);
-    if (user === "User") getCartList();
+    if (user === "Buyer") getCartList();
 
     if (user === "Admin" || user === "Seller") getProductList();
   }, []);
@@ -37,8 +37,10 @@ export default function ShowProduct(props) {
     fetch("http://localhost:3300/users")
       .then((response) => response.json())
       .then((jsonData) => {
-        // localStorage.getItem(key) // localStorage.getItem("userId")
-        const cartList = jsonData.find((item) => item.id === "1234").cartList;
+        // localStorage.getItem(key) // localStorage.getItem("user_id")
+        const cartList = jsonData.find(
+          (item) => item.id === localStorage.getItem("user_id")
+        ).cartList;
         console.log(cartList);
         setCartList(cartList);
       });
@@ -81,7 +83,7 @@ export default function ShowProduct(props) {
       const updatedCartList = [...prevCartList, productData.id];
 
       // ${localStorage.getItem("userId")}
-      fetch(`http://localhost:3300/users/1234`, {
+      fetch(`http://localhost:3300/users/${localStorage.getItem("user_id")}`, {
         method: "PATCH",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({ cartList: updatedCartList }),
@@ -106,7 +108,7 @@ export default function ShowProduct(props) {
       const updatedCartList = [...prevCartList, productData.id];
 
       // ${localStorage.getItem("userId")}
-      fetch(`http://localhost:3300/users/1234`, {
+      fetch(`http://localhost:3300/users/${localStorage.getItem("user_id")}`, {
         method: "PATCH",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({ cartList: updatedCartList }),
@@ -126,12 +128,15 @@ export default function ShowProduct(props) {
       const updatedProductList = prevProductList.filter(
         (item) => item !== productData.id
       );
-      // ${localStorage.getItem("userId")}
-      fetch("http://localhost:3300/sellers/1233", {
-        method: "PATCH",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify({ productListList: updatedProductList }),
-      }).then((response) => {
+      // ${localStorage.getItem("user_id")}
+      fetch(
+        `http://localhost:3300/sellers/${localStorage.getItem("user_id")}`,
+        {
+          method: "PATCH",
+          headers: { "Content-type": "application/json" },
+          body: JSON.stringify({ productListList: updatedProductList }),
+        }
+      ).then((response) => {
         console.log(response);
       });
       return updatedProductList;
@@ -185,14 +190,14 @@ export default function ShowProduct(props) {
           // Guest, User
           <Col xs="auto" sm="auto" md="auto" lg="auto">
             <Button
-              variant="outline-success"
+              variant="outline-dark"
               onClick={addCart}
               style={{ marginRight: "5px" }}
             >
               장바구니 담기
             </Button>
 
-            <Button variant="outline-success" onClick={buy}>
+            <Button variant="outline-dark" onClick={buy}>
               {user === "Guest" ? (
                 <Link to="/Login" className="text-decoration-none text-reset">
                   구매하기
