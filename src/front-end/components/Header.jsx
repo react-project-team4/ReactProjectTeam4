@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Row, Col, Navbar, Container, Nav } from "react-bootstrap";
 import styles from "../css/header.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -18,15 +19,19 @@ import {
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 
-// fetch로 다시 바꿨습니다 문송합니다...ㅠㅠ
+
 const Header = (props) => {
   const { user, setUser } = props;
-
+  const navigate = useNavigate(); // useNavigate 훅을 사용하여 navigate 객체를사용
+ 
   const handleLogout = () => {
     localStorage.removeItem("user");
     localStorage.clear();
     setUser("Guest");
-  };
+    // 로그아웃시 로그인 페이지 이동
+    navigate("/login"); // 로그아웃 성공시 로그인 경로로 가게 설정
+    
+    };
 
   // 로그 아웃 함수
   const handleLogin = async (username, password) => {
