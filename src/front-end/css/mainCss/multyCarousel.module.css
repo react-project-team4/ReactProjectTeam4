@@ -6,12 +6,8 @@
 .swiperSlide {
   text-align: center;
   font-size: 18px;
-
   padding-left: 15px;
   /* Center slide text vertically */
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .swiperSlideImg {
