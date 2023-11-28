@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
 import ProductCard from "./ProductCard";
-import styles from "../css/productList.module.css";
+import styles from "../../css/productCss/productList.module.css";
 
 const ProductList = (props) => {
   const [category, setCategory] = useState(""); // 무슨 카테고리인지 판단
