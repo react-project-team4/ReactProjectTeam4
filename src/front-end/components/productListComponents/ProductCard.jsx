@@ -4,6 +4,7 @@ import styles from "../../css/productCss/productList.module.css";
 import Pagination from "react-js-pagination";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { deleteImageFromS3 } from "../../../back-end/services/aws";
 
 const ProductCard = (props) => {
   const { products } = props;
@@ -18,7 +19,7 @@ const ProductCard = (props) => {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = products.slice(indexOfFirstItem, indexOfLastItem);
 
-  const handleDelete = (id) => {
+  const handleDelete = (id, image) => {
     console.log(id);
   };
 
@@ -43,7 +44,7 @@ const ProductCard = (props) => {
                   zIndex: 5,
                   cursor: "pointer",
                 }}
-                onClick={() => handleDelete(item.id)}
+                onClick={() => handleDelete(item.id, item.image)}
               />
             </div>
             <Link
