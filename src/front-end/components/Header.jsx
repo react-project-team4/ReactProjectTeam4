@@ -22,9 +22,7 @@ import {
 const Header = (props) => {
   const { user, setUser } = props;
 
-  // 로그아웃 함수
   const handleLogout = () => {
-  const handleLogout = () =>{
     localStorage.removeItem("user");
     localStorage.clear();
     setUser("Guest");
@@ -33,20 +31,20 @@ const Header = (props) => {
   // 로그 아웃 함수
   const handleLogin = async (username, password) => {
     try {
-      const response = await fetch('/api/login', {
-        method: 'POST',
+      const response = await fetch("/api/login", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ username, password }),
       });
 
       if (!response.ok) {
-        throw new Error('로그인 실패');
+        throw new Error("로그인 실패");
       }
 
       const data = await response.json();
-      localStorage.setItem('user', JSON.stringify(data));
+      localStorage.setItem("user", JSON.stringify(data));
       setUser(data);
     } catch (error) {
       console.error("로그인 실패:", error);
