@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Col, Row, Container } from "react-bootstrap";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import styles from "../css/productCss/showProduct.module.css";
 
 export default function ShowProduct(props) {
   // const { user } = props;
@@ -49,7 +50,7 @@ export default function ShowProduct(props) {
       .then((response) => response.json())
       .then((jsonData) => {
         const cartList = jsonData.find(
-          (item) => item.id === productData.sellerId
+          (item) => item.user_id === productData.sellerId
         ).productList;
         setCartList(cartList);
         console.log(cartList);
@@ -148,7 +149,7 @@ export default function ShowProduct(props) {
   };
   // 버튼 기본 className="btn btn-primary btn-lg rounded border-0 text-white"
   return (
-    <Container className="border border-dark ">
+    <Container className={styles.background}>
       <Row className="mt-2 mb-2">
         <Col className="d-flex justify-content-end">
           <Button variant="outline-dark" onClick={() => navigate(-1)}>

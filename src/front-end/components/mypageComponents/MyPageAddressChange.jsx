@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "../../css/MyPageCss/MyPageAddressChange.module.css";
+import styles from "../../css/myPageCss/MyPageAddressChange.module.css";
 import CreateAddressModal from "./CreateAddressModal";
 
 // 로컬스토리지 유저 Id 빼오기
@@ -14,7 +14,9 @@ const MyPageAddressChange = () => {
       .then((data) => {
         // localStorage에 있는 userId랑 같은 사람 찾아서 그 사람의 배송지 목록을
         // users에 집어넣기
-        const $user = data.filter((e)=>e.id === localStorage.getItem("userId"))
+        const $user = data.filter(
+          (e) => e.id === localStorage.getItem("userId")
+        );
         // console.log($user[0].addressList) 이게 주소들가 담긴 배열임
         if ($user) {
           setUsers($user[0].addressList);
@@ -71,7 +73,7 @@ const MyPageAddressChange = () => {
 
   return (
     <div id="box">
-      <input type="button" value="기본 배송지로 변경"/>
+      <input type="button" value="기본 배송지로 변경" />
       <br />
       <br />
       {addressMain}

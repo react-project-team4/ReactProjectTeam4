@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import styles from "../css/productList.module.css";
+import styles from "../../css/productCss/productList.module.css";
 
 const ProductCard = (props) => {
   const { products } = props;
