@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import InputImage from "./InputImage";
 import { uploadImageFile } from "../../../back-end/services/aws";
 import styles from "../css/createProduct.module.css";
+
 const CreateProduct = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);

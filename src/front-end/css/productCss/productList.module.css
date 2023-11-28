@@ -16,3 +16,28 @@
 .boxShadow:hover {
   box-shadow: -5px -5px 20px 5px #66c4ff, 5px 5px 20px 5px blue;
 }
+
+.paginationItem {
+  margin-left: 5px;
+}
+
+.aciveItem {
+  background-color: blue;
+}
+
+.activeLink {
+  color: white;
+}
+
+.paginationLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  width: 30px;
+  border: 1px solid #e2e2e2;
+}
+
+.paginationLink:hover {
+  box-shadow: 0px 3px 3px gray;
+}
