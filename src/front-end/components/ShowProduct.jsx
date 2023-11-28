@@ -21,17 +21,6 @@ export default function ShowProduct(props) {
     if (user === "Admin" || user === "Seller") getProductList();
   }, []);
 
-  /*  상품 정보 가져오기
-  const getProductData = () => {
-    fetch("http://localhost:3300/products")
-      .then((response) => response.json())
-      .then((jsonData) => {
-        // item.id === props.productsId
-        const product = jsonData.find((item) => item.id === 1);
-        console.log(product);
-      });
-  }; */
-
   // 장바구니 리스트
   const getCartList = () => {
     fetch("http://localhost:3300/users")

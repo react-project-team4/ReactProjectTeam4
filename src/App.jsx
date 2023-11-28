@@ -30,7 +30,12 @@ const Layout = (props) => {
 };
 
 const App = () => {
-  const [user, setUser] = useState("Guest");
+  const UserType =
+    localStorage.getItem("UserType") === null
+      ? "Guest"
+      : localStorage.getItem("UserType");
+
+  const [user, setUser] = useState(UserType);
 
   return (
     <Router>
