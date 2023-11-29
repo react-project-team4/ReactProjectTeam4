@@ -207,8 +207,14 @@ export default function ShowProduct(props) {
           </Col>
         )}
       </Row>
-      <Row className="mt-5 mb-3">
-        <Col style={{ fontSize: "20px", wordWrap: "break-word" }}>
+      <Row className=" ml-5 mt-5 mb-3">
+        <Col
+          style={{
+            whiteSpace: "pre",
+            fontSize: "20px",
+            wordWrap: "break-word",
+          }}
+        >
           {productData.content}
         </Col>
       </Row>

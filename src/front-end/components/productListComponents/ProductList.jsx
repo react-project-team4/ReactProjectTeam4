@@ -11,6 +11,10 @@ const ProductList = (props) => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const categoryValue = searchParams.get("category");
+
+  const loginUserType = localStorage.getItem("UserType");
+  const loginUser = localStorage.getItem("Email");
+
   useEffect(() => {
     setCategory(categoryValue);
     // products 리스트를 db.json으로 부터 가져옴
@@ -34,16 +38,19 @@ const ProductList = (props) => {
       <>
         <div className="d-flex justify-content-between align-items-center shadow-lg p-3 mb-5 rounded">
           <h4>{category}</h4>
-          <form>
-            <Link to="/CreateProduct">
-              <button
-                type="button"
-                className="btn btn-primary btn-lg rounded border-0 text-white"
-              >
-                상품등록
-              </button>
-            </Link>
-          </form>
+          {loginUserType === "Admin" ||
+            (loginUserType === "Seller" && (
+              <form>
+                <Link to="/CreateProduct">
+                  <button
+                    type="button"
+                    className="btn btn-primary btn-lg rounded border-0 text-white"
+                  >
+                    상품등록
+                  </button>
+                </Link>
+              </form>
+            ))}
         </div>
         <ProductCard products={products} user={user} />
       </>
