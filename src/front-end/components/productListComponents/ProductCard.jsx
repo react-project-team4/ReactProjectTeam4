@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "../../css/productCss/productList.module.css";
 import Pagination from "react-js-pagination";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,9 +7,10 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { deleteImageFromS3 } from "../../../back-end/services/aws";
 
 const ProductCard = (props) => {
-  const { products } = props;
+  const { products, user } = props;
   const itemsPerPage = 8;
   const [activePage, setActivePage] = useState(1);
+  const navigate = useNavigate();
 
   const handlePageChange = (pageNumber) => {
     setActivePage(pageNumber);
@@ -19,8 +20,51 @@ const ProductCard = (props) => {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = products.slice(indexOfFirstItem, indexOfLastItem);
 
-  const handleDelete = (id, image) => {
-    console.log(id);
+  const loginUserType = localStorage.getItem("UserType");
+  const loginUser = localStorage.getItem("Email");
+
+  const handleDelete = (item) => {
+    /* eslint-disable */
+    console.log(item.id);
+    if (!confirm("상품을 삭제하시겠습니까?")) {
+      return;
+    }
+    // setCartList((prevProductList) => {
+    //   const updatedProductList = prevProductList.filter(
+    //     (item) => item !== productData.id
+    //   );
+    //   // ${localStorage.getItem("user_id")}
+    //   fetch(
+    //     `http://localhost:3300/sellers/${localStorage.getItem("user_id")}`,
+    //     {
+    //       method: "PATCH",
+    //       headers: { "Content-type": "application/json" },
+    //       body: JSON.stringify({ productListList: updatedProductList }),
+    //     }
+    //   ).then((response) => {
+    //     console.log(response);
+    //   });
+    //   return updatedProductList;
+    // });
+
+    // 지금 얘가 PRODUCT에 접근해서 삭제하는데 COMMENT랑 ORDER도 사라짐
+    fetch(`http://localhost:3300/products/${item.id}`, {
+      method: "DELETE",
+      headers: { "Content-type": "application/json" },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          console.error(`Failed to delete product. Status: ${response.status}`);
+          return;
+        }
+        console.log(response);
+        deleteImageFromS3(item.image);
+      })
+      .catch((error) => {
+        console.error("Error during DELETE request:", error);
+      });
+
+    navigate(`/ProductList?category=${item.category}`);
   };
 
   return (
@@ -35,6 +79,7 @@ const ProductCard = (props) => {
             style={{ width: "18rem" }}
             key={item.id}
           >
+<<<<<<< HEAD
             <div>
               <FontAwesomeIcon
                 icon={faXmark}
@@ -51,6 +96,26 @@ const ProductCard = (props) => {
                 onClick={() => handleDelete(item.id, item.image)}
               />
             </div>
+=======
+            {(loginUserType === "Admin" || loginUser === item.seller_id) && (
+              <div>
+                <FontAwesomeIcon
+                  icon={faXmark}
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    right: 0,
+                    backgroundColor: "red",
+                    color: "white",
+                    padding: "5px",
+                    zIndex: 5,
+                    cursor: "pointer",
+                  }}
+                  onClick={() => handleDelete(item)}
+                />
+              </div>
+            )}
+>>>>>>> 007ee03cf1d57b9cd0e9714bb6ded513243a8561
             <Link
               className={styles.boxShadow}
               key={item.id}

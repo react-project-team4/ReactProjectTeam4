@@ -1,10 +1,10 @@
 import AWS, { S3 } from "aws-sdk";
 /* global resolve reject */
 
-const ACCESS_KEY = "AKIA6JJJK6QXAEEE3TZX";
-const SECRET_ACCESS_KEY = "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";
-const REGION = "ap-northeast-2";
-const S3_BUCKET = "myreactproject04";
+const ACCESS_KEY = process.env.REACT_APP_ACCESS_KEY;
+const SECRET_ACCESS_KEY = process.env.REACT_APP_SECRET_ACCESS_KEY;
+const REGION = process.env.REACT_APP_REGION;
+const S3_BUCKET = process.env.REACT_APP_S3_BUCKET;
 const FOLDER_NAME = "Images";
 
 AWS.config.update({
@@ -50,7 +50,7 @@ export const deleteImageFromS3 = (imageUrl) => {
 
   const params = {
     Bucket: S3_BUCKET,
-    key: key,
+    Key: key,
   };
 
   return new Promise((resolve, reject) => {
