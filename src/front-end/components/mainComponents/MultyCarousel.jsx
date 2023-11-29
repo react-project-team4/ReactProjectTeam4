@@ -57,9 +57,11 @@ const MultyCarousel = (props) => {
                           {item.name}
                         </p>
                         <h6 className="text-black">가격: {item.price}</h6>
-                        <h6 className="text-black">
-                          배송비: {item.shippingFee}
-                        </h6>
+                        {category === "Food" && (
+                          <h6 className="text-black">
+                            배송비: {item.shippingFee}
+                          </h6>
+                        )}
                       </div>
                     </div>
                   </Link>

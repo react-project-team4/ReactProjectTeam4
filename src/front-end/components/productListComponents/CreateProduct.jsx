@@ -20,7 +20,7 @@ const CreateProduct = () => {
     category: "0",
     // 배송비 + 판매자 Id 추가
     shippingFee: "0",
-    sellerId: "1234",
+    seller_id: localStorage.getItem("Email"),
   });
   // select tag 유효성 검사
   const [showValidationMessage, setShowValidationMessage] = useState(false);
