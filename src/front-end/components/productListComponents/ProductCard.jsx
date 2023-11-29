@@ -30,7 +30,11 @@ const ProductCard = (props) => {
         style={{ marginTop: "50px" }}
       >
         {currentItems.map((item) => (
-          <div className="card mx-2 my-2 " style={{ width: "18rem" }}>
+          <div
+            className="card mx-2 my-2 "
+            style={{ width: "18rem" }}
+            key={item.id}
+          >
             <div>
               <FontAwesomeIcon
                 icon={faXmark}

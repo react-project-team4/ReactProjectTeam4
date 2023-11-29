@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Button, Col, Row, Container } from "react-bootstrap";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import styles from "../css/productCss/showProduct.module.css";
+import Comment from "./Comment";
 
 export default function ShowProduct(props) {
-  const user = props.user;
   // const [user, setUser] = useState("Seller"); // testCode
+  const user = props.user;
   const [cartList, setCartList] = useState([]);
 
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ export default function ShowProduct(props) {
           (item) => item.id === localStorage.getItem("user_id")
         ).cartList;
         console.log(cartList);
-        setCartList(cartList);
+        cartList === undefined ? setCartList([]) : setCartList(cartList);
       });
   };
 
@@ -41,9 +42,9 @@ export default function ShowProduct(props) {
       .then((response) => response.json())
       .then((jsonData) => {
         const cartList = jsonData.find(
-          (item) => item.user_id === productData.sellerId
+          (item) => item.user_id === productData.seller_id
         ).productList;
-        setCartList(cartList);
+        cartList === undefined ? setCartList([]) : setCartList(cartList);
         console.log(cartList);
       });
   };
@@ -117,21 +118,17 @@ export default function ShowProduct(props) {
       const updatedProductList = prevProductList.filter(
         (item) => item !== productData.id
       );
-      // ${localStorage.getItem("user_id")}
-      fetch(
-        `http://localhost:3300/sellers/${localStorage.getItem("user_id")}`,
-        {
-          method: "PATCH",
-          headers: { "Content-type": "application/json" },
-          body: JSON.stringify({ productListList: updatedProductList }),
-        }
-      ).then((response) => {
+
+      fetch(`http://localhost:3300/sellers/${localStorage.getItem("Email")}`, {
+        method: "PATCH",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({ productListList: updatedProductList }),
+      }).then((response) => {
         console.log(response);
       });
       return updatedProductList;
     });
 
-    // 지금 얘가 PRODUCT에 접근해서 삭제하는데 COMMENT랑 ORDER도 사라짐
     fetch(`http://localhost:3300/products/${productData.id}`, {
       method: "DELETE",
       headers: { "Content-type": "application/json" },
@@ -210,10 +207,13 @@ export default function ShowProduct(props) {
           </Col>
         )}
       </Row>
-      <Row className=" ml-5 mt-5 mb-3">
+      <Row className="mt-5 mb-3">
         <Col style={{ fontSize: "20px", wordWrap: "break-word" }}>
           {productData.content}
         </Col>
+      </Row>
+      <Row>
+        <Comment />
       </Row>
     </Container>
   );

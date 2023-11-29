@@ -28,283 +28,7 @@
           "address": ""
         }
       ],
-<<<<<<< HEAD
       "cartList": [0]
-=======
-      "cartList": []
-    },
-    {
-      "nickName": "1234",
-      "user_id": "a12345@naver.com",
-      "password": "123456q",
-      "phone": "12313",
-      "userType": "Buyer",
-      "addressList": [
-        {
-          "addressId": "",
-          "addressName": "",
-          "address": ""
-        }
-      ],
-      "cartList": [],
-      "id": 3
-    },
-    {
-      "nickName": "testUser",
-      "user_id": "w@naver.com",
-      "password": "12345q",
-      "phone": "12312321313",
-      "userType": "Buyer",
-      "addressList": [
-        {
-          "addressId": "",
-          "addressName": "",
-          "address": ""
-        }
-      ],
-      "cartList": [],
-      "id": 4
-    },
-    {
-      "nickName": "testUser",
-      "user_id": "dlgyqls88@naver.com",
-      "password": "12345q",
-      "phone": "1067831332",
-      "userType": "Buyer",
-      "addressList": [
-        {
-          "addressId": "",
-          "addressName": "",
-          "address": ""
-        }
-      ],
-      "cartList": [],
-      "id": 5
-    },
-    {
-      "nickName": "1234",
-      "user_id": "a12345@naver.com",
-      "password": "123456q",
-      "phone": "12313",
-      "userType": "Buyer",
-      "addressList": [
-        {
-          "addressId": "",
-          "addressName": "",
-          "address": ""
-        }
-      ],
-      "cartList": [],
-      "id": 6
-    },
-    {
-      "nickName": "testUser",
-      "user_id": "w@naver.com",
-      "password": "123456q",
-      "phone": "12312321313",
-      "userType": "Buyer",
-      "addressList": [
-        {
-          "addressId": "",
-          "addressName": "",
-          "address": ""
-        }
-      ],
-      "cartList": [],
-      "id": 7
-    },
-    {
-      "nickName": "1234",
-      "user_id": "1234@naver.com",
-      "password": "12345q",
-      "phone": "1234555",
-      "userType": "Buyer",
-      "addressList": [
-        {
-          "addressId": "",
-          "addressName": "",
-          "address": ""
-        }
-      ],
-      "cartList": [],
-      "id": 8
-    },
-    {
-      "nickName": "1234",
-      "user_id": "a12345@naver.com",
-      "password": "123456q",
-      "phone": "12313",
-      "userType": "Buyer",
-      "addressList": [
-        {
-          "addressId": "",
-          "addressName": "",
-          "address": ""
-        }
-      ],
-      "cartList": [],
-      "id": 9
-    },
-    {
-      "nickName": "1234",
-      "user_id": "a12345@naver.com",
-      "password": "123456q",
-      "phone": "12313",
-      "userType": "Buyer",
-      "addressList": [
-        {
-          "addressId": "",
-          "addressName": "",
-          "address": ""
-        }
-      ],
-      "cartList": [],
-      "id": 10
-    },
-    {
-      "nickName": "1234",
-      "user_id": "a12345@naver.com",
-      "password": "123456q",
-      "phone": "12313",
-      "userType": "Buyer",
-      "addressList": [
-        {
-          "addressId": "",
-          "addressName": "",
-          "address": ""
-        }
-      ],
-      "cartList": [],
-      "id": 11
-    },
-    {
-      "nickName": "1234",
-      "user_id": "a12345@naver.com",
-      "password": "123456q",
-      "phone": "12313",
-      "userType": "Buyer",
-      "addressList": [
-        {
-          "addressId": "",
-          "addressName": "",
-          "address": ""
-        }
-      ],
-      "cartList": [],
-      "id": 12
-    },
-    {
-      "nickName": "1234",
-      "user_id": "a12345@naver.com",
-      "password": "123456q",
-      "phone": "12313",
-      "userType": "Buyer",
-      "addressList": [
-        {
-          "addressId": "",
-          "addressName": "",
-          "address": ""
-        }
-      ],
-      "cartList": [],
-      "id": 13
-    },
-    {
-      "nickName": "testSeller",
-      "user_id": "testSeller@gmail.com",
-      "password": "qwer1234",
-      "phone": "01234567890",
-      "userType": "Buyer",
-      "addressList": [
-        {
-          "addressId": "",
-          "addressName": "",
-          "address": ""
-        }
-      ],
-      "cartList": [],
-      "id": 14
-    },
-    {
-      "nickName": "1234",
-      "user_id": "a12345@naver.com",
-      "password": "123456q",
-      "phone": "12313",
-      "userType": "Buyer",
-      "addressList": [
-        {
-          "addressId": "",
-          "addressName": "",
-          "address": ""
-        }
-      ],
-      "cartList": [],
-      "id": 15
-    },
-    {
-      "nickName": "1234",
-      "user_id": "a12345@naver.com",
-      "password": "123456q",
-      "phone": "12313",
-      "userType": "Buyer",
-      "addressList": [
-        {
-          "addressId": "",
-          "addressName": "",
-          "address": ""
-        }
-      ],
-      "cartList": [],
-      "id": 16
-    },
-    {
-      "nickName": "1234",
-      "user_id": "a12345@naver.com",
-      "password": "123456q",
-      "phone": "12321",
-      "userType": "Buyer",
-      "addressList": [
-        {
-          "addressId": "",
-          "addressName": "",
-          "address": ""
-        }
-      ],
-      "cartList": [],
-      "id": 17
-    },
-    {
-      "nickName": "testSeller",
-      "user_id": "testSeller@gmail.com",
-      "password": "qwer1234",
-      "phone": "01234567890",
-      "userType": "Buyer",
-      "addressList": [
-        {
-          "addressId": "",
-          "addressName": "",
-          "address": ""
-        }
-      ],
-      "cartList": [],
-      "id": 18
-    },
-    {
-      "nickName": "1234",
-      "user_id": "a12345@naver.com",
-      "password": "123456q",
-      "phone": "12313",
-      "userType": "Buyer",
-      "addressList": [
-        {
-          "addressId": "",
-          "addressName": "",
-          "address": ""
-        }
-      ],
-      "cartList": [],
-      "id": 19
->>>>>>> d7b1edec8b24fc0f8f0dbdd4ea1cbdd5dabe34ee
     }
   ],
   "sellers": [
@@ -314,7 +38,7 @@
       "user_id": "1234",
       "password": "1234",
       "userType": "Seller",
-      "productList": [1, 2, 3, 4]
+      "productList": [1, 2, 3, 4, 5, 6, 7, 8, 9]
     },
     {
       "nickName": "testSeller",
@@ -372,7 +96,7 @@
       "image": "https://cdn.pixabay.com/photo/2020/08/09/11/31/business-5475283_1280.jpg",
       "category": "Food",
       "shippingFee": "0",
-      "sellerId": "1234"
+      "seller_id": "1234"
     },
     {
       "name": "ㅅㅂ",
@@ -381,7 +105,7 @@
       "content": "ㅂㄱㅈ",
       "category": "Food",
       "id": 2,
-      "sellerId": "1234",
+      "seller_id": "1234",
       "shippingFee": "0"
     },
     {
@@ -391,7 +115,7 @@
       "content": "asdfgasfda",
       "category": "Travel",
       "id": 3,
-      "sellerId": "1234",
+      "seller_id": "1234",
       "shippingFee": "0"
     },
     {
@@ -401,7 +125,7 @@
       "content": "맛있음",
       "category": "Food",
       "id": 4,
-      "sellerId": "1234",
+      "seller_id": "1234",
       "shippingFee": "0"
     },
     {
@@ -411,7 +135,7 @@
       "content": "UMM......",
       "category": "Food",
       "id": 5,
-      "sellerId": "1234",
+      "seller_id": "1234",
       "shippingFee": "0"
     },
     {
@@ -421,7 +145,7 @@
       "content": "비싸요",
       "category": "Food",
       "id": 6,
-      "sellerId": "1234",
+      "seller_id": "1234",
       "shippingFee": "0"
     },
     {
@@ -431,7 +155,7 @@
       "content": "싱싱한 채소 한바구니",
       "category": "Food",
       "shippingFee": "무료",
-      "sellerId": "1234",
+      "seller_id": "1234",
       "id": 7
     },
     {
@@ -441,7 +165,7 @@
       "content": "123123",
       "category": "Food",
       "shippingFee": "1000",
-      "sellerId": "1234",
+      "seller_id": "1234",
       "id": 8
     },
     {
@@ -451,7 +175,7 @@
       "content": "ㅁㄴㅇㄹㄴㅇㅁ",
       "category": "Food",
       "shippingFee": "무료",
-      "sellerId": "1234",
+      "seller_id": "1234",
       "id": 9
     }
   ]
