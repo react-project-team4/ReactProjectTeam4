@@ -29,23 +29,6 @@ const ProductCard = (props) => {
     if (!confirm("상품을 삭제하시겠습니까?")) {
       return;
     }
-    // setCartList((prevProductList) => {
-    //   const updatedProductList = prevProductList.filter(
-    //     (item) => item !== productData.id
-    //   );
-    //   // ${localStorage.getItem("user_id")}
-    //   fetch(
-    //     `http://localhost:3300/sellers/${localStorage.getItem("user_id")}`,
-    //     {
-    //       method: "PATCH",
-    //       headers: { "Content-type": "application/json" },
-    //       body: JSON.stringify({ productListList: updatedProductList }),
-    //     }
-    //   ).then((response) => {
-    //     console.log(response);
-    //   });
-    //   return updatedProductList;
-    // });
 
     // 지금 얘가 PRODUCT에 접근해서 삭제하는데 COMMENT랑 ORDER도 사라짐
     fetch(`http://localhost:3300/products/${item.id}`, {
@@ -57,82 +40,92 @@ const ProductCard = (props) => {
           console.error(`Failed to delete product. Status: ${response.status}`);
           return;
         }
+        navigate(`/ProductList?category=${item.category}`);
         console.log(response);
         deleteImageFromS3(item.image);
       })
       .catch((error) => {
         console.error("Error during DELETE request:", error);
       });
-
-    navigate(`/ProductList?category=${item.category}`);
   };
 
   return (
     <div>
-      <div
-        className="d-flex flex-wrap flex-grow-0 justify-content-center"
-        style={{ marginTop: "50px" }}
-      >
-        {currentItems.map((item) => (
+      {currentItems.length === 0 ? (
+        <h1 className="d-flex justify-content-center align-items-center p-5">
+          현재 판매중인 상품이 존재하지 않습니다.
+        </h1>
+      ) : (
+        <>
           <div
-            className="card mx-2 my-2 "
-            style={{ width: "18rem" }}
-            key={item.id}
+            className="d-flex flex-wrap flex-grow-0 justify-content-center"
+            style={{ marginTop: "50px" }}
           >
-            {(loginUserType === "Admin" || loginUser === item.seller_id) && (
-              <div>
-                <FontAwesomeIcon
-                  icon={faXmark}
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    right: 0,
-                    backgroundColor: "red",
-                    color: "white",
-                    padding: "5px",
-                    zIndex: 5,
-                    cursor: "pointer",
-                  }}
-                  onClick={() => handleDelete(item)}
-                />
-              </div>
-            )}
-            <Link
-              className={styles.boxShadow}
-              key={item.id}
-              to={`/showProduct`}
-              state={{ item }}
-              style={{ textDecoration: "none" }}
-            >
-              <img
-                className="card-img-top"
-                style={{ height: "200px" }}
-                src={item.image}
-                alt="Card image cap"
-              />
+            {currentItems.map((item) => (
               <div
-                className="card-body text-white bg-primary rounded-lg"
-                style={{ opacity: "0.5" }}
+                className="card mx-2 my-2 "
+                style={{ width: "18rem" }}
+                key={item.id}
               >
-                <p className="card-text text-decoration-none">{item.name}</p>
+                {(loginUserType === "Admin" ||
+                  loginUser === item.seller_id) && (
+                  <div>
+                    <FontAwesomeIcon
+                      icon={faXmark}
+                      style={{
+                        position: "absolute",
+                        top: 0,
+                        right: 0,
+                        backgroundColor: "red",
+                        color: "white",
+                        padding: "5px",
+                        zIndex: 5,
+                        cursor: "pointer",
+                      }}
+                      onClick={() => handleDelete(item)}
+                    />
+                  </div>
+                )}
+                <Link
+                  className={styles.boxShadow}
+                  key={item.id}
+                  to={`/showProduct`}
+                  state={{ item }}
+                  style={{ textDecoration: "none" }}
+                >
+                  <img
+                    className="card-img-top"
+                    style={{ height: "200px" }}
+                    src={item.image}
+                    alt="Card image cap"
+                  />
+                  <div
+                    className="card-body text-white bg-primary rounded-lg"
+                    style={{ opacity: "0.5" }}
+                  >
+                    <p className="card-text text-decoration-none">
+                      {item.name}
+                    </p>
+                  </div>
+                </Link>
               </div>
-            </Link>
+            ))}
           </div>
-        ))}
-      </div>
-      <div className="d-flex justify-content-center mt-4 p-3">
-        <Pagination
-          activePage={activePage}
-          itemsCountPerPage={itemsPerPage}
-          totalItemsCount={products.length}
-          pageRangeDisplayed={5}
-          onChange={handlePageChange}
-          itemClass={styles.paginationItem}
-          linkClass={styles.paginationLink}
-          activeClass={styles.aciveItem}
-          activeLinkClass={styles.activeLink}
-        />
-      </div>
+          <div className="d-flex justify-content-center mt-4 p-3">
+            <Pagination
+              activePage={activePage}
+              itemsCountPerPage={itemsPerPage}
+              totalItemsCount={products.length}
+              pageRangeDisplayed={5}
+              onChange={handlePageChange}
+              itemClass={styles.paginationItem}
+              linkClass={styles.paginationLink}
+              activeClass={styles.aciveItem}
+              activeLinkClass={styles.activeLink}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 };
