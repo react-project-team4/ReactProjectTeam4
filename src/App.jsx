@@ -18,7 +18,7 @@ import MyPage from "./front-end/components/mypageComponents/MyPage";
 import styles from "./front-end/css/app.module.css";
 
 const Layout = (props) => {
-  const { user, setUser } = props;
+  const { user, setUser ,} = props;
   return (
     <>
       <Header user={user} setUser={setUser} />
