@@ -16,6 +16,7 @@ const MyPageOrderList = () => {
   if (orders == null) {
     return <div>Loading...</div>;
   }
+  console.log(orders)
 
   // 주문 목록을 표시하기 위해 orders 객체의 내부 데이터에 접근
   const orderList = orders.map((order, index) => (

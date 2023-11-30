@@ -2,88 +2,106 @@ import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
-import { redirect } from 'react-router-dom';
-
-
-// 로컬스토리지 유저 Id 빼오기
-localStorage.setItem("userId", "1234");
-const $userId = localStorage.getItem("userId")
 
 function CreateAddressModal() {
   const [show, setShow] = useState(false);
-  const [isDefaultAddress, setIsDefaultAddress] = useState(false);
-
   const [newAddress, setNewAddress] = useState({
-    addressName:"",
-    address:""
-});
+    addressName: "",
+    address: ""
+  });
+  const [userId, setUserId] = useState(null);
+  const [isNewAddressDefault, setIsNewAddressDefault] = useState(false);
 
-const handleInputChange = (e) => {
-  
-  const { name, value } = e.target;
-  setNewAddress((prevAddress) => ({
-    ...prevAddress,
-    [name]: value,
-  }));
-};
+  useEffect(() => {
+    fetch(`http://localhost:3300/users`)
+      .then(response => response.json())
+      .then(data => {
+        const $user = data.find(
+          (e) => e.user_id === localStorage.getItem("Email")
+        );
+        setUserId($user);
+      });
+  }, []);
 
+  if (userId === null) {
+    return <div>Loading...</div>;
+  }
+
+  const $userId = userId.id;
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewAddress((prevAddress) => ({
+      ...prevAddress,
+      [name]: value,
+    }));
+  };
 
   const handleClose = () => {
     setShow(false);
   }
 
-  const handleShow = () => setShow(true);
-
-  // 먼저 users의 
-  const addressAddButton = () => {
-    fetch(`http://localhost:3300/users/${$userId}`)
-      .then(response => response.json())
-      .then(user => {
-        // 가장 큰 addressId 찾아서 1더해서 addressId 추가해주기
-        const maxAddressId = user.addressList.reduce((maxId, currentAddress) => {
-          return maxId > Number(currentAddress.addressId) ? maxId : Number(currentAddress.addressId);
-        }, 0);
-  
-        const updatedAddressList = [
-          ...user.addressList,
-          {
-            // 가장 큰 addressId에 1을 더한 후 다시 문자열로 변환
-            addressId: (maxAddressId + 1).toString(),
-            addressType: isDefaultAddress,
-            address: newAddress.address,
-            addressName: newAddress.addressName
-          }
-        ];
-
-        // 기본배송지로 선택을 눌렀으면 기존에 addressType이 true이던거를 false로 바꿔줘야 함
-        // updatedAddressList를 돌면서 .addressType이 true인거를 찾아서 false로 바꿔줘야 함
-        updatedAddressList.map((e)=>{
-          if(e.addressType === true && isDefaultAddress==true){
-            e.addressType = false
-          }
-        })
-  
-        const updatedUser = { ...user, addressList: updatedAddressList };
-  
-        fetch(`http://localhost:3300/users/${$userId}`, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(updatedUser)
-        })
-          .then(response => response.json())
-          .then(data => console.log(data));
-      });
-
-      handleClose()
+  const handleShow = () => {
+    setIsNewAddressDefault(false); // 모달이 열릴 때마다 기본값으로 초기화
+    setShow(true);
   }
+
+  const addressAddButton = async () => {
+    if (!userId) {
+      console.error("사용자 ID를 찾을 수 없습니다");
+      return;
+    }
   
+    const response = await fetch(`http://localhost:3300/users/${$userId}`);
+    const user = await response.json();
   
+    console.log("Before Update:", user.addressList);
+  
+    const maxAddressId = user.addressList.reduce((maxId, currentAddress) => {
+      return Math.max(maxId, Number(currentAddress.addressId));
+    }, 0);
+  
+    let updatedAddressList = [
+      ...user.addressList,
+      {
+        addressId: (maxAddressId + 1).toString(),
+        addressType: isNewAddressDefault,
+        address: newAddress.address,
+        addressName: newAddress.addressName
+      }
+    ];
+  
+    if (isNewAddressDefault) {
+      updatedAddressList = updatedAddressList.map(e => {
+        if(e.addressId !== (maxAddressId + 1).toString()){
+          e.addressType = false;
+        }
+        return e;
+      });
+    }
+  
+    const updatedUser = { ...user, addressList: updatedAddressList };
+  
+    console.log("After Update:", updatedUser.addressList);
+  
+    const updateResponse = await fetch(`http://localhost:3300/users/${$userId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(updatedUser)
+    });
+  
+    const data = await updateResponse.json();
+  
+    console.log(data);
+    handleClose();
+    setIsNewAddressDefault(false); // 모달이 닫힐 때마다 기본값으로 초기화
+  }
 
   return (
     <>
-      <Button variant="primary" style={{width:'600px'}} onClick={handleShow}>
+      <Button variant="primary" style={{ width: '600px' }} onClick={handleShow}>
         배송지 추가
       </Button>
 
@@ -108,7 +126,7 @@ const handleInputChange = (e) => {
               controlId="exampleForm.ControlTextarea1"
             >
               <Form.Label>상세 주소</Form.Label>
-              <Form.Control 
+              <Form.Control
                 as="textarea"
                 rows={3}
                 name='address'
@@ -118,16 +136,14 @@ const handleInputChange = (e) => {
             </Form.Group>
           </Form>
 
-            {/* 체크박스 */}
-            <Form.Check
-              type="checkbox"
-              id="defaultAddressCheckbox"
-              label="기본 배송지로 설정"
-              checked={isDefaultAddress}
-              onChange={() => setIsDefaultAddress(!isDefaultAddress)}
-            />
-
-
+          {/* 체크박스 */}
+          <Form.Check
+            type="checkbox"
+            id="defaultAddressCheckbox"
+            label="기본 배송지로 설정"
+            checked={isNewAddressDefault}
+            onChange={() => setIsNewAddressDefault(!isNewAddressDefault)}
+          />
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
