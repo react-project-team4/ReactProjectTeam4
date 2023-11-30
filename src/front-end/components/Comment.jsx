@@ -20,6 +20,15 @@ export default function Comment(props) {
       });
   };
 
+  const deleteComment = () => {
+    fetch(`http://localhost:3300/comments/${productData.id}`, {
+      method: "DELETE",
+      headers: { "Content-type": "application/json" },
+    }).then((response) => {
+      console.log(response);
+    });
+  };
+
   return (
     <>
       <hr />
@@ -43,7 +52,7 @@ export default function Comment(props) {
               {item.userId === localStorage.getItem("Email") && (
                 <>
                   <Button style={{ marginRight: "5px" }}>수정</Button>
-                  <Button>삭제</Button>
+                  <Button onClick={deleteComment}>삭제</Button>
                 </>
               )}
             </Col>
