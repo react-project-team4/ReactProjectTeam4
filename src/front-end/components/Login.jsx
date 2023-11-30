@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 import styles from "../css/Register.module.css";
+import bcrypt from "bcryptjs";
 
 const Login = (props) => {
   const setUser = props.setUser;
@@ -40,23 +41,35 @@ const Login = (props) => {
       const combinedData = await getUserData();
 
       if (combinedData && combinedData.users.length > 0) {
-        const isLoginSuccessful = combinedData.users.some(
-          (user) => user.user_id === Email && user.password === Password
+        const loggedInUser = combinedData.users.find(
+          (user) => user.user_id === Email
         );
 
-        if (isLoginSuccessful) {
-          const loggedInUser = combinedData.users.find(
-            (user) => user.user_id === Email && user.password === Password
-          );
+        if (loggedInUser) {
+          const passwordMatch = await new Promise((resolve, reject) => {
+            bcrypt.compare(Password, loggedInUser.password, (err, result) => {
+              if (err) {
+                reject(err);
+                return;
+              }
+              resolve(result);
+            });
+          });
 
-          // 로컬 스토리지에 유저 정보 저장
-          localStorage.setItem("Email", loggedInUser.user_id);
-          localStorage.setItem("Nickname", loggedInUser.nickName);
-          localStorage.setItem("UserType", loggedInUser.userType);
-          setUser(loggedInUser.userType);
-
-          navigate("/");
+          if (passwordMatch) {
+            // 로그인 성공
+            // 로컬 스토리지에 유저 정보 저장
+            localStorage.setItem("Email", loggedInUser.user_id);
+            localStorage.setItem("Nickname", loggedInUser.nickName);
+            localStorage.setItem("UserType", loggedInUser.userType);
+            setUser(loggedInUser.userType);
+            navigate("/");
+          } else {
+            // 비밀번호 불일치
+            alert("이메일 혹은 비밀번호를 다시 확인해주세요.");
+          }
         } else {
+          // 입력된 이메일에 해당하는 사용자가 없음
           alert("이메일 혹은 비밀번호를 다시 확인해주세요.");
         }
       }

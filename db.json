@@ -24,7 +24,9 @@
       "password": "qwer1234",
       "phone": "01234567890",
       "userType": "Seller",
-      "productList": [0],
+      "productList": [
+        0
+      ],
       "id": 1
     },
     {
@@ -35,6 +37,15 @@
       "userType": "Seller",
       "productList": [],
       "id": 2
+    },
+    {
+      "nickName": "testtest12",
+      "user_id": "testtest12@gmail.com",
+      "password": "$2a$10$I1u/mH7WIrN/BfRK7/HIiODSnLT65sJnzpBBckmWu.Vddn8p/LZX2",
+      "phone": "1235356486",
+      "userType": "Seller",
+      "productList": [],
+      "id": 3
     }
   ],
   "admin": [
