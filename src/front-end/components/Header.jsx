@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Row, Col, Navbar, Container, Nav } from "react-bootstrap";
 import styles from "../css/header.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -18,41 +19,42 @@ import {
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 
-// fetch로 다시 바꿨습니다 문송합니다...ㅠㅠ
+
 const Header = (props) => {
   const { user, setUser } = props;
-
-  const handleLogout = () =>{
+  const navigate = useNavigate(); // useNavigate 훅을 사용하여 navigate 객체를사용
+ 
+  const handleLogout = () => {
     localStorage.removeItem("user");
     localStorage.clear();
     setUser("Guest");
-  };
+    // 로그아웃시 로그인 페이지 이동
+    navigate("/login"); // 로그아웃 성공시 로그인 경로로 가게 설정
+    
+    };
 
   // 로그 아웃 함수
   const handleLogin = async (username, password) => {
     try {
-      const response = await fetch('/api/login', {
-        method: 'POST',
+      const response = await fetch("/api/login", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ username, password }),
       });
 
       if (!response.ok) {
-        throw new Error('로그인 실패');
+        throw new Error("로그인 실패");
       }
 
       const data = await response.json();
-      localStorage.setItem('user', JSON.stringify(data));
+      localStorage.setItem("user", JSON.stringify(data));
       setUser(data);
     } catch (error) {
-      console.error('로그인 실패:', error);
+      console.error("로그인 실패:", error);
     }
   };
-  
-
- 
 
   return (
     <Container>
@@ -131,37 +133,40 @@ const Header = (props) => {
                       회원가입
                     </Nav.Link>
                   </>
-                ) : (
-                  (user === "Buyer" ? (
-                    // 구매자
-                    <>
-                      <Nav.Link className={styles.link} as={Link} to="/MyPage">
-                        <FontAwesomeIcon
-                          style={{ marginRight: "6px" }}
-                          icon={faUserCircle}
-                        />
-                        프로필
-                      </Nav.Link>
-                      <Nav.Link className={styles.link} as={Link} to="/MyCart">
-                        <FontAwesomeIcon
-                          style={{ marginRight: "6px" }}
-                          icon={faShoppingBasket}
-                        />
-                        장바구니
-                      </Nav.Link>
-                      
-                      <Nav.Link className={styles.link} onClick={handleLogout}>
-                        <FontAwesomeIcon
-                          style={{ marginRight: "6px" }}
-                          icon={faSignOutAlt}
-                        />
-                        로그아웃
-                      </Nav.Link>
-                    </>
-                  ) : user === "Seller" ? (
-                    // 판매자
-                    <>
-                     <Nav.Link className={styles.link} as={Link} to="/MyProducts">
+                ) : user === "Buyer" ? (
+                  // 구매자
+                  <>
+                    <Nav.Link className={styles.link} as={Link} to="/MyPage">
+                      <FontAwesomeIcon
+                        style={{ marginRight: "6px" }}
+                        icon={faUserCircle}
+                      />
+                      프로필
+                    </Nav.Link>
+                    <Nav.Link className={styles.link} as={Link} to="/MyCart">
+                      <FontAwesomeIcon
+                        style={{ marginRight: "6px" }}
+                        icon={faShoppingBasket}
+                      />
+                      장바구니
+                    </Nav.Link>
+
+                    <Nav.Link className={styles.link} onClick={handleLogout}>
+                      <FontAwesomeIcon
+                        style={{ marginRight: "6px" }}
+                        icon={faSignOutAlt}
+                      />
+                      로그아웃
+                    </Nav.Link>
+                  </>
+                ) : user === "Seller" ? (
+                  // 판매자
+                  <>
+                    <Nav.Link
+                      className={styles.link}
+                      as={Link}
+                      to="/MyProducts"
+                    >
                       <FontAwesomeIcon
                         style={{ marginRight: "6px" }}
                         icon={faListAlt}
@@ -170,46 +175,52 @@ const Header = (props) => {
                     </Nav.Link>
                     <Nav.Link>
                       <FontAwesomeIcon
-                      style={{ marginRight: "6px" }}
-                      icon={faUserCircle}
+                        style={{ marginRight: "6px" }}
+                        icon={faUserCircle}
                       />
                       프로필
                     </Nav.Link>
                     <Nav.Link className={styles.link} onClick={handleLogout}>
-                        <FontAwesomeIcon
-                          style={{ marginRight: "6px" }}
-                          icon={faSignOutAlt}
-                        />
-                        로그아웃
+                      <FontAwesomeIcon
+                        style={{ marginRight: "6px" }}
+                        icon={faSignOutAlt}
+                      />
+                      로그아웃
                     </Nav.Link>
-                     
-                    </>
-                  ) : (
-                    // 어드민
-                    <>
-                    <Nav.Link className={styles.link} as={Link} to="/ManageBuyers">
-                        <FontAwesomeIcon
-                          style={{ marginRight: "6px" }}
-                          icon={faUsers}
-                        />
-                        구매자 관리
-                      </Nav.Link>
-                      <Nav.Link className={styles.link} as={Link} to="/ManageSellers">
-                        <FontAwesomeIcon
-                          style={{ marginRight: "6px" }}
-                          icon={faUsers}
-                        />
-                        판매자 관리
-                      </Nav.Link>
-                      <Nav.Link className={styles.link} onClick={handleLogout}>
-                        <FontAwesomeIcon
-                          style={{ marginRight: "6px" }}
-                          icon={faSignOutAlt}
-                        />
-                        로그아웃
-                      </Nav.Link>
-                    </>
-                  ))
+                  </>
+                ) : (
+                  // 어드민
+                  <>
+                    <Nav.Link
+                      className={styles.link}
+                      as={Link}
+                      to="/ManageBuyers"
+                    >
+                      <FontAwesomeIcon
+                        style={{ marginRight: "6px" }}
+                        icon={faUsers}
+                      />
+                      구매자 관리
+                    </Nav.Link>
+                    <Nav.Link
+                      className={styles.link}
+                      as={Link}
+                      to="/ManageSellers"
+                    >
+                      <FontAwesomeIcon
+                        style={{ marginRight: "6px" }}
+                        icon={faUsers}
+                      />
+                      판매자 관리
+                    </Nav.Link>
+                    <Nav.Link className={styles.link} onClick={handleLogout}>
+                      <FontAwesomeIcon
+                        style={{ marginRight: "6px" }}
+                        icon={faSignOutAlt}
+                      />
+                      로그아웃
+                    </Nav.Link>
+                  </>
                 )}
               </Nav>
             </Container>
@@ -221,6 +232,3 @@ const Header = (props) => {
 };
 
 export default Header;
-
-
-
