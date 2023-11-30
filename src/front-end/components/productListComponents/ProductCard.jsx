@@ -20,7 +20,6 @@ const ProductCard = (props) => {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = products.slice(indexOfFirstItem, indexOfLastItem);
 
-  const loginUserType = localStorage.getItem("UserType");
   const loginUser = localStorage.getItem("Email");
 
   const handleDelete = (item) => {
@@ -67,8 +66,7 @@ const ProductCard = (props) => {
                 style={{ width: "18rem" }}
                 key={item.id}
               >
-                {(loginUserType === "Admin" ||
-                  loginUser === item.seller_id) && (
+                {(user === "Admin" || loginUser === item.seller_id) && (
                   <div>
                     <FontAwesomeIcon
                       icon={faXmark}

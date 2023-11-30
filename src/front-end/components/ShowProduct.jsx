@@ -13,6 +13,7 @@ export default function ShowProduct(props) {
 
   const location = useLocation();
   const productData = location.state.item;
+  const loginUser = localStorage.getItem("Email");
 
   useEffect(() => {
     console.log(location);
@@ -196,15 +197,17 @@ export default function ShowProduct(props) {
             </Button>
           </Col>
         ) : (
-          // Seller, Admin
-          <Col xs="auto" sm="auto" md="auto" lg="auto">
-            <Button variant="outline-dark" style={{ marginRight: "5px" }}>
-              수정
-            </Button>
-            <Button variant="outline-dark" onClick={deleteProduct}>
-              삭제
-            </Button>
-          </Col>
+          (loginUser === productData.seller_id || user === "Admin") && (
+            // Seller, Admin
+            <Col xs="auto" sm="auto" md="auto" lg="auto">
+              <Button variant="outline-dark" style={{ marginRight: "5px" }}>
+                수정
+              </Button>
+              <Button variant="outline-dark" onClick={deleteProduct}>
+                삭제
+              </Button>
+            </Col>
+          )
         )}
       </Row>
       <Row className=" ml-5 mt-5 mb-3">
