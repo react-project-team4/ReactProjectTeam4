@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Col, Navbar, Container, Nav } from "react-bootstrap";
 import styles from "../css/header.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,10 +12,47 @@ import {
   faUserPlus,
   faUserCircle,
   faShoppingBasket,
+  faListAlt,
+  faSignOut,
+  faSignOutAlt,
+  faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 
+// fetch로 다시 바꿨습니다 문송합니다...ㅠㅠ
 const Header = (props) => {
   const { user, setUser } = props;
+
+  const handleLogout = () =>{
+    localStorage.removeItem("user");
+    localStorage.clear();
+    setUser("Guest");
+  };
+
+  // 로그 아웃 함수
+  const handleLogin = async (username, password) => {
+    try {
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      if (!response.ok) {
+        throw new Error('로그인 실패');
+      }
+
+      const data = await response.json();
+      localStorage.setItem('user', JSON.stringify(data));
+      setUser(data);
+    } catch (error) {
+      console.error('로그인 실패:', error);
+    }
+  };
+  
+
+ 
 
   return (
     <Container>
@@ -97,7 +134,6 @@ const Header = (props) => {
                 ) : (
                   (user === "Buyer" ? (
                     // 구매자
-
                     <>
                       <Nav.Link className={styles.link} as={Link} to="/MyPage">
                         <FontAwesomeIcon
@@ -113,13 +149,66 @@ const Header = (props) => {
                         />
                         장바구니
                       </Nav.Link>
+                      
+                      <Nav.Link className={styles.link} onClick={handleLogout}>
+                        <FontAwesomeIcon
+                          style={{ marginRight: "6px" }}
+                          icon={faSignOutAlt}
+                        />
+                        로그아웃
+                      </Nav.Link>
                     </>
                   ) : user === "Seller" ? (
                     // 판매자
-                    <></>
+                    <>
+                     <Nav.Link className={styles.link} as={Link} to="/MyProducts">
+                      <FontAwesomeIcon
+                        style={{ marginRight: "6px" }}
+                        icon={faListAlt}
+                      />
+                      판매 상품 리스트
+                    </Nav.Link>
+                    <Nav.Link>
+                      <FontAwesomeIcon
+                      style={{ marginRight: "6px" }}
+                      icon={faUserCircle}
+                      />
+                      프로필
+                    </Nav.Link>
+                    <Nav.Link className={styles.link} onClick={handleLogout}>
+                        <FontAwesomeIcon
+                          style={{ marginRight: "6px" }}
+                          icon={faSignOutAlt}
+                        />
+                        로그아웃
+                    </Nav.Link>
+                     
+                    </>
                   ) : (
                     // 어드민
-                    <></>
+                    <>
+                    <Nav.Link className={styles.link} as={Link} to="/ManageBuyers">
+                        <FontAwesomeIcon
+                          style={{ marginRight: "6px" }}
+                          icon={faUsers}
+                        />
+                        구매자 관리
+                      </Nav.Link>
+                      <Nav.Link className={styles.link} as={Link} to="/ManageSellers">
+                        <FontAwesomeIcon
+                          style={{ marginRight: "6px" }}
+                          icon={faUsers}
+                        />
+                        판매자 관리
+                      </Nav.Link>
+                      <Nav.Link className={styles.link} onClick={handleLogout}>
+                        <FontAwesomeIcon
+                          style={{ marginRight: "6px" }}
+                          icon={faSignOutAlt}
+                        />
+                        로그아웃
+                      </Nav.Link>
+                    </>
                   ))
                 )}
               </Nav>
@@ -132,3 +221,6 @@ const Header = (props) => {
 };
 
 export default Header;
+
+
+
