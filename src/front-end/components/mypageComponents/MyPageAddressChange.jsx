@@ -5,6 +5,7 @@ import CreateAddressModal from "./CreateAddressModal";
 
 const MyPageAddressChange = () => {
   const [users, setUsers] = useState(null);
+  const [selectedAddressId, setSelectedAddressId] = useState(null);
 
   useEffect(() => {
     fetch("http://localhost:3300/users")
@@ -22,6 +23,38 @@ const MyPageAddressChange = () => {
         }
       });
   }, []);
+
+  const changeDefaultAddress = async () => {
+    if(!selectedAddressId) {
+      alert('배송지를 클릭해주세요');
+      return;
+    }
+
+    const response = await fetch(`http://localhost:3300/users/${users.id}`);
+    const user = await response.json();
+
+    const updatedAddressList = user.addressList.map(address => {
+      if (address.addressId === selectedAddressId) {
+        address.addressType = true;
+      } else {
+        address.addressType = false;
+      }
+      return address;
+    });
+
+    const updatedUser = { ...user, addressList: updatedAddressList };
+
+    await fetch(`http://localhost:3300/users/${users.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(updatedUser)
+    });
+
+    setUsers(updatedUser);
+    setSelectedAddressId(null);
+  };
 
   if (users === null) {
     return <div>Loading...</div>;
@@ -56,25 +89,36 @@ const MyPageAddressChange = () => {
 
   // 기본 배송지가 아닌 나머지 주소들
   const addressDiv = users.addressList.map((address) => {
-  if (address.addressType === false) {
-    return (
-      <div key={address.addressId} className={styles.defaultAddressBox}>
-        <div className={styles.addressBoxText}>
+    if (address.addressType === false) {
+      return (
+        <div key={address.addressId} className={styles.defaultAddressBox}>
+          <div class="form-check">
+            <input 
+              class="form-check-input" 
+              type="radio" 
+              name="flexRadioDefault" 
+              id="flexRadioDefault1" 
+              style={{float:"right"}}
+              onChange={() => setSelectedAddressId(address.addressId)}
+            />
+          </div>
+
+          <div className={styles.addressBoxText}>
+            <br />
+            <h2>{address.addressName}</h2>
+          </div>
           <br />
-          <h2>{address.addressName}</h2>
+          <div className={styles.addressBoxText}>{address.address}</div>
         </div>
-        <br />
-        <div className={styles.addressBoxText}>{address.address}</div>
-      </div>
-    );
-  }
-});
+      );
+    }
+  });
 
   return (
     <div id="box">
-      <input type="button" value="기본 배송지로 변경" />
+      <input type="button" value="기본 배송지로 변경" onClick={changeDefaultAddress} />
       <br />
-      <br />
+      <br />  
       {addressMain}
       {addressDiv}
       <CreateAddressModal />

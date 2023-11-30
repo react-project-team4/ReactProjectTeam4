@@ -10,14 +10,14 @@
         {
           "addressId": "1",
           "addressType": false,
-          "addressName": "본가",
-          "address": "대구광역시 어딘가"
+          "addressName": "영진전문대학교 복현캠퍼스",
+          "address": "대구 북구 복현로 35"
         },
         {
           "addressId": "2",
-          "addressType": false,
+          "addressType": true,
           "addressName": "기숙사",
-          "address": "지천면 금송로 60"
+          "address": "경북 칠곡군 지천면 금송로 60"
         }
       ],
       "cartList": [
