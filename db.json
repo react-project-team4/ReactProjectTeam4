@@ -24,7 +24,7 @@
       "password": "qwer1234",
       "phone": "01234567890",
       "userType": "Seller",
-      "productList": [0],
+      "productList": [],
       "id": 1
     },
     {
@@ -46,7 +46,26 @@
       "userType": "Admin"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "id": 1,
+      "userId": "dlgyqls88@naver.com",
+      "productId": 1,
+      "content": "good"
+    },
+    {
+      "id": 2,
+      "userId": "dlgyqls88@naver.com",
+      "productId": 2,
+      "content": "bad"
+    },
+    {
+      "id": 3,
+      "userId": "dlgyqls88@naver.com",
+      "productId": 1,
+      "content": "bad"
+    }
+  ],
   "orders": [],
   "products": [
     {
@@ -66,7 +85,7 @@
       "content": "입에서 살살 녹는 달달한 초코 파르페입니다.",
       "category": "Food",
       "shippingFee": "1000",
-      "seller_id": "testSeller@gmail.com ",
+      "seller_id": "testSeller@gmail.com",
       "id": 2
     },
     {
