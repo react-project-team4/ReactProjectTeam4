@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 import styles from "../css/Register.module.css";
+import bcrypt from "bcryptjs";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -113,6 +114,8 @@ const Register = () => {
 
   // 회원가입 버튼 클릭, 기입한 정보가 올바르지 않으면 전송 막고 올바르면 유저정보 전송
   const submitButton = (e) => {
+    e.preventDefault();
+
     if (
       !isNicknameValid ||
       !isPhoneNumberValid ||
@@ -120,13 +123,21 @@ const Register = () => {
       !isPasswordValid ||
       !isPasswordDoubleValid
     ) {
-      e.preventDefault();
       alert("올바른 정보를 기입해주세요.");
-    } else {
+      return;
+    }
+
+    // 비밀번호 암호화
+    bcrypt.hash(Password, 10, (err, hashedPassword) => {
+      if (err) {
+        console.error("Error hashing password:", err);
+        return;
+      }
+
       const userData = {
         nickName: Nickname,
         user_id: Email,
-        password: Password,
+        password: hashedPassword,
         phone: PhoneNumber,
         userType: isChecked ? "Seller" : "Buyer",
         addressList: [
@@ -142,7 +153,7 @@ const Register = () => {
       const sellerData = {
         nickName: Nickname,
         user_id: Email,
-        password: Password,
+        password: hashedPassword,
         phone: PhoneNumber,
         userType: isChecked ? "Seller" : "Buyer",
         productList: [],
@@ -169,8 +180,9 @@ const Register = () => {
         .catch((error) => {
           console.log("회원가입 실패", error);
         });
-    }
+    });
   };
+
   ///////////////////////////////////////////////////////////////////////////////////////
 
   return (
