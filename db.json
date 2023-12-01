@@ -15,6 +15,22 @@
       ],
       "cartList": [],
       "id": 3
+    },
+    {
+      "nickName": "sim",
+      "user_id": "sunghwan1332@naver.com",
+      "password": "$2a$10$JFsWsq4qSLt4Ba6FdvECHOPok8fXL3vbB3hDU4Qv/2Ugam92QiOie",
+      "phone": "01067831332",
+      "userType": "Buyer",
+      "addressList": [
+        {
+          "addressId": "",
+          "addressName": "",
+          "address": ""
+        }
+      ],
+      "cartList": [],
+      "id": 4
     }
   ],
   "sellers": [
@@ -24,9 +40,7 @@
       "password": "qwer1234",
       "phone": "01234567890",
       "userType": "Seller",
-      "productList": [
-        0
-      ],
+      "productList": [],
       "id": 1
     },
     {
@@ -57,8 +71,71 @@
       "userType": "Admin"
     }
   ],
-  "comments": [],
-  "orders": [],
+  "comments": [
+    {
+      "id": 1,
+      "user_id": "dlgyqls88@naver.com",
+      "nickName": "dsjfklsadkf",
+      "productId": 1,
+      "content": "good",
+      "updated_at": "2022-12-08T11:20:00.000Z",
+      "created_at": "2022-12-08T11:20:00.000Z"
+    },
+    {
+      "id": 2,
+      "user_id": "dlgyqls88@naver.com",
+      "nickName": "dsjfklsadkf",
+      "productId": 2,
+      "content": "bad",
+      "created_at": "2023-03-08T11:20:00.000Z",
+      "updated_at": "2023-03-08T11:20:00.000Z"
+    },
+    {
+      "id": 3,
+      "user_id": "dlgyqls88@naver.com",
+      "nickName": "dsjfklsadkf",
+      "productId": 1,
+      "content": "bad",
+      "created_at": "2023-07-08T11:20:00.000Z",
+      "updated_at": "2023-07-08T11:20:00.000Z"
+    },
+    {
+      "productId": 1,
+      "user_id": "sunghwan1332@naver.com",
+      "nickName": "sim",
+      "content": "댓글 수정 구현 완료",
+      "created_at": "2023-12-01T02:50:40.661Z",
+      "updated_at": "2023-12-01T03:32:21.995Z",
+      "id": 9
+    },
+    {
+      "productId": 1,
+      "user_id": "sunghwan1332@naver.com",
+      "nickName": "sim",
+      "content": "좋음",
+      "created_at": "2023-12-01T02:50:50.692Z",
+      "updated_at": "2023-12-01T02:50:50.692Z",
+      "id": 10
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "user_id": "dlgyqls88@naver.com",
+      "product_id": 1,
+      "address": "주소",
+      "productQuantity": 3,
+      "created_at": "2022-12-08T11:20:00.000Z"
+    },
+    {
+      "id": 2,
+      "user_id": "sunghwan1332@naver.com",
+      "product_id": 1,
+      "address": "주소",
+      "productQuantity": 3,
+      "created_at": "2022-12-08T11:20:00.000Z"
+    }
+  ],
   "products": [
     {
       "name": "ガスト-블랙 카레 정식",

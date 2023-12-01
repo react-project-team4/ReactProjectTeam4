@@ -30,7 +30,7 @@ export default function ShowProduct(props) {
       .then((jsonData) => {
         // localStorage.getItem(key) // localStorage.getItem("user_id")
         const cartList = jsonData.find(
-          (item) => item.id === localStorage.getItem("user_id")
+          (item) => item.user_id === localStorage.getItem("Email")
         ).cartList;
         console.log(cartList);
         cartList === undefined ? setCartList([]) : setCartList(cartList);
@@ -222,7 +222,7 @@ export default function ShowProduct(props) {
         </Col>
       </Row>
       <Row>
-        <Comment />
+        <Comment productData={productData} />
       </Row>
     </Container>
   );
