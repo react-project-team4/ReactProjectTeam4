@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
-import { redirect } from 'react-router-dom';
-
 
 // 로컬스토리지 유저 Id 빼오기
 localStorage.setItem("userId", "1234");
