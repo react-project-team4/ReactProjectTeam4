@@ -39,6 +39,7 @@ function CreateAddressModal() {
 
   const handleClose = () => {
     setShow(false);
+    setIsNewAddressDefault(false);
   }
 
   const handleShow = () => {

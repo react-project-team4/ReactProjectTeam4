@@ -63,13 +63,12 @@ const updateName = (e) => {
 
   // 서버로 보낼 데이터를 준비합니다.
   const updatedData = {
-    ...userInfo,  // 기존 데이터를 모두 포함
     nickName: e,  // 업데이트할 닉네임만 새로 설정
   };
 
-  // 서버에 PUT 요청을 보냅니다.
+  // 서버에 PATCH 요청을 보냅니다.
   fetch(`http://localhost:3300/users/${userInfo.id}`, {
-    method: "PUT",
+    method: "PATCH",  // PATCH 메서드 사용
     headers: {
       "Content-Type": "application/json",
     },
@@ -83,8 +82,6 @@ const updateName = (e) => {
       setUserInfo(data); 
     })
 };
-
-
 
 
 

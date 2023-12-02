@@ -25,15 +25,12 @@ const MyPageAddressChange = () => {
   }, []);
 
   const changeDefaultAddress = async () => {
-    if(!selectedAddressId) {
+    if (!selectedAddressId) {
       alert('배송지를 클릭해주세요');
       return;
     }
-
-    const response = await fetch(`http://localhost:3300/users/${users.id}`);
-    const user = await response.json();
-
-    const updatedAddressList = user.addressList.map(address => {
+  
+    const updatedAddressList = users.addressList.map(address => {
       if (address.addressId === selectedAddressId) {
         address.addressType = true;
       } else {
@@ -41,20 +38,20 @@ const MyPageAddressChange = () => {
       }
       return address;
     });
-
-    const updatedUser = { ...user, addressList: updatedAddressList };
-
+  
     await fetch(`http://localhost:3300/users/${users.id}`, {
-      method: "PUT",
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(updatedUser)
+      body: JSON.stringify({ addressList: updatedAddressList })
     });
-
-    setUsers(updatedUser);
+  
+    // setUsers에는 기존의 users를 사용하여 업데이트합니다.
+    setUsers({ ...users, addressList: updatedAddressList });
     setSelectedAddressId(null);
   };
+  
 
   if (users === null) {
     return <div>Loading...</div>;
@@ -121,7 +118,7 @@ const MyPageAddressChange = () => {
       <br />  
       {addressMain}
       {addressDiv}
-      <CreateAddressModal />
+      <CreateAddressModal/>
     </div>
   );
 };
