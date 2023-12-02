@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "nickName": "dsjfklsadkf",
+      "nickName": "이효빈",
       "user_id": "dlgyqls88@naver.com",
       "password": "fhf92639465!",
       "phone": "01092639465",
@@ -9,13 +9,13 @@
       "addressList": [
         {
           "addressId": "1",
-          "addressType": false,
+          "addressType": true,
           "addressName": "영진전문대학교 복현캠퍼스",
           "address": "대구 북구 복현로 35"
         },
         {
           "addressId": "2",
-          "addressType": true,
+          "addressType": false,
           "addressName": "기숙사",
           "address": "경북 칠곡군 지천면 금송로 60"
         }
@@ -28,7 +28,7 @@
       "id": 3
     },
     {
-      "nickName": "kimgeonwoo",
+      "nickName": "김건우",
       "user_id": "odorido1003@naver.com",
       "password": "qwer1234!",
       "phone": "01012345678",

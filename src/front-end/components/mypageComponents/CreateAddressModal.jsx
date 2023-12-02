@@ -55,8 +55,6 @@ function CreateAddressModal() {
     const response = await fetch(`http://localhost:3300/users/${$userId}`);
     const user = await response.json();
   
-    console.log("Before Update:", user.addressList);
-  
     const maxAddressId = user.addressList.reduce((maxId, currentAddress) => {
       return Math.max(maxId, Number(currentAddress.addressId));
     }, 0);
@@ -81,8 +79,6 @@ function CreateAddressModal() {
     }
   
     const updatedUser = { ...user, addressList: updatedAddressList };
-  
-    console.log("After Update:", updatedUser.addressList);
   
     const updateResponse = await fetch(`http://localhost:3300/users/${$userId}`, {
       method: "PUT",
