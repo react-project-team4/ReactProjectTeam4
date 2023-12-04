@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { deleteImageFromS3 } from "../../../back-end/services/aws";
 
 const ManageSeller = () => {
   const [sellers, setSellers] = useState([]);
@@ -19,7 +20,7 @@ const ManageSeller = () => {
 
   const deleteProductsOfSeller = (seller_id) => {
     const sellersProducts = products.filter(product => product.seller_id === seller_id);
-
+    sellersProducts.map((item) => { deleteImageFromS3(item.image) })
     sellersProducts.forEach(product => {
       fetch(`http://localhost:3300/products/${product.id}`, {
         method: 'DELETE',
@@ -42,6 +43,7 @@ const ManageSeller = () => {
     })
     .then(() => {
       setSellers(sellers.filter(seller => seller.id !== id));
+      alert("판매자가 성공적으로 삭제되었습니다.");  // 판매자가 삭제되면 알림 띄우기
     })
     .catch(error => console.error('Error:', error));
   };
@@ -61,7 +63,7 @@ const ManageSeller = () => {
       <select value={selectedSeller} onChange={(e) => setSelectedSeller(parseInt(e.target.value, 10))}>
         <option value="">--판매자 선택--</option>
         {sellers.map((seller, index) => (
-          <option value={seller.id} key={index}>{seller.nickName}</option>
+          <option value={seller.id} key={index}>{seller.user_id}</option>
         ))}
       </select>
       <button onClick={handleDelete}>Delete Seller</button>
