@@ -49,7 +49,11 @@ const ProductList = (props) => {
               </form>
             ))}
         </div>
-        <ProductCard products={products} user={user} />
+        <ProductCard
+          products={products}
+          user={user}
+          getProductsData={getProductsData}
+        />
       </>
     </Container>
   );

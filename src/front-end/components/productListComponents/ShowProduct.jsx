@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Button, Col, Row, Container } from "react-bootstrap";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import styles from "../css/productCss/showProduct.module.css";
+import styles from "../../css/productCss/showProduct.module.css";
 import Comment from "./Comment";
+import { deleteImageFromS3 } from "../../../back-end/services/aws";
 
 export default function ShowProduct(props) {
   // const [user, setUser] = useState("Seller"); // testCode
@@ -16,8 +17,6 @@ export default function ShowProduct(props) {
   const loginUser = localStorage.getItem("Email");
 
   useEffect(() => {
-    console.log(location);
-    console.log(productData);
     if (user === "Buyer") getCartList();
 
     if (user === "Admin" || user === "Seller") getProductList();
@@ -32,7 +31,7 @@ export default function ShowProduct(props) {
         const cartList = jsonData.find(
           (item) => item.user_id === localStorage.getItem("Email")
         ).cartList;
-        console.log(cartList);
+
         cartList === undefined ? setCartList([]) : setCartList(cartList);
       });
   };
@@ -46,7 +45,6 @@ export default function ShowProduct(props) {
           (item) => item.user_id === productData.seller_id
         ).productList;
         cartList === undefined ? setCartList([]) : setCartList(cartList);
-        console.log(cartList);
       });
   };
 
@@ -136,10 +134,11 @@ export default function ShowProduct(props) {
     }).then((response) => {
       console.log(response);
     });
+    deleteImageFromS3(productData.image);
 
     navigate(`/ProductList?category=${productData.category}`);
   };
-  // 버튼 기본 className="btn btn-primary btn-lg rounded border-0 text-white"
+
   return (
     <Container className={styles.background}>
       <Row className="mt-2 mb-2">
@@ -201,7 +200,13 @@ export default function ShowProduct(props) {
             // Seller, Admin
             <Col xs="auto" sm="auto" md="auto" lg="auto">
               <Button variant="outline-dark" style={{ marginRight: "5px" }}>
-                수정
+                <Link
+                  to={`/UpdateProduct`}
+                  state={productData}
+                  className="text-decoration-none text-reset"
+                >
+                  수정
+                </Link>
               </Button>
               <Button variant="outline-dark" onClick={deleteProduct}>
                 삭제

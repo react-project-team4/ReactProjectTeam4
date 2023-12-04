@@ -22,12 +22,10 @@ export default function Comment(props) {
         );
 
         comments === null ? setComments([]) : setComments(comments);
-        console.log(comments);
       });
   };
   // 시간을 보기 좋은 형식으로 출력
   const formatDate = (date) => {
-    console.log(date);
     date = new Date(date);
 
     const options = {
@@ -44,7 +42,6 @@ export default function Comment(props) {
     const formattedDate = new Intl.DateTimeFormat("ko-KR", options).format(
       date
     );
-    console.log(formattedDate); // 예시: "2023. 12. 01. 오전 02:14:16"
     return formattedDate;
   };
 
@@ -59,7 +56,6 @@ export default function Comment(props) {
             item.product_id === productData.id
         );
         setCommentForm(commentForm);
-        console.log(commentForm);
       });
   };
 
@@ -121,7 +117,6 @@ export default function Comment(props) {
         updated_at: new Date(),
       }),
     }).then((response) => {
-      console.log(response);
       setUpdateCommentForm(0);
       commentList();
     });
@@ -186,7 +181,8 @@ export default function Comment(props) {
                   {formatDate(item.updated_at)}
                 </Col>
                 <Col className="ms-auto"></Col>
-                {item.user_id === localStorage.getItem("Email") && (
+                {(localStorage.getItem("UserType") === "Admin" ||
+                  item.user_id === localStorage.getItem("Email")) && (
                   <>
                     <Button
                       onClick={() => setUpdateCommentForm(item.id)}
