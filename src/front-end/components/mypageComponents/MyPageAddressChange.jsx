@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import styles from "../../css/myPageCss/MyPageAddressChange.module.css";
 import CreateAddressModal from "./CreateAddressModal";
 
-
 const MyPageAddressChange = () => {
   const [users, setUsers] = useState(null);
   const [selectedAddressId, setSelectedAddressId] = useState(null);
@@ -26,11 +25,11 @@ const MyPageAddressChange = () => {
 
   const changeDefaultAddress = async () => {
     if (!selectedAddressId) {
-      alert('배송지를 클릭해주세요');
+      alert("배송지를 클릭해주세요");
       return;
     }
-  
-    const updatedAddressList = users.addressList.map(address => {
+
+    const updatedAddressList = users.addressList.map((address) => {
       if (address.addressId === selectedAddressId) {
         address.addressType = true;
       } else {
@@ -38,20 +37,19 @@ const MyPageAddressChange = () => {
       }
       return address;
     });
-  
+
     await fetch(`http://localhost:3300/users/${users.id}`, {
       method: "PATCH",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ addressList: updatedAddressList })
+      body: JSON.stringify({ addressList: updatedAddressList }),
     });
-  
+
     // setUsers에는 기존의 users를 사용하여 업데이트합니다.
     setUsers({ ...users, addressList: updatedAddressList });
     setSelectedAddressId(null);
   };
-  
 
   if (users === null) {
     return <div>Loading...</div>;
@@ -90,12 +88,12 @@ const MyPageAddressChange = () => {
       return (
         <div key={address.addressId} className={styles.defaultAddressBox}>
           <div class="form-check">
-            <input 
-              class="form-check-input" 
-              type="radio" 
-              name="flexRadioDefault" 
-              id="flexRadioDefault1" 
-              style={{float:"right"}}
+            <input
+              class="form-check-input"
+              type="radio"
+              name="flexRadioDefault"
+              id="flexRadioDefault1"
+              style={{ float: "right" }}
               onChange={() => setSelectedAddressId(address.addressId)}
             />
           </div>
@@ -113,12 +111,16 @@ const MyPageAddressChange = () => {
 
   return (
     <div id="box">
-      <input type="button" value="기본 배송지로 변경" onClick={changeDefaultAddress} />
+      <input
+        type="button"
+        value="기본 배송지로 변경"
+        onClick={changeDefaultAddress}
+      />
       <br />
-      <br />  
+      <br />
       {addressMain}
       {addressDiv}
-      <CreateAddressModal/>
+      <CreateAddressModal />
     </div>
   );
 };
