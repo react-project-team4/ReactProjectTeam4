@@ -22,7 +22,6 @@ const InputImage = ({ setImage, inputRef }) => {
       onChange={handleFileInput}
       accept="image/*"
       ref={inputRef}
-      required
     />
   );
 };

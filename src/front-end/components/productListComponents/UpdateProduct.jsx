@@ -1,34 +1,40 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import default_Img from "../../imgs/xImage.png";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import styles from "../../css/productCss/updateProduct.module.css";
 import InputImage from "./InputImage";
-import { uploadImageFile } from "../../../back-end/services/aws";
-import styles from "../../css/productCss/createProduct.module.css";
+import default_Img from "../../imgs/xImage.png";
+import {
+  uploadImageFile,
+  deleteImageFromS3,
+} from "../../../back-end/services/aws";
 
-const CreateProduct = () => {
+export default function UpdateProduct() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const productData = location.state;
   const [image, setImage] = useState(null);
   // 등록할 상품의 정보
   const [products, setProducts] = useState({
-    name: "",
-    price: "",
-    image: "",
-    content: "",
-    category: "0",
+    name: productData.name,
+    price: productData.price,
+    image: productData.image,
+    content: productData.content,
+    category: productData.category,
     // 배송비 + 판매자 Id 추가
-    shippingFee: "0",
-    seller_id: localStorage.getItem("Email"),
+    shippingFee: productData.shippingFee,
+    seller_id: productData.seller_id,
   });
   // select tag 유효성 검사
-  const [inputImageValidationMessage, setInputImageValidationMessage] =
-    useState(false);
   const [showValidationMessage, setShowValidationMessage] = useState(false);
   const [
     showShippingFeeValidationMessage,
     setShowShippingFeeValidationMessage,
   ] = useState(false);
+
+  useEffect(() => {
+    autoResize(document.querySelector("textarea"));
+  }, []);
 
   const handleSelectChange = (e) => {
     setProducts((prevProducts) => ({
@@ -56,7 +62,7 @@ const CreateProduct = () => {
   };
 
   // image input 값을 초기화
-  const inputImageRef = useRef(null);
+  const inputImageRef = useRef(productData.image);
   const onClearInput = () => {
     inputImageRef.current.value = "";
   };
@@ -80,8 +86,14 @@ const CreateProduct = () => {
     console.log(products);
     // image 업로드
     try {
-      if (image === null) return setInputImageValidationMessage(true);
-      const imageUrl = await uploadImageFile(image, setImage);
+      let imageUrl = null;
+
+      if (image === null) {
+        imageUrl = productData.image;
+      } else {
+        imageUrl = await uploadImageFile(image, setImage);
+        await deleteImageFromS3(productData.image);
+      }
 
       console.log(imageUrl);
       // 이미지 업로드에 성공하면 products 상태 업데이트
@@ -92,16 +104,19 @@ const CreateProduct = () => {
       console.log(imageUrl);
 
       // 업데이트된 products를 전송
-      const response = await fetch("http://localhost:3300/products", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...products,
-          image: imageUrl,
-        }),
-      });
+      const response = await fetch(
+        `http://localhost:3300/products/${productData.id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            ...products,
+            image: imageUrl,
+          }),
+        }
+      );
 
       if (response.ok) {
         alert("전송 성공");
@@ -139,7 +154,7 @@ const CreateProduct = () => {
                 <select
                   className="selectpicker rounded-pill border-0"
                   aria-label="Default select example"
-                  defaultValue="0"
+                  defaultValue={productData.category}
                   onChange={handleSelectChange}
                 >
                   <option value="0">카테고리 선택</option>
@@ -166,7 +181,7 @@ const CreateProduct = () => {
                   className="rounded-pill border-0"
                   type="text"
                   name="name"
-                  placeholder="상품 이름"
+                  defaultValue={productData.name}
                   onBlur={changeData}
                   required
                 />
@@ -179,7 +194,7 @@ const CreateProduct = () => {
                   className="rounded-pill border-0"
                   type="text"
                   name="price"
-                  placeholder="가격"
+                  defaultValue={productData.price}
                   onBlur={changeData}
                   pattern="[0-9]+"
                   required
@@ -196,7 +211,7 @@ const CreateProduct = () => {
                   onBlur={changeData}
                   onKeyUp={(e) => autoResize(e.target)}
                   onKeyDown={(e) => autoResize(e.target)}
-                  placeholder="상품 설명"
+                  defaultValue={productData.content}
                   rows="1"
                   required
                 ></textarea>
@@ -209,17 +224,6 @@ const CreateProduct = () => {
                   <label className="input-group-text">Upload</label>
                   <InputImage setImage={setImage} inputRef={inputImageRef} />
                 </div>
-                {inputImageValidationMessage && (
-                  <p
-                    style={{
-                      color: "red",
-                      marginTop: "1rem",
-                      marginLeft: "20px",
-                    }}
-                  >
-                    이미지를 선택하세요.
-                  </p>
-                )}
               </td>
             </tr>
             <tr className="align-items-center">
@@ -227,6 +231,7 @@ const CreateProduct = () => {
               <td className="p-5">
                 <img
                   src="..."
+                  // src={productData.image}
                   onError={onErrorImg}
                   className="rounded"
                   alt=""
@@ -247,7 +252,7 @@ const CreateProduct = () => {
                 <select
                   className="selectpicker"
                   aria-label="Default select example"
-                  defaultValue="0"
+                  defaultValue={productData.shippingFee}
                   onChange={handleShippingFeeChange}
                 >
                   <option value="0">배송비 선택</option>
@@ -292,6 +297,4 @@ const CreateProduct = () => {
       </form>
     </Container>
   );
-};
-
-export default CreateProduct;
+}

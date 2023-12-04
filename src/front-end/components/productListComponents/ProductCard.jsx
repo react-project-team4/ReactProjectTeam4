@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import styles from "../../css/productCss/productList.module.css";
 import Pagination from "react-js-pagination";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,10 +7,9 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { deleteImageFromS3 } from "../../../back-end/services/aws";
 
 const ProductCard = (props) => {
-  const { products, user } = props;
+  const { products, user, getProductsData } = props;
   const itemsPerPage = 8;
   const [activePage, setActivePage] = useState(1);
-  const navigate = useNavigate();
 
   const handlePageChange = (pageNumber) => {
     setActivePage(pageNumber);
@@ -39,9 +38,9 @@ const ProductCard = (props) => {
           console.error(`Failed to delete product. Status: ${response.status}`);
           return;
         }
-        navigate(`/ProductList?category=${item.category}`);
         console.log(response);
         deleteImageFromS3(item.image);
+        getProductsData(item.category);
       })
       .catch((error) => {
         console.error("Error during DELETE request:", error);
