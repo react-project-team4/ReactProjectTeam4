@@ -7,6 +7,9 @@ import Register from "./front-end/components/Register";
 import Login from "./front-end/components/Login";
 import CreateProduct from "./front-end/components/productListComponents/CreateProduct";
 import UpdateProduct from "./front-end/components/productListComponents/UpdateProduct";
+//admin
+import ManageSeller from "./front-end/components/adminMange/ManageSeller"
+import ManageBuyer from "./front-end/components/adminMange/ManageBuyer" 
 import {
   BrowserRouter as Router,
   Routes,
@@ -17,6 +20,8 @@ import { Container } from "react-bootstrap";
 import ShowProduct from "./front-end/components/productListComponents/ShowProduct";
 import MyPage from "./front-end/components/mypageComponents/MyPage";
 import styles from "./front-end/css/app.module.css";
+
+
 
 const Layout = (props) => {
   const { user, setUser } = props;
@@ -51,6 +56,9 @@ const App = () => {
           <Route path="/CreateProduct" element={<CreateProduct />} />
           <Route path="/MyPage" element={<MyPage />} />
           <Route path="/UpdateProduct" element={<UpdateProduct />} />
+          <Route path="/ManageSeller" element={<ManageSeller/>} />
+          <Route path="/ManageBuyer" element={<ManageBuyer/>} />
+          
         </Route>
       </Routes>
     </Router>
