@@ -168,7 +168,7 @@ const Header = (props) => {
                     <Nav.Link
                       className={styles.link}
                       as={Link}
-                      to="/ManageBuyers"
+                      to="/ManageBuyer"
                     >
                       <FontAwesomeIcon
                         style={{ marginRight: "6px" }}
@@ -179,7 +179,7 @@ const Header = (props) => {
                     <Nav.Link
                       className={styles.link}
                       as={Link}
-                      to="/ManageSellers"
+                      to="/ManageSeller"
                     >
                       <FontAwesomeIcon
                         style={{ marginRight: "6px" }}
@@ -191,6 +191,7 @@ const Header = (props) => {
                       <FontAwesomeIcon
                         style={{ marginRight: "6px" }}
                         icon={faSignOutAlt}
+                      
                       />
                       로그아웃
                     </Nav.Link>
