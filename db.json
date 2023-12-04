@@ -2,9 +2,9 @@
   "users": [
     {
       "nickName": "이효빈",
-      "user_id": "dlgyqls88@naver.com",
-      "password": "fhf92639465!",
-      "phone": "01092639465",
+      "user_id": "good123@gmail.com",
+      "password": "$2a$10$dhsHrUNN9MJHdOWslkUWEO0dOL5K0s.7fd03zDdtJo50s3Q95F0xa",
+      "phone": "01092889232",
       "userType": "Buyer",
       "addressList": [
         {
@@ -30,7 +30,7 @@
     {
       "nickName": "김건우",
       "user_id": "odorido1003@naver.com",
-      "password": "qwer1234!",
+      "password": "$2a$12$tknC8TCnLuIY4hk7huougeiJb9bAXtwpKzWJ9yg5oOcTojvAQWbxa",
       "phone": "01012345678",
       "userType": "Buyer",
       "addressList": [
@@ -85,6 +85,15 @@
       "userType": "Seller",
       "productList": [],
       "id": 3
+    },
+    {
+      "nickName": "dsassad",
+      "user_id": "dasdsa@dasd.dsa",
+      "password": "$2a$10$We/UJTJ1NiiDi4KIwZaAQ.7goCU4dpCsJiTVtgngsbHmJ5LEdNwVq",
+      "phone": "3123123",
+      "userType": "Seller",
+      "productList": [],
+      "id": 4
     }
   ],
   "admin": [

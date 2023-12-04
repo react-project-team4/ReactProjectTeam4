@@ -14,8 +14,9 @@ const MyPageOrderList = () => {
           (e) => e.user_id === localStorage.getItem("Email")
         );
 
-        if ($user) {
+        if ($user.length > 0) {
           setUsers($user[0]);
+          console.log(users)
         }
       });
 
@@ -26,14 +27,17 @@ const MyPageOrderList = () => {
       });
   }, []);
 
-  if (users === null || products === null) {
+  if (users === null || products === null || !users.cartList) {
     return <div>Loading...</div>;
   }
 
   const orderList = users.cartList.map((cartItem, index) => {
     const product = products.find((product) => product.id === cartItem);
 
-    let sumPrice = product.shippingFee === "무료" ? Number(product.price) : Number(product.price) + Number(product.shippingFee)
+    let sumPrice =
+    product.shippingFee === "무료"
+      ? Number(product.price)
+      : Number(product.price) + Number(product.shippingFee);
 
     return (
       <tr key={index}>
