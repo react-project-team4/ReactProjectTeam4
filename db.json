@@ -1,0 +1,245 @@
+{
+  "users": [
+    {
+      "nickName": "이효빈",
+      "user_id": "good123@gmail.com",
+      "password": "$2a$10$dhsHrUNN9MJHdOWslkUWEO0dOL5K0s.7fd03zDdtJo50s3Q95F0xa",
+      "phone": "01092889232",
+      "userType": "Buyer",
+      "addressList": [
+        {
+          "addressId": "1",
+          "addressType": true,
+          "addressName": "영진전문대학교 복현캠퍼스",
+          "address": "대구 북구 복현로 35"
+        },
+        {
+          "addressId": "2",
+          "addressType": false,
+          "addressName": "기숙사",
+          "address": "경북 칠곡군 지천면 금송로 60"
+        }
+      ],
+      "cartList": [
+        1,
+        2,
+        3
+      ],
+      "id": 3
+    },
+    {
+      "nickName": "김건우",
+      "user_id": "odorido1003@naver.com",
+      "password": "$2a$12$tknC8TCnLuIY4hk7huougeiJb9bAXtwpKzWJ9yg5oOcTojvAQWbxa",
+      "phone": "01012345678",
+      "userType": "Buyer",
+      "addressList": [
+        {
+          "addressType": true,
+          "addressId": "1",
+          "addressName": "본가",
+          "address": "포항시"
+        },
+        {
+          "addressType": false,
+          "addressId": "2",
+          "addressName": "기숙사",
+          "address": "지천면 금송로 60"
+        }
+      ],
+      "cartList": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "id": 4
+    }
+  ],
+  "sellers": [
+    {
+      "nickName": "testSeller",
+      "user_id": "testSeller@gmail.com",
+      "password": "$2a$12$K39FV9OdVlSy2FcOGKnBf.w70VVe50VzvatgTJ5lYQKjsV9KPx0mK",
+      "phone": "01234567890",
+      "userType": "Seller",
+      "productList": [
+        0
+      ],
+      "id": 1
+    },
+    {
+      "nickName": "daehan",
+      "user_id": "daehan821@naver.com",
+      "password": "$2a$12$vC.9TJBFBwQyjl6MnnO/zeFcv3FR0PvyIVPNX08S3ov/BQr5tBY3C",
+      "phone": "01068089833",
+      "userType": "Seller",
+      "productList": [],
+      "id": 2
+    },
+    {
+      "nickName": "testtest12",
+      "user_id": "testtest12@gmail.com",
+      "password": "$2a$10$I1u/mH7WIrN/BfRK7/HIiODSnLT65sJnzpBBckmWu.Vddn8p/LZX2",
+      "phone": "1235356486",
+      "userType": "Seller",
+      "productList": [],
+      "id": 3
+    },
+    {
+      "nickName": "dsassad",
+      "user_id": "dasdsa@dasd.dsa",
+      "password": "$2a$10$We/UJTJ1NiiDi4KIwZaAQ.7goCU4dpCsJiTVtgngsbHmJ5LEdNwVq",
+      "phone": "3123123",
+      "userType": "Seller",
+      "productList": [],
+      "id": 4
+    }
+  ],
+  "admin": [
+    {
+      "id": 1,
+      "user_id": "Admin",
+      "nickName": "Admin",
+      "password": "$2a$12$X3zF9.6VH3xoULCo1p2waurwbc/tnr8CtB4UhjuUXplKbWQSzknUm",
+      "userType": "Admin"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "user_id": "dlgyqls88@naver.com",
+      "nickName": "dsjfklsadkf",
+      "productId": 1,
+      "content": "good",
+      "updated_at": "2022-12-08T11:20:00.000Z",
+      "created_at": "2022-12-08T11:20:00.000Z"
+    },
+    {
+      "id": 2,
+      "user_id": "dlgyqls88@naver.com",
+      "nickName": "dsjfklsadkf",
+      "productId": 2,
+      "content": "bad",
+      "created_at": "2023-03-08T11:20:00.000Z",
+      "updated_at": "2023-03-08T11:20:00.000Z"
+    },
+    {
+      "id": 3,
+      "user_id": "dlgyqls88@naver.com",
+      "nickName": "dsjfklsadkf",
+      "productId": 1,
+      "content": "bad",
+      "created_at": "2023-07-08T11:20:00.000Z",
+      "updated_at": "2023-12-01T05:27:46.017Z"
+    },
+    {
+      "productId": 1,
+      "user_id": "sunghwan1332@naver.com",
+      "nickName": "sim",
+      "content": "댓글 수정 구현 완료",
+      "created_at": "2023-12-01T02:50:40.661Z",
+      "updated_at": "2023-12-01T04:57:34.571Z",
+      "id": 9
+    },
+    {
+      "productId": 1,
+      "user_id": "sunghwan1332@naver.com",
+      "nickName": "sim",
+      "content": "좋음",
+      "created_at": "2023-12-01T02:50:50.692Z",
+      "updated_at": "2023-12-01T02:50:50.692Z",
+      "id": 10
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "user_id": "dlgyqls88@naver.com",
+      "product_id": 1,
+      "address": "주소",
+      "productQuantity": 3,
+      "created_at": "2022-12-08T11:20:00.000Z"
+    },
+    {
+      "id": 2,
+      "user_id": "sunghwan1332@naver.com",
+      "product_id": 1,
+      "address": "주소",
+      "productQuantity": 3,
+      "created_at": "2022-12-08T11:20:00.000Z"
+    }
+  ],
+  "products": [
+    {
+      "name": "ガスト-블랙 카레 정식",
+      "price": "11000",
+      "image": "https://myreactproject04.s3.ap-northeast-2.amazonaws.com/Images/레스토랑 음식.jpg",
+      "content": "음식 구성:\n계란후라이 1,\n치킨난반 1, 치즈함바그 1,\n밥, 블랙 카레, 가라아게 2, \n새우튀김 1",
+      "category": "Food",
+      "shippingFee": "2000",
+      "seller_id": "testSeller@gmail.com",
+      "id": 1
+    },
+    {
+      "name": "초코 파르페",
+      "price": "3000",
+      "image": "https://myreactproject04.s3.ap-northeast-2.amazonaws.com/Images/파르페.jpg",
+      "content": "입에서 살살 녹는 달달한 초코 파르페입니다.",
+      "category": "Food",
+      "shippingFee": "1000",
+      "seller_id": "testSeller@gmail.com",
+      "id": 2
+    },
+    {
+      "name": "모모치해변",
+      "price": "5000",
+      "image": "https://myreactproject04.s3.ap-northeast-2.amazonaws.com/Images/모모치해변.jpg",
+      "content": "시원한~ 바닷바람을 맞을 수 있는 행복 가득 모모치 해변 여행 입니다",
+      "category": "Travel",
+      "shippingFee": "무료",
+      "seller_id": "daehan821@naver.com",
+      "id": 3
+    },
+    {
+      "name": "후쿠오카 타워",
+      "price": "10000",
+      "image": "https://myreactproject04.s3.ap-northeast-2.amazonaws.com/Images/후쿠오카 타워.jpg",
+      "content": "후쿠오카 타워 입장료 : 1000엔 => 10000원\n후쿠오카에 왔다면 야경은 여기서!\n연인 혹은 가족과 오기 좋습니다.",
+      "category": "Travel",
+      "shippingFee": "무료",
+      "seller_id": "daehan821@naver.com",
+      "id": 4
+    },
+    {
+      "name": "장어 덮밥",
+      "price": "20000",
+      "image": "https://myreactproject04.s3.ap-northeast-2.amazonaws.com/Images/장어덮밥.jpg",
+      "content": "가격은 조금 비싸지만 일본 후쿠오카에 간다면 꼭 먹어야지요 \n장어가 실합니다!",
+      "category": "Food",
+      "shippingFee": "3000",
+      "seller_id": "daehan821@naver.com",
+      "id": 5
+    },
+    {
+      "name": "쿠마몬스퀘어",
+      "price": "90000",
+      "image": "https://myreactproject04.s3.ap-northeast-2.amazonaws.com/Images/쿠마몬스퀘어.jpg",
+      "content": "구마모토에 왔다면 구마모토성도 좋지만 가족끼리 왔다면 여기도 추천!\n각종 쿠마몬 굿즈들과 쿠마몬과 함께 사진도 찰칵!",
+      "category": "Travel",
+      "shippingFee": "무료",
+      "seller_id": "daehan821@naver.com",
+      "id": 6
+    },
+    {
+      "name": "츠케멘",
+      "price": "15000",
+      "image": "https://myreactproject04.s3.ap-northeast-2.amazonaws.com/Images/츠케멘.jpg",
+      "content": "미나미 텐진쪽에 위치한 츠케멘 전문점에서 박성철 교수님께서 사주신 츠케멘\n생각 보다 매우니 초심자는 조심!",
+      "category": "Food",
+      "shippingFee": "4000",
+      "seller_id": "daehan821@naver.com",
+      "id": 7
+    }
+  ]
+}

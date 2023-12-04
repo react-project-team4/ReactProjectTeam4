@@ -1,0 +1,13 @@
+.co {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.fo {
+  width: 100%;
+  border-radius: 10px;
+  background-color: #aaaaaa;
+  display: flex;
+  justify-content: center;
+}
