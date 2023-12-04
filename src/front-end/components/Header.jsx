@@ -19,41 +19,15 @@ import {
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 
-
 const Header = (props) => {
   const { user, setUser } = props;
   const navigate = useNavigate(); // useNavigate 훅을 사용하여 navigate 객체를사용
- 
+  // 로그 아웃 함수
   const handleLogout = () => {
-    localStorage.removeItem("user");
     localStorage.clear();
     setUser("Guest");
     // 로그아웃시 로그인 페이지 이동
     navigate("/login"); // 로그아웃 성공시 로그인 경로로 가게 설정
-    
-    };
-
-  // 로그 아웃 함수
-  const handleLogin = async (username, password) => {
-    try {
-      const response = await fetch("/api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      });
-
-      if (!response.ok) {
-        throw new Error("로그인 실패");
-      }
-
-      const data = await response.json();
-      localStorage.setItem("user", JSON.stringify(data));
-      setUser(data);
-    } catch (error) {
-      console.error("로그인 실패:", error);
-    }
   };
 
   return (

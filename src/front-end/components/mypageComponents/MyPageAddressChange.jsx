@@ -2,9 +2,6 @@ import React, { useEffect, useState } from "react";
 import styles from "../../css/myPageCss/MyPageAddressChange.module.css";
 import CreateAddressModal from "./CreateAddressModal";
 
-// 로컬스토리지 유저 Id 빼오기
-localStorage.setItem("userId", "1234");
-
 const MyPageAddressChange = () => {
   const [users, setUsers] = useState(null);
 
