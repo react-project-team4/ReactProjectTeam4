@@ -6,12 +6,10 @@ const ManageBuyer = () => {
   const [selectedUser, setSelectedUser] = useState(null);
 
   useEffect(() => {
-    // 서버에서 사용자 정보 가져오기
     fetch('http://localhost:3300/users')
       .then(response => response.json())
       .then(data => setUsers(data));
 
-    // 서버에서 상품 정보 가져오기
     fetch('http://localhost:3300/products')
       .then(response => response.json())
       .then(data => setProducts(data));
@@ -46,11 +44,25 @@ const ManageBuyer = () => {
 
     removeUserFromProducts(user.user_id);
 
+    // 사용자가 작성한 댓글 삭제
+    fetch(`http://localhost:3300/comments?user_id=${user.user_id}`)
+    .then(response => response.json())
+    .then(userComments => {
+      userComments.forEach(comment => {
+        fetch(`http://localhost:3300/comments/${comment.id}`, {
+          method: 'DELETE',
+        })
+        .catch(error => console.error('Error:', error));
+      });
+    });
+
+    // 사용자 삭제
     fetch(`http://localhost:3300/users/${id}`, {
       method: 'DELETE',
     })
     .then(() => {
       setUsers(users.filter(user => user.id !== id));
+      alert("사용자가 성공적으로 삭제되었습니다.");
     })
     .catch(error => console.error('Error:', error));
   };
@@ -70,7 +82,7 @@ const ManageBuyer = () => {
       <select value={selectedUser} onChange={(e) => setSelectedUser(e.target.value)}>
         <option value="">--사용자 선택--</option>
         {users.map((user, index) => (
-          <option value={user.id} key={index}>{user.nickName}</option>
+          <option value={user.id} key={index}>{user.user_id}</option>
         ))}
       </select>
       <button onClick={handleDelete}>Delete User</button>
