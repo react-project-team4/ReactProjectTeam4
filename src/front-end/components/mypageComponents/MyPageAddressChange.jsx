@@ -4,6 +4,7 @@ import CreateAddressModal from "./CreateAddressModal";
 
 const MyPageAddressChange = () => {
   const [users, setUsers] = useState(null);
+  const [selectedAddressId, setSelectedAddressId] = useState(null);
 
   useEffect(() => {
     fetch("http://localhost:3300/users")
@@ -12,14 +13,43 @@ const MyPageAddressChange = () => {
         // localStorage에 있는 userId랑 같은 사람 찾아서 그 사람의 배송지 목록을
         // users에 집어넣기
         const $user = data.filter(
-          (e) => e.id === localStorage.getItem("userId")
+          (e) => e.user_id === localStorage.getItem("Email")
         );
         // console.log($user[0].addressList) 이게 주소들가 담긴 배열임
+
         if ($user) {
-          setUsers($user[0].addressList);
+          setUsers($user[0]);
         }
       });
   }, []);
+
+  const changeDefaultAddress = async () => {
+    if (!selectedAddressId) {
+      alert("배송지를 클릭해주세요");
+      return;
+    }
+
+    const updatedAddressList = users.addressList.map((address) => {
+      if (address.addressId === selectedAddressId) {
+        address.addressType = true;
+      } else {
+        address.addressType = false;
+      }
+      return address;
+    });
+
+    await fetch(`http://localhost:3300/users/${users.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ addressList: updatedAddressList }),
+    });
+
+    // setUsers에는 기존의 users를 사용하여 업데이트합니다.
+    setUsers({ ...users, addressList: updatedAddressList });
+    setSelectedAddressId(null);
+  };
 
   if (users === null) {
     return <div>Loading...</div>;
@@ -37,7 +67,7 @@ const MyPageAddressChange = () => {
   }
 
   // 기본 배송지로 지정한 주소
-  const addressMain = users.map((address) => {
+  const addressMain = users.addressList.map((address) => {
     if (address.addressType === true) {
       return (
         <div key={address.addressId} className={styles.mainAddressBox}>
@@ -53,10 +83,21 @@ const MyPageAddressChange = () => {
   });
 
   // 기본 배송지가 아닌 나머지 주소들
-  const addressDiv = users.map((address) => {
+  const addressDiv = users.addressList.map((address) => {
     if (address.addressType === false) {
       return (
         <div key={address.addressId} className={styles.defaultAddressBox}>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="flexRadioDefault"
+              id="flexRadioDefault1"
+              style={{ float: "right" }}
+              onChange={() => setSelectedAddressId(address.addressId)}
+            />
+          </div>
+
           <div className={styles.addressBoxText}>
             <br />
             <h2>{address.addressName}</h2>
@@ -70,7 +111,11 @@ const MyPageAddressChange = () => {
 
   return (
     <div id="box">
-      <input type="button" value="기본 배송지로 변경" />
+      <input
+        type="button"
+        value="기본 배송지로 변경"
+        onClick={changeDefaultAddress}
+      />
       <br />
       <br />
       {addressMain}
