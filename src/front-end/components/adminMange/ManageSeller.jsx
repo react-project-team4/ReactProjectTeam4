@@ -7,12 +7,10 @@ const ManageSeller = () => {
   const [selectedSeller, setSelectedSeller] = useState(null);
 
   useEffect(() => {
-    // 서버에서 판매자 정보 가져오기
     fetch('http://localhost:3300/sellers')
       .then(response => response.json())
       .then(data => setSellers(data));
 
-    // 서버에서 상품 정보 가져오기
     fetch('http://localhost:3300/products')
       .then(response => response.json())
       .then(data => setProducts(data));
@@ -43,15 +41,18 @@ const ManageSeller = () => {
     })
     .then(() => {
       setSellers(sellers.filter(seller => seller.id !== id));
-      alert("판매자가 성공적으로 삭제되었습니다.");  // 판매자가 삭제되면 알림 띄우기
+      alert("판매자가 성공적으로 삭제되었습니다.");
     })
     .catch(error => console.error('Error:', error));
   };
 
   const handleDelete = () => {
     if (selectedSeller) {
-      deleteSeller(parseInt(selectedSeller));
-      setSelectedSeller(null);
+      const confirmDelete = window.confirm('정말로 삭제하시겠습니까?');
+      if (confirmDelete) {
+        deleteSeller(parseInt(selectedSeller));
+        setSelectedSeller(null);
+      }
     } else {
       alert("삭제할 판매자를 선택해주세요.");
     }
@@ -60,7 +61,7 @@ const ManageSeller = () => {
   return (
     <div>
       <h1>Delete Seller</h1>
-      <select value={selectedSeller} onChange={(e) => setSelectedSeller(parseInt(e.target.value, 10))}>
+      <select value={selectedSeller} onChange={(e) => setSelectedSeller(e.target.value)}>
         <option value="">--판매자 선택--</option>
         {sellers.map((seller, index) => (
           <option value={seller.id} key={index}>{seller.user_id}</option>
@@ -72,5 +73,6 @@ const ManageSeller = () => {
 };
 
 export default ManageSeller;
+
 
 

@@ -56,6 +56,18 @@ const ManageBuyer = () => {
       });
     });
 
+    // 사용자가 생성한 주문 삭제
+    fetch(`http://localhost:3300/orders?user_id=${user.user_id}`)
+    .then(response => response.json())
+    .then(userOrders => {
+      userOrders.forEach(order => {
+        fetch(`http://localhost:3300/orders/${order.id}`, {
+          method: 'DELETE',
+        })
+        .catch(error => console.error('Error:', error));
+      });
+    });
+
     // 사용자 삭제
     fetch(`http://localhost:3300/users/${id}`, {
       method: 'DELETE',
@@ -69,8 +81,11 @@ const ManageBuyer = () => {
 
   const handleDelete = () => {
     if (selectedUser) {
-      deleteUser(parseInt(selectedUser));
-      setSelectedUser(null);
+      const confirmDelete = window.confirm('정말로 삭제하시겠습니까?');
+      if (confirmDelete) {
+        deleteUser(parseInt(selectedUser));
+        setSelectedUser(null);
+      }
     } else {
       alert("삭제할 사용자를 선택해주세요.");
     }
@@ -78,7 +93,7 @@ const ManageBuyer = () => {
 
   return (
     <div>
-      <h1>Delete User</h1>
+      <h1>Delete Buyer</h1>
       <select value={selectedUser} onChange={(e) => setSelectedUser(e.target.value)}>
         <option value="">--사용자 선택--</option>
         {users.map((user, index) => (
@@ -91,3 +106,4 @@ const ManageBuyer = () => {
 };
 
 export default ManageBuyer;
+
