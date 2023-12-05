@@ -193,6 +193,14 @@
       "address": "주소",
       "productQuantity": 3,
       "created_at": "2022-12-08T11:20:00.000Z"
+    },
+    {
+      "id": 5,
+      "user_id": "good123@gmail.com",
+      "product_id": 3,
+      "address": "주소",
+      "productQuantity": 2,
+      "created_at": "2022-12-08T11:20:00.000Z"
     }
   ],
   "products": [
