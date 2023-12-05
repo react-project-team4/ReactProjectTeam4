@@ -17,6 +17,7 @@ import { Container } from "react-bootstrap";
 import ShowProduct from "./front-end/components/productListComponents/ShowProduct";
 import MyPage from "./front-end/components/mypageComponents/MyPage";
 import styles from "./front-end/css/app.module.css";
+import MyCart from "./front-end/components/MyCart";
 
 const Layout = (props) => {
   const { user, setUser } = props;
@@ -51,6 +52,7 @@ const App = () => {
           <Route path="/CreateProduct" element={<CreateProduct />} />
           <Route path="/MyPage" element={<MyPage />} />
           <Route path="/UpdateProduct" element={<UpdateProduct />} />
+          <Route path="/MyCart" element={<MyCart />} />
         </Route>
       </Routes>
     </Router>
