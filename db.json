@@ -57,7 +57,7 @@
     }
   ],
   "sellers": [
-    {   
+    {
       "nickName": "testSeller",
       "user_id": "testSeller@gmail.com",
       "password": "$2a$12$K39FV9OdVlSy2FcOGKnBf.w70VVe50VzvatgTJ5lYQKjsV9KPx0mK",
@@ -167,7 +167,7 @@
       "user_id": "good123@gmail.com",
       "product_id": 1,
       "address": "주소",
-      "productQuantity": 3,
+      "productQuantity": 10,
       "created_at": "2022-12-08T11:20:00.000Z"
     },
     {
@@ -181,10 +181,10 @@
     {
       "id": 3,
       "user_id": "good123@gmail.com",
-      "product_id": 2,
+      "product_id": 6,
       "address": "주소",
-      "productQuantity": 1,
-      "created_at": "2023-01-08T08:16:00.000Z"
+      "productQuantity": 3,
+      "created_at": "2022-12-08T11:20:00.000Z"
     }
   ],
   "products": [
