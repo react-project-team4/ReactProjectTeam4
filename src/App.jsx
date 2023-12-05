@@ -21,6 +21,7 @@ import ShowProduct from "./front-end/components/productListComponents/ShowProduc
 import MyPage from "./front-end/components/mypageComponents/MyPage";
 import styles from "./front-end/css/app.module.css";
 import MyCart from "./front-end/components/MyCart";
+import Payment from "./front-end/components/Payment";
 
 
 
@@ -60,6 +61,7 @@ const App = () => {
           <Route path="/ManageSeller" element={<ManageSeller/>} />
           <Route path="/ManageBuyer" element={<ManageBuyer/>} />
           <Route path="/MyCart" element={<MyCart/>} />
+          <Route path="/Payment" element={<Payment/>} />
           
         </Route>
       </Routes>

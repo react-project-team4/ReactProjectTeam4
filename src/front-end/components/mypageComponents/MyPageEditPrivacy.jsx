@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from "../../css/myPageCss/MyPageEditPrivacy.module.css";
+import { Table } from 'react-bootstrap';
 
 const bcrypt = require('bcryptjs');
 
@@ -229,10 +230,20 @@ const MyPageEditPrivacy = () => {
   return (
     <>
       {!passwordEntered ? (
+        <>
+        <h3>회원정보확인</h3>
+        {localStorage.getItem("Nickname")}님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인 합니다.
+        <br></br><br></br>        
         <div className="input-group mb-3">
+          <label>아이디</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="text" value={localStorage.getItem("Email")} />
+        </div>
+        <div className="input-group mb-3">
+          <label>비밀번호</label>&nbsp;&nbsp;
           <input type="password" id="passwordInput" placeholder="비밀번호를 입력해주세요" />
           <button onClick={checkPassword}>확인</button>
         </div>
+        </>
       ) : (
         <ViewPrivacy 
           userInfo={userInfo}
