@@ -185,6 +185,14 @@
       "address": "주소",
       "productQuantity": 3,
       "created_at": "2022-12-08T11:20:00.000Z"
+    },
+    {
+      "id": 4,
+      "user_id": "asdfzxcv@naver.com",
+      "product_id": 1,
+      "address": "주소",
+      "productQuantity": 3,
+      "created_at": "2022-12-08T11:20:00.000Z"
     }
   ],
   "products": [
