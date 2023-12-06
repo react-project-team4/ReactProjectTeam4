@@ -98,7 +98,7 @@ function CreateAddressModal() {
 
   return (
     <>
-      <Button variant="primary" style={{ width: '600px' }} onClick={handleShow}>
+      <Button variant="primary" style={{ width: '600px', margin: "0"}} onClick={handleShow}>
         배송지 추가
       </Button>
 

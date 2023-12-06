@@ -139,7 +139,7 @@ const Header = (props) => {
                     <Nav.Link
                       className={styles.link}
                       as={Link}
-                      to="/MyProducts"
+                      to="/MyProduct"
                     >
                       <FontAwesomeIcon
                         style={{ marginRight: "6px" }}
