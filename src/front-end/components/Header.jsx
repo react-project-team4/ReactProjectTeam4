@@ -147,7 +147,11 @@ const Header = (props) => {
                       />
                       판매 상품 리스트
                     </Nav.Link>
-                    <Nav.Link>
+                    <Nav.Link
+                      className={styles.link}
+                      as={Link}
+                      to="/SellerMyPage"
+                      >
                       <FontAwesomeIcon
                         style={{ marginRight: "6px" }}
                         icon={faUserCircle}

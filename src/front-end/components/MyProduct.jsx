@@ -2,9 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Card, Table, Container, Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-localStorage.setItem("Nickname", "sellerkim");
-localStorage.setItem("Email", "ddadas@dad.dsada");
-
 const MyProduct = () => {
   const [productId, setProductId] = useState(null);
   const [products, setProducts] = useState([]);
@@ -49,25 +46,20 @@ const MyProduct = () => {
   const handleDelete = async () => {
     if (selectedProduct) {
       try {
-        // Step 1: Fetch the current seller data
         const sellerResponse = await fetch("http://localhost:3300/sellers");
         const sellers = await sellerResponse.json();
 
-        // Step 2: Find the seller object based on the user's email
         const seller = sellers.find(
           (e) => e.user_id === localStorage.getItem("Email")
         );
 
         if (seller) {
-          // Step 3: Remove the selected product ID from the productList
           const updatedProductList = seller.productList.filter(
             (productId) => productId !== selectedProduct
           );
 
-          // Step 4: Update the seller object with the new productList
           const updatedSeller = { ...seller, productList: updatedProductList };
 
-          // Step 5: Send a PATCH request to update the seller data on the server
           const patchResponse = await fetch(
             `http://localhost:3300/sellers/${seller.id}`,
             {
@@ -80,22 +72,18 @@ const MyProduct = () => {
           );
 
           if (patchResponse.ok) {
-            // Success! Do something if needed
             console.log("Product deleted successfully");
 
-            // Step 6: Optionally, you can update the state or perform any other action
             setProductId(updatedProductList);
             setSelectedProduct(null);
 
-            // Redirect to another page after successful deletion
-            navigate("/MyProduct"); // Replace "/redirect-path" with the desired path
+            navigate("/MyProduct");
           } else {
-            // Handle error if needed
+
             console.error("Failed to delete product");
           }
         }
       } catch (error) {
-        // Handle any unexpected errors
         console.error("Error deleting product:", error);
       }
     }
@@ -105,7 +93,6 @@ const MyProduct = () => {
     setEditMode(true);
     setSelectedProduct(productId);
 
-    // Find the product data and set it to the editedProduct state
     const productToEdit = products.find((product) => product.id === productId);
     setEditedProduct(productToEdit);
   };
@@ -126,13 +113,11 @@ const MyProduct = () => {
       if (response.ok) {
         console.log("Product edited successfully");
   
-        // Fetch the updated product details after saving
         const updatedProductResponse = await fetch(
           `http://localhost:3300/products/${selectedProduct}`
         );
         const updatedProduct = await updatedProductResponse.json();
   
-        // Update the products state with the new data
         setProducts((prevProducts) =>
           prevProducts.map((product) =>
             product.id === selectedProduct ? updatedProduct : product
