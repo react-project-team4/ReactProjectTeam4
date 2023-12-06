@@ -101,7 +101,12 @@
       "password": "$2a$10$43AK6QrS33b7xIMXLdibkusF4G30coWgjA1O3ik2yhw5m9oovhfke",
       "phone": "01012345678",
       "userType": "Seller",
-      "productList": [],
+      "productList": [
+        1,
+        3,
+        5,
+        7
+      ],
       "id": 5
     }
   ],

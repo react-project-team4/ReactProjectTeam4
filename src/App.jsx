@@ -22,6 +22,7 @@ import MyPage from "./front-end/components/mypageComponents/MyPage";
 import styles from "./front-end/css/app.module.css";
 import MyCart from "./front-end/components/MyCart";
 import Payment from "./front-end/components/Payment";
+import MyProduct from "./front-end/components/MyProduct";
 
 
 
@@ -62,6 +63,7 @@ const App = () => {
           <Route path="/ManageBuyer" element={<ManageBuyer/>} />
           <Route path="/MyCart" element={<MyCart/>} />
           <Route path="/Payment" element={<Payment/>} />
+          <Route path="/MyProduct" element={<MyProduct/>} />
           
         </Route>
       </Routes>
