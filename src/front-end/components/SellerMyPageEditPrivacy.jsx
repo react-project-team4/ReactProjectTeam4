@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from "../../css/myPageCss/MyPageEditPrivacy.module.css";
+import styles from "../css/myPageCss/MyPageEditPrivacy.module.css";
 
 const bcrypt = require('bcryptjs');
 
@@ -67,7 +67,7 @@ const ViewPrivacy = ({ userInfo, updateName, updateUserId, updatePassword, updat
 };
 
 
-const MyPageEditPrivacy = () => {
+const SellerMyPageEditPrivacy = () => {
   const [userInfo, setUserInfo] = useState(null);
   const [passwordEntered, setPasswordEntered] = useState(false);
   const navigate = useNavigate();
@@ -78,7 +78,7 @@ const MyPageEditPrivacy = () => {
     const updatedData = {
       nickName: e,
     };
-    fetch(`http://localhost:3300/users/${userInfo.id}`, {
+    fetch(`http://localhost:3300/sellers/${userInfo.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -101,7 +101,7 @@ const MyPageEditPrivacy = () => {
     const updatedData = {
       user_id: e,
     };
-    fetch(`http://localhost:3300/users/${userInfo.id}`, {
+    fetch(`http://localhost:3300/sellers/${userInfo.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -132,7 +132,7 @@ const MyPageEditPrivacy = () => {
       return;
     }
   
-    fetch(`http://localhost:3300/users`)
+    fetch(`http://localhost:3300/sellers`)
       .then(response => response.json())
       .then(data => {
         const userData = data.filter(
@@ -153,7 +153,7 @@ const MyPageEditPrivacy = () => {
           password: hashedNewPassword
         };
 
-        fetch(`http://localhost:3300/users/${userInfo.id}`, {
+        fetch(`http://localhost:3300/sellers/${userInfo.id}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
@@ -171,14 +171,13 @@ const MyPageEditPrivacy = () => {
       });
   };
 
-
   // 휴대폰 업데이트
   const updatePhone = (e) => {
     // 업데이트 데이터  
     const updatedData = {
       phone: e,
     };
-    fetch(`http://localhost:3300/users/${userInfo.id}`, {
+    fetch(`http://localhost:3300/sellers/${userInfo.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -198,7 +197,7 @@ const MyPageEditPrivacy = () => {
     const passwordInput = document.getElementById('passwordInput').value;
   
     // 사용자 정보 요청을 위한 fetch
-    fetch(`http://localhost:3300/users`)
+    fetch(`http://localhost:3300/sellers`)
       .then(response => response.json())
       .then(data => {
         const userData = data.filter(
@@ -234,7 +233,7 @@ const MyPageEditPrivacy = () => {
     <>
       {!passwordEntered ? (
         <>
-        <h3>회원정보확인</h3>
+        <h3>판매자정보확인</h3>
         {localStorage.getItem("Nickname")}님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인 합니다.
         <br></br><br></br>        
         <div className="input-group mb-3">
@@ -259,4 +258,4 @@ const MyPageEditPrivacy = () => {
   );
 };
 
-export default MyPageEditPrivacy;
+export default SellerMyPageEditPrivacy;
