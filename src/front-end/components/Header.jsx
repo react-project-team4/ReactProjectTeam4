@@ -17,7 +17,7 @@ import {
   faSignOut,
   faSignOutAlt,
   faUsers,
-} from "@fortawesome/free-solid-svg-icons";
+} from "@fortawesome/free-solid-svg-icons"; 
 
 const Header = (props) => {
   const { user  , setUser } = props;
@@ -119,7 +119,7 @@ const Header = (props) => {
                             icon={faUserCircle}
                           />
                       
-                          {user} 
+                      {localStorage.getItem("Nickname")}
                         </Dropdown.Toggle>
 
                       <Dropdown.Menu>
@@ -151,6 +151,7 @@ const Header = (props) => {
                         style={{ marginRight: "6px" }}
                         icon={faListAlt}
                       />
+                      {localStorage.getItem("Nickname")}
                       판매 상품 리스트
                     </Nav.Link>
                     <Nav.Link>
@@ -178,7 +179,7 @@ const Header = (props) => {
                           icon={faUsers}
                         />
                       
-                        {user} 
+                      {localStorage.getItem("Nickname")}
                       </Dropdown.Toggle>
 
                       <Dropdown.Menu>
