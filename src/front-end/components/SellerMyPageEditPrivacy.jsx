@@ -171,7 +171,6 @@ const SellerMyPageEditPrivacy = () => {
       });
   };
 
-
   // 휴대폰 업데이트
   const updatePhone = (e) => {
     // 업데이트 데이터  
