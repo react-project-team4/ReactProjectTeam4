@@ -27,7 +27,6 @@ export default function ShowProduct(props) {
     fetch("http://localhost:3300/users")
       .then((response) => response.json())
       .then((jsonData) => {
-        // localStorage.getItem(key) // localStorage.getItem("user_id")
         const cartList = jsonData.find(
           (item) => item.user_id === localStorage.getItem("Email")
         ).cartList;
@@ -70,8 +69,6 @@ export default function ShowProduct(props) {
 
     setCartList((prevCartList) => {
       const updatedCartList = [...prevCartList, productData.id];
-
-      // ${localStorage.getItem("userId")}
       fetch(`http://localhost:3300/users/${localStorage.getItem("user_id")}`, {
         method: "PATCH",
         headers: { "Content-type": "application/json" },
@@ -96,7 +93,6 @@ export default function ShowProduct(props) {
     setCartList((prevCartList) => {
       const updatedCartList = [...prevCartList, productData.id];
 
-      // ${localStorage.getItem("userId")}
       fetch(`http://localhost:3300/users/${localStorage.getItem("user_id")}`, {
         method: "PATCH",
         headers: { "Content-type": "application/json" },
@@ -135,7 +131,6 @@ export default function ShowProduct(props) {
       console.log(response);
     });
     deleteImageFromS3(productData.image);
-
     navigate(`/ProductList?category=${productData.category}`);
   };
 
