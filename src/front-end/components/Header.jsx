@@ -142,29 +142,31 @@ const Header = (props) => {
                 ) : user === "Seller" ? (
                   // 판매자
                   <>
-                    <Dropdown>
-                      <Dropdown.Toggle variant="success" id="dropdown-basic">
-                        <FontAwesomeIcon
-                          style={{ marginRight: "6px" }}
-                          icon={faUserCircle}
-                        />
-                        
-                        {user} 
-                      </Dropdown.Toggle>
-
-                      <Dropdown.Menu>
-                        <Dropdown.Item as={Link} to="/MyProduct">
-                          판매 상품 리스트
-                        </Dropdown.Item>
-                        <Dropdown.Item onClick={handleLogout}>
-                          <FontAwesomeIcon
-                            style={{ marginRight: "6px" }}
-                            icon={faSignOutAlt}
-                          />
-                          로그아웃
-                        </Dropdown.Item>
-                      </Dropdown.Menu>
-                    </Dropdown>
+                    <Nav.Link
+                      className={styles.link}
+                      as={Link}
+                      to="/MyProduct"
+                    >
+                      <FontAwesomeIcon
+                        style={{ marginRight: "6px" }}
+                        icon={faListAlt}
+                      />
+                      판매 상품 리스트
+                    </Nav.Link>
+                    <Nav.Link>
+                      <FontAwesomeIcon
+                        style={{ marginRight: "6px" }}
+                        icon={faUserCircle}
+                      />
+                      프로필
+                    </Nav.Link>
+                    <Nav.Link className={styles.link} onClick={handleLogout}>
+                      <FontAwesomeIcon
+                        style={{ marginRight: "6px" }}
+                        icon={faSignOutAlt}
+                      />
+                      로그아웃
+                    </Nav.Link>
                   </>
                 ) : (
                   // 어드민

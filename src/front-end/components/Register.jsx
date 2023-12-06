@@ -30,19 +30,51 @@ const Register = () => {
 
   const [isChecked, setIsChecked] = useState(false);
 
-  //////////////////////////회원가입 체크는 여기에////////////////////
+  const [combinedData, setCombinedData] = useState({ users: [] });
+
+  //db에서 유저정보 받아오기//
+
+  useEffect(() => {
+    const getUserData = async () => {
+      try {
+        const usersResponse = await fetch(`http://localhost:3300/users`);
+        const sellersResponse = await fetch(`http://localhost:3300/sellers`);
+        const adminResponse = await fetch(`http://localhost:3300/admin`);
+
+        const usersData = await usersResponse.json();
+        const sellersData = await sellersResponse.json();
+        const adminData = await adminResponse.json();
+
+        setCombinedData({
+          users: [...usersData, ...sellersData, ...adminData],
+        });
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    getUserData();
+  }, []);
+
+  /////////////////// 회원가입 체크는 여기에 //////////////////////////////
 
   // 닉네임 체크
   const nicknameHandler = (e) => {
     setNickname(e.currentTarget.value);
     const nicknameRegex = /^[a-zA-Z가-힣0-9]{3,15}$/; // 닉네임 정규식
+    const nicknameExists = combinedData.users.some(
+      (user) => user.nickName === e.currentTarget.value
+    );
 
-    if (nicknameRegex.test(e.currentTarget.value)) {
-      setIsNicknameValid(true);
-      setErrorNickname("");
-    } else {
+    if (nicknameExists) {
+      setErrorNickname("중복된 이메일입니다.");
+      setIsNicknameValid(false);
+    } else if (!nicknameRegex.test(e.currentTarget.value)) {
       setErrorNickname("닉네임은 3~15자로 입력해주세요.");
       setIsNicknameValid(false);
+    } else {
+      setErrorNickname("");
+      setIsNicknameValid(true);
     }
   };
 
@@ -50,13 +82,19 @@ const Register = () => {
   const emailHandler = (e) => {
     setEmail(e.currentTarget.value);
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // 이메일 정규식
+    const emailExists = combinedData.users.some(
+      (user) => user.user_id === e.currentTarget.value
+    );
 
-    if (emailRegex.test(e.currentTarget.value)) {
-      setErrorEmail("");
-      setIsEmailValid(true);
-    } else {
+    if (emailExists) {
+      setErrorEmail("중복된 이메일입니다.");
+      setIsEmailValid(false);
+    } else if (!emailRegex.test(e.currentTarget.value)) {
       setErrorEmail("올바른 이메일을 입력해주세요.");
       setIsEmailValid(false);
+    } else {
+      setErrorEmail("");
+      setIsEmailValid(true);
     }
   };
 

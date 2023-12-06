@@ -3,7 +3,7 @@
     {
       "nickName": "이효빈",
       "user_id": "good123@gmail.com",
-      "password": "$2a$10$dhsHrUNN9MJHdOWslkUWEO0dOL5K0s.7fd03zDdtJo50s3Q95F0xa",
+      "password": "$2a$10$ZI53S.zCM.9U8mxlEKzKYOSB8Jr2Kg8fxNe7LnCZJtb/ySm1bkRdu",
       "phone": "01092889232",
       "userType": "Buyer",
       "addressList": [
@@ -128,10 +128,10 @@
       "id": 4
     },
     {
-      "nickName": "sellerkim",
-      "user_id": "ddadas@dad.dsada",
-      "password": "$2a$10$43AK6QrS33b7xIMXLdibkusF4G30coWgjA1O3ik2yhw5m9oovhfke",
-      "phone": "01012345678",
+      "nickName": "판매자김건우",
+      "user_id": "good@gmail.com",
+      "password": "$2a$10$Mwiu0ooKYMYa.NJRu1hdoekRV14l/1QgmFBXLTNjck/mXNMo0oWRC",
+      "phone": "01092889232",
       "userType": "Seller",
       "productList": [
         1,

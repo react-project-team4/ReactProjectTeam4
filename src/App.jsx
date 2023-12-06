@@ -23,6 +23,7 @@ import styles from "./front-end/css/app.module.css";
 import MyCart from "./front-end/components/MyCart";
 import Payment from "./front-end/components/Payment";
 import MyProduct from "./front-end/components/MyProduct";
+import SellerMyPage from "./front-end/components/SellerMyPage";
 
 
 
@@ -64,6 +65,7 @@ const App = () => {
           <Route path="/MyCart" element={<MyCart/>} />
           <Route path="/Payment" element={<Payment/>} />
           <Route path="/MyProduct" element={<MyProduct/>} />
+          <Route path="/SellerMyPage" element={<SellerMyPage/>} />
           
         </Route>
       </Routes>
