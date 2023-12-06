@@ -162,6 +162,24 @@
       "content": "bad",
       "created_at": "2023-07-08T11:20:00.000Z",
       "updated_at": "2023-12-01T05:27:46.017Z"
+    },
+    {
+      "productId": 1,
+      "user_id": "sunghwan1332@naver.com",
+      "nickName": "sim",
+      "content": "댓글 수정 구현 완료",
+      "created_at": "2023-12-06T05:19:57.852Z",
+      "updated_at": "2023-12-06T05:20:07.708Z",
+      "id": 4
+    },
+    {
+      "productId": 1,
+      "user_id": "sunghwan1332@naver.com",
+      "nickName": "sim",
+      "content": "댓글 구현 완료",
+      "created_at": "2023-12-06T05:20:12.991Z",
+      "updated_at": "2023-12-06T05:20:12.991Z",
+      "id": 5
     }
   ],
   "orders": [
