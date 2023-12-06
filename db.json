@@ -70,6 +70,22 @@
       ],
       "cartList": [],
       "id": 5
+    },
+    {
+      "nickName": "lhb",
+      "user_id": "zzzz@naver.com",
+      "password": "$2a$10$D1kpZJc.e32uqKDPNCHa0erXPVZms0Dp0UASaKoebeSxwCmJKAeHi",
+      "phone": "12312321313",
+      "userType": "Buyer",
+      "addressList": [
+        {
+          "addressId": "",
+          "addressName": "",
+          "address": ""
+        }
+      ],
+      "cartList": [],
+      "id": 6
     }
   ],
   "sellers": [
