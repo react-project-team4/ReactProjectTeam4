@@ -15,7 +15,7 @@ export default function ShowProduct(props) {
   const location = useLocation();
   const productData = location.state.item;
   const loginUser = localStorage.getItem("Email");
-
+  
   useEffect(() => {
     if (user === "Buyer") getCartList();
 
