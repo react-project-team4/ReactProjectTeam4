@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 import styles from "../css/Register.module.css";
 import bcrypt from "bcryptjs";
+import mark from "../imgs/fukuokaMark.png";
 
 const Login = (props) => {
   const setUser = props.setUser;
@@ -82,8 +83,18 @@ const Login = (props) => {
     <div className="d-flex justify-content-center align-items-center w-100 vh-100">
       <div className={styles.RegisterForm}>
         <Form className="w-100">
+          <div className="d-flex justify-content-center mb-2 ">
+            <img
+              src={mark}
+              alt="logo"
+              style={{ width: "100px", height: "auto" }}
+              className="img-fluid "
+            />
+            <h2 className="mt-3">Japang</h2>
+          </div>
+
           <h2 className={styles.RegisterFormH2}>로그인</h2>
-          <h2 className={styles.RegisterFormH2}>로고?</h2>
+
           <Form.Group className="inputForm mb-3" controlId="formGroupEmail">
             <Form.Label>이메일</Form.Label>
             <Form.Control

@@ -79,6 +79,7 @@ export default function Comment(props) {
         updated_at: new Date(),
       }),
     }).then((response) => {
+      textarea.value = "";
       console.log(response);
       commentList();
     });
@@ -117,6 +118,7 @@ export default function Comment(props) {
         updated_at: new Date(),
       }),
     }).then((response) => {
+      textarea.value = "";
       setUpdateCommentForm(0);
       commentList();
     });
