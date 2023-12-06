@@ -54,6 +54,22 @@
         7
       ],
       "id": 4
+    },
+    {
+      "nickName": "sim",
+      "user_id": "sunghwan1332@naver.com",
+      "password": "$2a$10$yorvV9P1uKslQtaGa/zHKefGvIwaa9jGesl8PSGlNpKB1NCqu9q5a",
+      "phone": "01067831332",
+      "userType": "Buyer",
+      "addressList": [
+        {
+          "addressId": "",
+          "addressName": "",
+          "address": ""
+        }
+      ],
+      "cartList": [],
+      "id": 5
     }
   ],
   "sellers": [
@@ -152,18 +168,18 @@
       "user_id": "sunghwan1332@naver.com",
       "nickName": "sim",
       "content": "댓글 수정 구현 완료",
-      "created_at": "2023-12-01T02:50:40.661Z",
-      "updated_at": "2023-12-01T04:57:34.571Z",
-      "id": 9
+      "created_at": "2023-12-06T05:19:57.852Z",
+      "updated_at": "2023-12-06T05:20:07.708Z",
+      "id": 4
     },
     {
       "productId": 1,
       "user_id": "sunghwan1332@naver.com",
       "nickName": "sim",
-      "content": "좋음",
-      "created_at": "2023-12-01T02:50:50.692Z",
-      "updated_at": "2023-12-01T02:50:50.692Z",
-      "id": 10
+      "content": "댓글 구현 완료",
+      "created_at": "2023-12-06T05:20:12.991Z",
+      "updated_at": "2023-12-06T05:20:12.991Z",
+      "id": 5
     }
   ],
   "orders": [
