@@ -140,6 +140,15 @@
         7
       ],
       "id": 5
+    },
+    {
+      "nickName": "0000",
+      "user_id": "poiu@naver.com",
+      "password": "$2a$10$hgosNsAzrdzEjlOg9GdkdOQww/cuX8al9LxxWIu5IIaLheXYuxnpO",
+      "phone": "1067831332",
+      "userType": "Seller",
+      "productList": [],
+      "id": 6
     }
   ],
   "admin": [
