@@ -155,7 +155,7 @@ const Header = (props) => {
             <Dropdown.Item as={Link} to="/MyProduct">
               판매 상품 리스트
             </Dropdown.Item>
-            <Dropdown.Item as={Link} to="/">
+            <Dropdown.Item as={Link} to="/SellerMyPage">
                     프로필
             </Dropdown.Item>
                 <Dropdown.Item onClick={handleLogout}>
