@@ -142,32 +142,32 @@ const Header = (props) => {
                 ) : user === "Seller" ? (
                   // 판매자
                   <>
-                    <Nav.Link
-                      className={styles.link}
-                      as={Link}
-                      to="/MyProduct"
-                    >
-                      <FontAwesomeIcon
-                        style={{ marginRight: "6px" }}
-                        icon={faListAlt}
-                      />
-                      {localStorage.getItem("Nickname")}
-                      판매 상품 리스트
-                    </Nav.Link>
-                    <Nav.Link>
-                      <FontAwesomeIcon
-                        style={{ marginRight: "6px" }}
-                        icon={faUserCircle}
-                      />
-                      프로필
-                    </Nav.Link>
-                    <Nav.Link className={styles.link} onClick={handleLogout}>
-                      <FontAwesomeIcon
-                        style={{ marginRight: "6px" }}
-                        icon={faSignOutAlt}
-                      />
-                      로그아웃
-                    </Nav.Link>
+            <Dropdown>
+           <Dropdown.Toggle variant="success" id="dropdown-basic">
+           <FontAwesomeIcon
+               style={{ marginRight: "6px" }}
+              icon={faUserCircle}
+           />
+              {localStorage.getItem("Nickname")}
+           </Dropdown.Toggle>
+
+           <Dropdown.Menu>
+            <Dropdown.Item as={Link} to="/MyProduct">
+              판매 상품 리스트
+            </Dropdown.Item>
+            <Dropdown.Item as={Link} to="/">
+                    프로필
+            </Dropdown.Item>
+                <Dropdown.Item onClick={handleLogout}>
+                    <FontAwesomeIcon
+                       style={{ marginRight: "6px" }}
+                       icon={faSignOutAlt}
+                    />
+                       로그아웃
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+
                   </>
                 ) : (
                   // 어드민
