@@ -69,7 +69,7 @@ export default function ShowProduct(props) {
 
     setCartList((prevCartList) => {
       const updatedCartList = [...prevCartList, productData.id];
-      fetch(`http://localhost:3300/users/${localStorage.getItem("user_id")}`, {
+      fetch(`http://localhost:3300/users/${localStorage.getItem("Email")}`, {
         method: "PATCH",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({ cartList: updatedCartList }),
