@@ -5,11 +5,12 @@ import Main from "./front-end/components/mainComponents/Main";
 import ProductList from "./front-end/components/productListComponents/ProductList";
 import Register from "./front-end/components/Register";
 import Login from "./front-end/components/Login";
+import Introduce from "./front-end/components/Introduce";
 import CreateProduct from "./front-end/components/productListComponents/CreateProduct";
 import UpdateProduct from "./front-end/components/productListComponents/UpdateProduct";
 //admin
-import ManageSeller from "./front-end/components/adminMange/ManageSeller"
-import ManageBuyer from "./front-end/components/adminMange/ManageBuyer" 
+import ManageSeller from "./front-end/components/adminMange/ManageSeller";
+import ManageBuyer from "./front-end/components/adminMange/ManageBuyer";
 import {
   BrowserRouter as Router,
   Routes,
@@ -24,8 +25,6 @@ import MyCart from "./front-end/components/MyCart";
 import Payment from "./front-end/components/Payment";
 import MyProduct from "./front-end/components/MyProduct";
 import SellerMyPage from "./front-end/components/SellerMyPage";
-
-
 
 const Layout = (props) => {
   const { user, setUser } = props;
@@ -60,13 +59,13 @@ const App = () => {
           <Route path="/CreateProduct" element={<CreateProduct />} />
           <Route path="/MyPage" element={<MyPage />} />
           <Route path="/UpdateProduct" element={<UpdateProduct />} />
-          <Route path="/ManageSeller" element={<ManageSeller/>} />
-          <Route path="/ManageBuyer" element={<ManageBuyer/>} />
-          <Route path="/MyCart" element={<MyCart/>} />
-          <Route path="/Payment" element={<Payment/>} />
-          <Route path="/MyProduct" element={<MyProduct/>} />
-          <Route path="/SellerMyPage" element={<SellerMyPage/>} />
-          
+          <Route path="/ManageSeller" element={<ManageSeller />} />
+          <Route path="/ManageBuyer" element={<ManageBuyer />} />
+          <Route path="/MyCart" element={<MyCart />} />
+          <Route path="/Payment" element={<Payment />} />
+          <Route path="/MyProduct" element={<MyProduct />} />
+          <Route path="/SellerMyPage" element={<SellerMyPage />} />
+          <Route path="/Introduce" element={<Introduce />} />
         </Route>
       </Routes>
     </Router>

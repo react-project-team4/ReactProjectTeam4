@@ -17,18 +17,17 @@ import {
   faSignOut,
   faSignOutAlt,
   faUsers,
-} from "@fortawesome/free-solid-svg-icons"; 
+} from "@fortawesome/free-solid-svg-icons";
 
 const Header = (props) => {
-  const { user  , setUser } = props;
+  const { user, setUser } = props;
   const navigate = useNavigate(); // useNavigate 훅을 사용하여 navigate 객체를 사용
- 
 
- const handleLogout = () => {
+  const handleLogout = () => {
     localStorage.clear();
     setUser("Guest");
     // 로그아웃시 로그인 페이지 이동
-  
+
     navigate("/login"); // 로그아웃 성공시 로그인 경로로 이동
   };
 
@@ -81,7 +80,7 @@ const Header = (props) => {
                   </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link className={styles.link} as={Link} to="/">
+                  <Nav.Link className={styles.link} as={Link} to="/Introduce">
                     <FontAwesomeIcon
                       style={{ marginRight: "6px" }}
                       icon={faAddressCard}
@@ -109,18 +108,18 @@ const Header = (props) => {
                       회원가입
                     </Nav.Link>
                   </>
-                  ) : user === "Buyer" ?  (
-                    // 구매자
-                    <>
-                      <Dropdown>
-                        <Dropdown.Toggle variant="success" id="dropdown-basic">
-                          <FontAwesomeIcon
-                            style={{ marginRight: "6px" }}
-                            icon={faUserCircle}
-                          />
-                      
-                      {localStorage.getItem("Nickname")}
-                        </Dropdown.Toggle>
+                ) : user === "Buyer" ? (
+                  // 구매자
+                  <>
+                    <Dropdown>
+                      <Dropdown.Toggle variant="success" id="dropdown-basic">
+                        <FontAwesomeIcon
+                          style={{ marginRight: "6px" }}
+                          icon={faUserCircle}
+                        />
+
+                        {localStorage.getItem("Nickname")}
+                      </Dropdown.Toggle>
 
                       <Dropdown.Menu>
                         <Dropdown.Item as={Link} to="/MyPage">
@@ -142,32 +141,31 @@ const Header = (props) => {
                 ) : user === "Seller" ? (
                   // 판매자
                   <>
-            <Dropdown>
-           <Dropdown.Toggle variant="success" id="dropdown-basic">
-           <FontAwesomeIcon
-               style={{ marginRight: "6px" }}
-              icon={faUserCircle}
-           />
-              {localStorage.getItem("Nickname")}
-           </Dropdown.Toggle>
+                    <Dropdown>
+                      <Dropdown.Toggle variant="success" id="dropdown-basic">
+                        <FontAwesomeIcon
+                          style={{ marginRight: "6px" }}
+                          icon={faUserCircle}
+                        />
+                        {localStorage.getItem("Nickname")}
+                      </Dropdown.Toggle>
 
-           <Dropdown.Menu>
-            <Dropdown.Item as={Link} to="/MyProduct">
-              판매 상품 리스트
-            </Dropdown.Item>
-            <Dropdown.Item as={Link} to="/SellerMyPage">
-                    프로필
-            </Dropdown.Item>
-                <Dropdown.Item onClick={handleLogout}>
-                    <FontAwesomeIcon
-                       style={{ marginRight: "6px" }}
-                       icon={faSignOutAlt}
-                    />
-                       로그아웃
-                    </Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-
+                      <Dropdown.Menu>
+                        <Dropdown.Item as={Link} to="/MyProduct">
+                          판매 상품 리스트
+                        </Dropdown.Item>
+                        <Dropdown.Item as={Link} to="/SellerMyPage">
+                          프로필
+                        </Dropdown.Item>
+                        <Dropdown.Item onClick={handleLogout}>
+                          <FontAwesomeIcon
+                            style={{ marginRight: "6px" }}
+                            icon={faSignOutAlt}
+                          />
+                          로그아웃
+                        </Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>
                   </>
                 ) : (
                   // 어드민
@@ -178,8 +176,8 @@ const Header = (props) => {
                           style={{ marginRight: "6px" }}
                           icon={faUsers}
                         />
-                      
-                      {localStorage.getItem("Nickname")}
+
+                        {localStorage.getItem("Nickname")}
                       </Dropdown.Toggle>
 
                       <Dropdown.Menu>
@@ -210,5 +208,3 @@ const Header = (props) => {
 };
 
 export default Header;
-
-
