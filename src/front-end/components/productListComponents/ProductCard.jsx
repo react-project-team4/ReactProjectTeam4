@@ -21,6 +21,24 @@ const ProductCard = (props) => {
 
   const loginUser = localStorage.getItem("Email");
 
+  const updateSellerData = async (itemId) => {
+    const response = await fetch(`http://localhost:3300/sellers`);
+    const jsonData = await response.json();
+    const sellerData = jsonData.find(
+      (user) => user.user_id === localStorage.getItem("Email")
+    );
+    const updatedProductList = sellerData.productList.filter(
+      (e) => e !== itemId
+    );
+    fetch(`http://localhost:3300/sellers/${sellerData.id}`, {
+      method: "PATCH",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify({
+        productList: updatedProductList,
+      }),
+    });
+  };
+
   const handleDelete = (item) => {
     /* eslint-disable */
     console.log(item.id);
@@ -41,6 +59,7 @@ const ProductCard = (props) => {
         console.log(response);
         deleteImageFromS3(item.image);
         getProductsData(item.category);
+        updateSellerData(item.id);
       })
       .catch((error) => {
         console.error("Error during DELETE request:", error);
