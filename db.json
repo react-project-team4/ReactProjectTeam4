@@ -95,9 +95,7 @@
       "password": "$2a$12$K39FV9OdVlSy2FcOGKnBf.w70VVe50VzvatgTJ5lYQKjsV9KPx0mK",
       "phone": "01234567890",
       "userType": "Seller",
-      "productList": [
-        0
-      ],
+      "productList": [],
       "id": 1
     },
     {
