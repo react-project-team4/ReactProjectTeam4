@@ -16,7 +16,7 @@ export default function ShowProduct(props) {
   const loginUser = localStorage.getItem("Email");
 
   useEffect(() => {
-    getUserId();
+    if (user === "Buyer") getUserId();
     if (user === "Buyer") getCartList();
 
     if (user === "Admin" || user === "Seller") getProductList();
