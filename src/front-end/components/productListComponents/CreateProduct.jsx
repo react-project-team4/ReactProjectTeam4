@@ -105,6 +105,40 @@ const CreateProduct = () => {
 
       if (response.ok) {
         alert("전송 성공");
+
+        try {
+          const responseData = await response.json();
+          const productId = responseData.id;
+
+          // 판매자 데이터를 가져올 때까지 기다림
+          const sellerDataResponse = await fetch(
+            "http://localhost:3300/sellers/"
+          );
+          const sellersData = await sellerDataResponse.json();
+          const sellerData = sellersData.find(
+            (user) => user.user_id === localStorage.getItem("Email")
+          );
+          const updatedProductList = [...sellerData.productList, productId];
+
+          const updateSellerItem = fetch(
+            `http://localhost:3300/sellers/${sellerData.id}`,
+            {
+              method: "PATCH",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                productList: updatedProductList,
+              }),
+            }
+          );
+        } catch (error) {
+          console.error("Error:", error);
+          alert("전송 실패");
+        } finally {
+          onClearInput();
+          navigate(`/ProductList?category=${products.category}`);
+        }
       } else {
         alert("전송 실패");
       }
