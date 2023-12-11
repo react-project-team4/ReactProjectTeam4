@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Row, Col, Navbar, Container, Nav } from "react-bootstrap";
+import { Row, Col, Navbar, Container, Nav, Dropdown } from "react-bootstrap";
 import styles from "../css/header.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
@@ -17,17 +17,19 @@ import {
   faSignOut,
   faSignOutAlt,
   faUsers,
-} from "@fortawesome/free-solid-svg-icons";
+} from "@fortawesome/free-solid-svg-icons"; 
 
 const Header = (props) => {
-  const { user, setUser } = props;
-  const navigate = useNavigate(); // useNavigate 훅을 사용하여 navigate 객체를사용
-  // 로그 아웃 함수
-  const handleLogout = () => {
+  const { user  , setUser } = props;
+  const navigate = useNavigate(); // useNavigate 훅을 사용하여 navigate 객체를 사용
+ 
+
+ const handleLogout = () => {
     localStorage.clear();
     setUser("Guest");
     // 로그아웃시 로그인 페이지 이동
-    navigate("/login"); // 로그아웃 성공시 로그인 경로로 가게 설정
+  
+    navigate("/login"); // 로그아웃 성공시 로그인 경로로 이동
   };
 
   return (
@@ -107,94 +109,95 @@ const Header = (props) => {
                       회원가입
                     </Nav.Link>
                   </>
-                ) : user === "Buyer" ? (
-                  // 구매자
-                  <>
-                    <Nav.Link className={styles.link} as={Link} to="/MyPage">
-                      <FontAwesomeIcon
-                        style={{ marginRight: "6px" }}
-                        icon={faUserCircle}
-                      />
-                      프로필
-                    </Nav.Link>
-                    <Nav.Link className={styles.link} as={Link} to="/MyCart">
-                      <FontAwesomeIcon
-                        style={{ marginRight: "6px" }}
-                        icon={faShoppingBasket}
-                      />
-                      장바구니
-                    </Nav.Link>
+                  ) : user === "Buyer" ?  (
+                    // 구매자
+                    <>
+                      <Dropdown>
+                        <Dropdown.Toggle variant="success" id="dropdown-basic">
+                          <FontAwesomeIcon
+                            style={{ marginRight: "6px" }}
+                            icon={faUserCircle}
+                          />
+                      
+                      {localStorage.getItem("Nickname")}
+                        </Dropdown.Toggle>
 
-                    <Nav.Link className={styles.link} onClick={handleLogout}>
-                      <FontAwesomeIcon
-                        style={{ marginRight: "6px" }}
-                        icon={faSignOutAlt}
-                      />
-                      로그아웃
-                    </Nav.Link>
+                      <Dropdown.Menu>
+                        <Dropdown.Item as={Link} to="/MyPage">
+                          프로필
+                        </Dropdown.Item>
+                        <Dropdown.Item as={Link} to="/MyCart">
+                          장바구니
+                        </Dropdown.Item>
+                        <Dropdown.Item onClick={handleLogout}>
+                          <FontAwesomeIcon
+                            style={{ marginRight: "6px" }}
+                            icon={faSignOutAlt}
+                          />
+                          로그아웃
+                        </Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>
                   </>
                 ) : user === "Seller" ? (
                   // 판매자
                   <>
-                    <Nav.Link
-                      className={styles.link}
-                      as={Link}
-                      to="/MyProduct"
-                    >
-                      <FontAwesomeIcon
-                        style={{ marginRight: "6px" }}
-                        icon={faListAlt}
-                      />
-                      판매 상품 리스트
-                    </Nav.Link>
-                    <Nav.Link>
-                      <FontAwesomeIcon
-                        style={{ marginRight: "6px" }}
-                        icon={faUserCircle}
-                      />
-                      프로필
-                    </Nav.Link>
-                    <Nav.Link className={styles.link} onClick={handleLogout}>
-                      <FontAwesomeIcon
-                        style={{ marginRight: "6px" }}
-                        icon={faSignOutAlt}
-                      />
-                      로그아웃
-                    </Nav.Link>
+            <Dropdown>
+           <Dropdown.Toggle variant="success" id="dropdown-basic">
+           <FontAwesomeIcon
+               style={{ marginRight: "6px" }}
+              icon={faUserCircle}
+           />
+              {localStorage.getItem("Nickname")}
+           </Dropdown.Toggle>
+
+           <Dropdown.Menu>
+            <Dropdown.Item as={Link} to="/MyProduct">
+              판매 상품 리스트
+            </Dropdown.Item>
+            <Dropdown.Item as={Link} to="/SellerMyPage">
+                    프로필
+            </Dropdown.Item>
+                <Dropdown.Item onClick={handleLogout}>
+                    <FontAwesomeIcon
+                       style={{ marginRight: "6px" }}
+                       icon={faSignOutAlt}
+                    />
+                       로그아웃
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+
                   </>
                 ) : (
                   // 어드민
                   <>
-                    <Nav.Link
-                      className={styles.link}
-                      as={Link}
-                      to="/ManageBuyer"
-                    >
-                      <FontAwesomeIcon
-                        style={{ marginRight: "6px" }}
-                        icon={faUsers}
-                      />
-                      구매자 관리
-                    </Nav.Link>
-                    <Nav.Link
-                      className={styles.link}
-                      as={Link}
-                      to="/ManageSeller"
-                    >
-                      <FontAwesomeIcon
-                        style={{ marginRight: "6px" }}
-                        icon={faUsers}
-                      />
-                      판매자 관리
-                    </Nav.Link>
-                    <Nav.Link className={styles.link} onClick={handleLogout}>
-                      <FontAwesomeIcon
-                        style={{ marginRight: "6px" }}
-                        icon={faSignOutAlt}
+                    <Dropdown>
+                      <Dropdown.Toggle variant="success" id="dropdown-basic">
+                        <FontAwesomeIcon
+                          style={{ marginRight: "6px" }}
+                          icon={faUsers}
+                        />
                       
-                      />
-                      로그아웃
-                    </Nav.Link>
+                      {localStorage.getItem("Nickname")}
+                      </Dropdown.Toggle>
+
+                      <Dropdown.Menu>
+                        <Dropdown.Item as={Link} to="/ManageBuyer">
+                          구매자 관리
+                        </Dropdown.Item>
+                        <Dropdown.Item as={Link} to="/ManageSeller">
+                          판매자 관리
+                        </Dropdown.Item>
+                        <Dropdown.Item onClick={handleLogout}>
+                          <FontAwesomeIcon
+                            style={{ marginRight: "6px" }}
+                            icon={faSignOutAlt}
+                          />
+                          로그아웃
+                        </Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>
                   </>
                 )}
               </Nav>
@@ -207,3 +210,5 @@ const Header = (props) => {
 };
 
 export default Header;
+
+
