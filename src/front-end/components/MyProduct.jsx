@@ -44,6 +44,7 @@ const MyProduct = () => {
   }, [productId]);
 
   const handleDelete = async () => {
+
     if (selectedProduct) {
       try {
         const sellerResponse = await fetch("http://localhost:3300/sellers");
@@ -72,7 +73,16 @@ const MyProduct = () => {
           );
 
           if (patchResponse.ok) {
-            console.log("Product deleted successfully");
+            // 상품 정보에서 상품 삭제
+            const deleteProductResponse = await fetch(
+              `http://localhost:3300/products/${selectedProduct}`,
+              {
+                method: "DELETE",
+              }
+            );
+
+            if (deleteProductResponse.ok) {
+
 
             setProductId(updatedProductList);
             setSelectedProduct(null);
@@ -80,9 +90,10 @@ const MyProduct = () => {
             navigate("/MyProduct");
           } else {
 
-            console.error("Failed to delete product");
+            console.error("상품을 제품 목록에서 삭제하는데 실패했습니다.");
           }
         }
+      }
       } catch (error) {
         console.error("Error deleting product:", error);
       }
