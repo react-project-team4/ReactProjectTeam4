@@ -20,11 +20,7 @@
           "address": "경북 칠곡군 지천면 금송로 60"
         }
       ],
-      "cartList": [
-        2,
-        4,
-        6
-      ],
+      "cartList": [2, 4, 6],
       "id": 3
     },
     {
@@ -47,12 +43,7 @@
           "address": "지천면 금송로 60"
         }
       ],
-      "cartList": [
-        4,
-        5,
-        6,
-        7
-      ],
+      "cartList": [4, 5, 6, 7],
       "id": 4
     },
     {
@@ -104,14 +95,7 @@
       "password": "$2a$12$vC.9TJBFBwQyjl6MnnO/zeFcv3FR0PvyIVPNX08S3ov/BQr5tBY3C",
       "phone": "01068089833",
       "userType": "Seller",
-      "productList": [
-        3,
-        4,
-        5,
-        6,
-        7,
-        8
-      ],
+      "productList": [3, 4, 5, 6, 7, 8],
       "id": 2
     },
     {
@@ -329,6 +313,38 @@
       "shippingFee": "무료",
       "seller_id": "daehan821@naver.com",
       "id": 8
+    }
+  ],
+  "members": [
+    {
+      "name": "우성준",
+      "introduction": "안녕하세요! 반갑습니다!\n가나다라마바사",
+      "imageSrc": "https://blog.kakaocdn.net/dn/czsRIp/btrvDi3MQLj/yiyXcO3iOtSkfRbuETV4Y1/img.jpg",
+      "id": 1
+    },
+    {
+      "name": "김건우",
+      "introduction": "안녕하세요! 반갑습니다!\n가나다라마바사",
+      "imageSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTRXTo08fBEj0ZgtZaIOpnjk4aIeOsab96Lw&usqp=CAU",
+      "id": 2
+    },
+    {
+      "name": "유대한",
+      "introduction": "안녕하세요! 반갑습니다!\n가나다라마바사",
+      "imageSrc": "https://lifet-img.s3.ap-northeast-2.amazonaws.com/6b980705-1d57-46a4-8193-ca490d19d00d",
+      "id": 3
+    },
+    {
+      "name": "심성환",
+      "introduction": "안녕하세요! 반갑습니다!\n가나다라마바사",
+      "imageSrc": "https://cdn.ccdailynews.com/news/photo/202104/2050116_530468_210.png",
+      "id": 4
+    },
+    {
+      "name": "이효빈",
+      "introduction": "안녕하세요! 반갑습니다!\n가나다라마바사",
+      "imageSrc": "https://health.chosun.com/site/data/img_dir/2023/07/17/2023071701753_0.jpg",
+      "id": 5
     }
   ]
 }

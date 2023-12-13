@@ -1,0 +1,79 @@
+.IntroduceDiv {
+  display: flex;
+
+  width: 100%;
+  height: 100%;
+
+  box-sizing: border-box;
+  border-radius: 10px;
+
+  /* background-image: linear-gradient(120deg, #a2d2ff 0%, #8ec5fc 100%); */
+  margin-top: 5%;
+  justify-content: center;
+}
+
+.IntroduceForm {
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+  height: 60%;
+  box-shadow: 0px 6px 6px 0px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(
+    to bottom,
+    #ffffff 20%,
+    #003482 20%,
+    #003482 100%
+  );
+  align-items: center;
+  text-align: center;
+  margin: 0 2%;
+  position: relative;
+}
+
+.IntroduceFormP {
+  align-items: center;
+  max-width: 70px;
+  margin: 0 auto;
+  margin-bottom: 6%;
+}
+
+.IntroduceForm img {
+  width: 70%;
+  height: 30%;
+  border-radius: 50%;
+  margin-top: 10%;
+}
+
+.IntroduceBorder {
+  border-top: 2px solid white;
+  padding-top: 10%;
+}
+
+.IntroduceButton {
+  position: absolute;
+  bottom: 0;
+}
+
+.Modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40%;
+  background-color: white;
+  padding: 20px;
+  /* z-index: 9999; */
+  border: 2px solid black;
+}
+
+.ModalContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ImgInput {
+  margin-bottom: 7%;
+  margin-left: 27%;
+}
